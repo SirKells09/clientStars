@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --y1: #FFDC90;
+    --y2: #FFCE61;
+    --y3: #FFC23A;
+    --y4: #FFB510;
+    --y5: #F7AA00;
+    --b1: #8CBCEB;
+    --b2: #5FA0DF;
+    --b3: #3C89D3;
+    --b4: #1A72C7;
+    --b5: #0956A0;
+    --p1: #9C94EE;
+    --p2: #756AE3;
+    --p3: #5548D9;
+    --p4: #3728CF;
+    --p5: #2012AC;
+
+    --font1: 'Verdana', sans-serif;
+    --font2: "Georgia", sans-serif;
+}
