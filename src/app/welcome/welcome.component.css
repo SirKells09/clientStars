@@ -1,0 +1,10 @@
+#welcomeshootingstars {
+    text-align: center;
+}
+
+#enter {
+    position:absolute;
+    transition: .5s ease;
+    top: 25%;
+    left: 48%;
+}
