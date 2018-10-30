@@ -26,7 +26,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     // if login details are valid return 200 OK with user details and fake jwt token
                     let user = filteredUsers[0];
                     let body = {
-                        id: user.id,
+                        owner: user.id,
                         firstName: user.firstName,
                         lastName: user.lastName,
                         email: user.email,
@@ -111,7 +111,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     return of(new HttpResponse({ status: 200 }));
                 } else {
                     // return 401 not authorised if token is null or invalid
-                    return throwError({ status: 401, error: { message: 'Unauthorised' } });
+                    return throwError({ status: 401, error: { message: 'Unauthorized' } });
                 }
             }
 

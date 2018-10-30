@@ -1,7 +1,5 @@
-import { InternalNgModuleRef } from "@angular/core/src/linker/ng_module_factory";
-
 export class User {
-    id: number;
+    owner: number;
     firstName: string;
     lastName: string;
     email: string;
