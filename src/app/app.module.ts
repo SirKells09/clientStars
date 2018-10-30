@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { fakeBackendProvider } from './_helpers/fake-backend';
@@ -38,8 +39,7 @@ import { LogoutComponent } from './logout/logout.component';
     NavComponent,
     FooterComponent,
     SettingsComponent,
-    LogoutComponent
-
+    LogoutComponent,
     AlertComponent,
     HomeComponent,
     RegisterComponent,
@@ -49,7 +49,8 @@ import { LogoutComponent } from './logout/logout.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     AuthGuard,
