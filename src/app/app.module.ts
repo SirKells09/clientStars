@@ -4,11 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { fakeBackendProvider } from './_helpers/fake-backend';
+// import { fakeBackendProvider } from './_helpers/fake-backend';
 
 import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
-import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { AlertService } from './_services/alert.service';
 import { AuthenticationService } from './_services/authentication.service';
@@ -20,7 +19,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
-import { AuthComponent } from './auth/auth.component';
 import { GoalsComponent } from './goals/goals.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { NavComponent } from './nav/nav.component';
@@ -33,7 +31,6 @@ import { LogoutComponent } from './logout/logout.component';
     AppComponent,
     WelcomeComponent,
     AboutComponent,
-    AuthComponent,
     GoalsComponent,
     ResourcesComponent,
     NavComponent,
@@ -57,9 +54,8 @@ import { LogoutComponent } from './logout/logout.component';
     AlertService,
     AuthenticationService,
     UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
