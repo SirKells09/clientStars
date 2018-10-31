@@ -9,11 +9,6 @@ const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'
                                 })
 };
-
-const httpAuthOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json',
-                               'Authorization': 'token' })
-};
 @Injectable({
   providedIn: 'root'
 })
