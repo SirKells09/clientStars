@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { fakeBackendProvider } from './_helpers/fake-backend';
@@ -27,6 +28,7 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LogoutComponent } from './logout/logout.component';
+import { GoalListComponent } from './goalList/goal-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { LogoutComponent } from './logout/logout.component';
     AlertComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    GoalListComponent,
+    NgbModule
   ],
   imports: [
     BrowserModule,
