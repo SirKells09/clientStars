@@ -28,6 +28,12 @@ export class HomeComponent implements OnInit {
         });
     }
 
+   updateUser(id: number) {
+        this.userService.update(id).pipe(first()).subscribe(() => {
+           this.loadAllUsers();
+        });
+    } 
+
     private loadAllUsers() {
         this.userService.getAll().pipe(first()).subscribe(users => { 
             this.users = users; 
