@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
+  navbarOpen = false;
 
-  constructor() { }
+  constructor(private router: Router){
+  }
 
-  ngOnInit() {
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['']);
+  }
+
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
 
 }
