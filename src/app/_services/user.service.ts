@@ -31,7 +31,7 @@ export class UserService {
             return this.http.post(`${environment.apiUrl}/user/register`, user, httpOptions);
         }
     
-        update(id: number): Observable<any> {
+        update(id: number) {
             return this.http.put<any>(`${environment.apiUrl}/user/` + id, httpOptions);
         }
     
