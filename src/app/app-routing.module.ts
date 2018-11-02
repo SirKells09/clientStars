@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
-import { GoalsComponent } from './goals/goals.component';
-import { AuthComponent } from './auth/auth.component';
+// import { GoalsComponent } from './goals/goals.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
 import { ResourcesComponent } from './resources/resources.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -16,10 +15,10 @@ const routes: Routes = [
   { path: "about", component: AboutComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "goals", component: GoalsComponent, canActivate: [AuthGuard] },
+  // { path: "goals", component: GoalsComponent, canActivate: [AuthGuard] },
   { path: "resources", component: ResourcesComponent, canActivate: [AuthGuard] },
   { path: "settings", component: SettingsComponent, canActivate: [AuthGuard] },
-  { path: "**", redirectTo: "goals" }
+  { path: "**", redirectTo: "goals" },
   { path: "goalList", component: GoalListComponent },
 ];
 

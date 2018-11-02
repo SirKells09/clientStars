@@ -1,21 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import {GoalListService} from '../_services/goal-list.service'
-import { environment } from '../../environments/environment';
-import { ReactiveFormsModule } from '@angular/forms'
-
+import {GoalListService} from '../_services/goal-list.service';
+// import { environment } from '../../environments/environment';
+// import { ReactiveFormsModule } from '@angular/forms';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
-
-
-
 
 @Component({
   selector: 'app-goal-list',
   templateUrl: './goal-list.component.html',
   styleUrls: ['./goal-list.component.css']
 })
+
 export class GoalListComponent implements OnInit {
   closeResult: string;
   goalForm:FormGroup;
@@ -53,3 +49,6 @@ message: new FormControl
     }
   }
 }
+
+
+
