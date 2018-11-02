@@ -25,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     LoginComponent,
     SettingsComponent,
     GoalListComponent,
+    ViewgoalsComponent,
   ],
   imports: [
     BrowserModule,
