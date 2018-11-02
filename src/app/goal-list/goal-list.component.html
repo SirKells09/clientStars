@@ -1,3 +1,35 @@
-<p>
-  goal-list works!
-</p>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Goal Update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="goalForm" (ngSubmit)="onCreateGoal()">
+
+
+      <div class="form-group">
+        <Label>Goal </Label>
+        <Input nameFormControl="goal">
+        <Label>Due Date</Label>
+        <Input nameFormControl="dueDate">
+        <Label>Message</Label>
+        <Input nameFormControl="message">
+
+      </div>
+
+
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+<div>
+
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Set a STAR!</button>
+</div>
+
+<hr>
