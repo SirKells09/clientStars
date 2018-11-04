@@ -1,3 +1,4 @@
+
 <h1>Goals</h1>
 
 <mat-checkbox>Clean Room</mat-checkbox>
@@ -9,3 +10,11 @@
 <mat-checkbox>Walk Dog</mat-checkbox>
 <br />
 <mat-checkbox>Walk 1 mile</mat-checkbox>
+<button *ngIf="display" mat-raised-button (click)="updateUser(user.id)" class="text-success">Update</button>
+<div class="example-container">
+    <mat-form-field hintLabel="Max 4 characters">
+    <input class="input" matInput #input maxlength="4" placeholder="">
+    <mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>
+    </mat-form-field>
+    <button mat-raised-button (click)="onSubmit(input.value)">Submit Pin</button>
+</div>

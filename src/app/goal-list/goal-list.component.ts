@@ -26,7 +26,7 @@ message: new FormControl
 
     })
   }
-  onCreatGoal(){
+  onCreateGoal(){
   
     
   }

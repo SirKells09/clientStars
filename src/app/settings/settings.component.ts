@@ -19,6 +19,8 @@ export class SettingsComponent implements OnInit {
 
     ngOnInit() {
         this.loadAllUsers();
+        
+        
     }
 
     deleteUser(id: number) {
@@ -32,5 +34,6 @@ export class SettingsComponent implements OnInit {
             this.users = users; 
         });
     }
+
 }
 

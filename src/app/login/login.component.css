@@ -1,0 +1,25 @@
+@import url(../../variables.css);
+
+h2 {
+    text-align: center;
+}
+
+.example-container {
+        margin: auto;
+        width: 32%;
+        border: 3px solid green;
+        padding: 10px;
+}
+
+mat-form-field {
+    border: solid black;
+    width: 500px;
+  }
+  
+  .email {
+      margin-bottom: 50px;
+  }
+
+  button {
+      margin-top: 50px;
+  }

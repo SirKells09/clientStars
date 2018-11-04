@@ -12,14 +12,13 @@ export class AuthenticationService {
 
     login(email: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/user/login`, { email: email, password: password })
-            .pipe(map(user => {
+              .pipe(map(user => {
                 if (user) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('pin', user.user.pin);
                 }
                 return user;
-                
-                
+                             
             }));
-            
     }
-}
+}       

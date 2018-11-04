@@ -1,6 +1,6 @@
 @import url(../variables.css);
 
-div {
-    color: var(--y5);
-    font-family: var(--font1);
+.wrapper {
+    background-color: white;
+    height: 100%;
 }
