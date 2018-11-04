@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AddGModalComponent } from '../addGModal/addgmodal.component'
 
+
+
 @Component({
   selector: 'app-goal-list',
   templateUrl: './goal-list.component.html',
   styleUrls: ['./goal-list.component.css']
 })
+
 export class GoalListComponent {
 addGModelRef: MatDialogRef<AddGModalComponent>
 dialogResult:[]
@@ -22,3 +25,4 @@ dialogResult:[]
   }
 
   }
+
