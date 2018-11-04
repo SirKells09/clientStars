@@ -11,6 +11,7 @@ import { UserService } from '../_services/user.service';
 
 })
 export class HomeComponent implements OnInit {
+   
     currentUser: User;
     users: User[] = [];
 

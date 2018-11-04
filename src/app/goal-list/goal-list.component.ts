@@ -1,55 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import {GoalListService} from '../_services/goal-list.service'
-import { environment } from '../../environments/environment';
-import { ReactiveFormsModule } from '@angular/forms'
-
-
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
-
-
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AddGModalComponent } from '../addGModal/addgmodal.component'
 
 @Component({
   selector: 'app-goal-list',
   templateUrl: './goal-list.component.html',
   styleUrls: ['./goal-list.component.css']
 })
-export class GoalListComponent implements OnInit {
-  closeResult: string;
-  goalForm:FormGroup;
- any:{};
+export class GoalListComponent {
+addGModelRef: MatDialogRef<AddGModalComponent>
+dialogResult:[]
+  constructor(private dialog:MatDialog) { }
 
-  constructor(private modalService: NgbModal, private fb: FormBuilder,private gl:GoalListService ) {}
-  ngOnInit() {
-    this.goalForm=this.fb.group({
-goal:new FormControl(),
-dueDate: new FormControl(),
-message: new FormControl
-
-    })
-  }
-  onCreatGoal(){
-  
-    
-  }
-
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-lg-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  openDialog(): void {
+    let dialogRef = this.dialog.open(AddGModalComponent,{
+      hasBackdrop: true, autoFocus:true});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed: ${result}`);
+      this.dialogResult = result;
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
   }
-}

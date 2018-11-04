@@ -4,3 +4,8 @@ div {
     color: var(--y5);
     font-family: var(--font1);
 }
+body { 
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0;
+  }
+  

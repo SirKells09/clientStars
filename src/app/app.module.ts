@@ -3,13 +3,11 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 import { fakeBackendProvider } from './_helpers/fake-backend';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
 import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
@@ -26,13 +24,14 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutComponent } from './about/about.component';
 import { AuthComponent } from './auth/auth.component';
 import { ResourcesComponent } from './resources/resources.component';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
+import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
 import { LogoutComponent } from './logout/logout.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { GoalListService } from './_services/goal-list.service';
 
 
 @NgModule({
@@ -51,29 +50,34 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     RegisterComponent,
     LoginComponent,
     GoalListComponent,
-
+    AddGModalComponent
+    
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
     MatButtonModule,
-     MatCheckboxModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatCardModule,
     MatFormFieldModule,
-    NgbModule,
   ],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
     UserService,
+    GoalListService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
     fakeBackendProvider
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddGModalComponent]
 })
 export class AppModule { }
