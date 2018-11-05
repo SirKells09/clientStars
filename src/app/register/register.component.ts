@@ -1,59 +1,130 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { UserService } from '../_services/user.service';
 import { first } from 'rxjs/operators';
-
-import { AlertService } from '../_services/alert.service';
-import { UserService } from '../_services/user.service';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
-    registerForm: FormGroup;
+export class RegisterComponent {
+    firstName = new FormControl ('', [Validators.required]);
+    lastName = new FormControl ('', [Validators.required]);
+    email = new FormControl('', [Validators.required, Validators.email]);
+    password = new FormControl ('', [Validators.required, Validators.minLength(6)]);
+    pin = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]);
+    returnUrl: string;
+    hide = true;
     loading = false;
     submitted = false;
+    _firstName: string;
+    _lastName: string;
+    _email: string;
+    _password: string;
+    _pin: number;
 
     constructor(
-        private formBuilder: FormBuilder,
+    
         private router: Router,
-        private userService: UserService,
-        private alertService: AlertService) { }
+        private authenticationService: AuthenticationService
+    ) {}
 
-    ngOnInit() {
-        this.registerForm = this.formBuilder.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            email: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]],
-            pin: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
-        });
+   
+
+    firstNameErrorMessage() {
+        return this.firstName.hasError('required') ? 'You must enter a value' : '';
     }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
-
-    onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registration successful', true);
-                    this.router.navigate(['/login']);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
+    lastNameErrorMessage() {
+        return this.lastName.hasError('required') ? 'You must enter a value' : '';
     }
+
+    emailErrorMessage() {
+        return this.email.hasError('required') ? 'You must enter a value' :
+            this.email.hasError('email') ? 'Not a valid email' :
+        '';
+    }
+
+    passwordErrorMessage() {
+        return this.password.hasError('required') ? 'You must enter a value' :
+            this.password.hasError('minLength(6)') ? 'Password must be at least 6 characters' :
+        '';
+    }
+
+    pinErrorMessage() {
+        return this.pin.hasError('required') ? 'You must enter a value' :
+            this.pin.hasError('minLength(4), maxLength(4') ? 'Pin must be exactly 4 digits long' :
+        '';
+    }
+
+    onSubmit(
+        firstName: string,
+        lastName: string,
+        email: string,
+        password: string,
+        pin: number
+    ) {
+    this._firstName = firstName;
+    this._lastName = lastName;
+    this._email = email;
+    this._password = password;
+    this._pin = pin;
+    this.submitted = true;
+    this.loading = true;
+    this.authenticationService.register(this._firstName, this._lastName, this._email, this._password, this._pin)
+        .pipe(first())
+        .subscribe(
+            data => {
+                this.router.navigate(['/goals']);
+        })
+    }
+    
 }
+//     registerForm: FormGroup;
+//     loading = false;
+//     submitted = false;
+
+//     constructor(
+//         private formBuilder: FormBuilder,
+//         private router: Router,
+//         private userService: UserService,
+//         private alertService: AlertService) { }
+
+//     ngOnInit() {
+//         this.registerForm = this.formBuilder.group({
+//             firstName: ['', Validators.required],
+//             lastName: ['', Validators.required],
+//             email: ['', Validators.required],
+//             password: ['', [Validators.required, Validators.minLength(6)]],
+//             pin: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]]
+//         });
+//     }
+
+//     // convenience getter for easy access to form fields
+//     get f() { return this.registerForm.controls; }
+
+//     onSubmit() {
+//         this.submitted = true;
+
+//         // stop here if form is invalid
+//         if (this.registerForm.invalid) {
+//             return;
+//         }
+
+//         this.loading = true;
+//         this.userService.register(this.registerForm.value)
+//             .pipe(first())
+//             .subscribe(
+//                 data => {
+//                     this.alertService.success('Registration successful', true);
+//                     this.router.navigate(['/login']);
+//                 },
+//                 error => {
+//                     this.alertService.error(error);
+//                     this.loading = false;
+//                 });
+//     }
+// }

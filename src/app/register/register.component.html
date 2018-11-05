@@ -1,3 +1,49 @@
+
+<div><h2>Login</h2>
+    <div class="example-container">
+        <form (ngSubmit)="onSubmit()">
+        <label for="firstName">First Name</label>
+        <div>  
+        <mat-form-field class="firstName form-group">
+          <input matInput #firstName type="text" class="form-control" required>
+          <mat-error *ngIf="firstName.invalid">{{firstNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        </div>
+        <label for="lastName">Last Name</label>
+        <div>  
+        <mat-form-field class="lastName form-group">
+          <input matInput #lastName type="text" class="form-control" required>
+          <mat-error *ngIf="lastName.invalid">{{lastNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        </div>
+        <label for="email">Email</label>
+        <div>  
+        <mat-form-field class="email form-group">
+          <input matInput #email type="text" class="form-control" required>
+          <mat-error *ngIf="email.invalid">{{emailErrorMessage()}}</mat-error>
+        </mat-form-field>
+        </div>
+        <label for="password">Password</label>
+        <div class="password form-group">
+        <mat-form-field>
+            <input matInput #password [type]="hide ? 'password' : 'text'">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="password.invalid">{{passwordErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <label for="pin">Pin</label>
+        <div>  
+        <mat-form-field class="pin form-group">
+          <input matInput #pin type="text" class="form-control" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="pin.invalid">{{pinErrorMessage()}}</mat-error>
+        </mat-form-field>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary" (click)="onSubmit(firstName.value, lastName.value, email.value, password.value, pin.value)" mat-raised-button>Register</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+
 <body>
         <br />
         <br />
@@ -13,8 +59,38 @@
         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
             <div *ngIf="f.firstName.errors.required">First Name is required</div>
         </div>
+    </form>
+      </div>
+    </div>
+
+<!-- <div><h2>Register</h2>
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control"/>
+       
     </div>
     <div class="form-group">
+
+        <label for="lastName">Last Name</label>
+        <input type="text"  class="form-control"/>
+       
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text"  class="form-control"/>
+        
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password"  class="form-control"/>
+       
+    </div>
+    <div class="form-group">
+      <label for="pin">Pin</label>
+      <input type="pin"  class="form-control"/>
+     
+
         <input type="text" placeholder="Last Name" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
             <div *ngIf="f.lastName.errors.required">Last Name is required</div>
@@ -40,6 +116,7 @@
           <div *ngIf="f.pin.errors.minlength">Pin must be 4 characters</div>
           <div *ngIf="f.pin.errors.maxlength">Pin must be 4 characters</div>
       </div>
+
   </div>
     <div class="form-group">
         <button [disabled]="loading" class="registerbutton">Register</button>
@@ -47,7 +124,11 @@
         <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
     </div>
 </form>
+
+</div> -->
+
 </div>
+
 
 
 

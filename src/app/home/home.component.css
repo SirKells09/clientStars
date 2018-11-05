@@ -1,3 +1,5 @@
+
+@import url(../../variables.css);
 .welcome {
     background: url("/assets/astronomy.jpg");
     width: 100;
@@ -48,5 +50,4 @@ h3 {
     background-color: rgb(174, 160, 238);
     opacity: 0.75;
 }
-
 

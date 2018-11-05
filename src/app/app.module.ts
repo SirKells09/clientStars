@@ -18,13 +18,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
-import { NavComponent } from './nav/nav.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FooterComponent } from './footer/footer.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatMenuModule } from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule, MatListModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -36,7 +43,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AppComponent,
     AboutComponent,
     ResourcesComponent,
-    NavComponent,
     FooterComponent,
     AlertComponent,
     HomeComponent,
@@ -45,6 +51,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     SettingsComponent,
     GoalListComponent,
     ViewgoalsComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +63,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    MatToolbarModule,
     NgbModule,
+    MatMenuModule,
+    MatIconModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule,
+    MatInputModule
     MatIconModule,
     MatCardModule,
     FlexLayoutModule,
@@ -72,3 +86,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+

@@ -1,0 +1,70 @@
+@import url(../../variables.css);
+
+.sidenav-container {
+  height: 100%;
+  background-color: rgb(91, 170, 219);
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,0.24);
+  background-color: rgb(135, 190, 223);
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  flex: 1 1 auto;
+}
+
+#title {
+  margin: 20px 20px 20px 20px;
+  padding: 10px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.753);
+  border: 2px solid var(--y1);
+  border-radius: 0.1em;
+  text-decoration: none;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.384);
+  width: 200px;
+  text-align: center;
+}
+
+mat-nav-list a {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.753);
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.384);
+}
+
+.nav-link {
+  display: inline-block;
+  margin: 0 10px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.753);
+  border-radius: 0.3em;
+  text-decoration: none;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.384);
+  width: 100px;
+  text-align: center;
+}
+
+
+
+/* @media (min-width: 768px) {
+  .sidenav {
+    display: none;
+  }
+} */
+
+/* .sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+} */

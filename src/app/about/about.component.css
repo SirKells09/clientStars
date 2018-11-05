@@ -1,3 +1,6 @@
+
+@import url(../../variables.css);
+
 /* .body {
     background: url("/assets/astronomy2.jpg");
 } */
@@ -118,3 +121,4 @@
         flex: 33.33%;
         padding: 5px;
 }
+
