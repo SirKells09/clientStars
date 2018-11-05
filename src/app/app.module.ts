@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
@@ -26,13 +25,15 @@ import { SettingsComponent } from './settings/settings.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatMenuModule } from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule, MatListModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -67,7 +68,10 @@ import { MatInputModule } from '@angular/material/input';
     LayoutModule,
     MatSidenavModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatToolbarModule,
   ],
   providers: [
     AuthGuard,
