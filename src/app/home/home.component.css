@@ -2,9 +2,8 @@
 @import url(../../variables.css);
 .welcome {
     background: url("/assets/astronomy.jpg");
-    width: 100;
-    height: 1000px;
-    background-size: contain;
+    min-height: 100%;
+    background-size: cover;
     text-align: center;
 }
 
@@ -42,12 +41,34 @@ h3 {
 .enterbutton {
     margin: 0 auto;
     position: center;
-    background-color: rgb(166, 132, 245);
+    background-color: rgb(69, 63, 102);
     height: 31px;
+    color: white;
 }
 
 .enterbutton:hover {
     background-color: rgb(174, 160, 238);
     opacity: 0.75;
+}
+
+.enterinput {
+    margin: 0 auto;
+    position: center;
+    /* background-color: rgb(114, 106, 121); */
+    height: 31px;
+    color: white;
+    font-size: 14pt;
+}
+
+.setgoal {
+    border-color: rgb(35, 33, 49);
+}
+/* 
+::placeholder.text {
+    text-anchor: white;
+} */
+
+.mat-focused .placeholder {
+    color: white;
 }
 

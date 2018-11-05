@@ -28,9 +28,9 @@
 }
 
 /* Add some shadows to create a card effect */
-.card {
+/* .card {
     box-shadow: 0 4px 10px 0 rgba(52, 15, 187, 0.2);
-}
+} */
 
 /* Clear floats */
 .container::after, .row::after {
@@ -41,7 +41,7 @@
 
 /* team member's title */
 .title {
-    color: rgb(95, 30, 245);
+    color: rgb(101, 101, 104);
 }
 
 .button {
@@ -50,14 +50,14 @@
     display: inline-block;
     padding: 8px;
     color: white;
-    background-color: rgb(166, 132, 245);
+    background-color: rgb(43, 33, 68);
     text-align: center;
     cursor: pointer;
     width: 100%;
 }
 
 .button:hover {
-    background-color: rgb(174, 160, 238);
+    background-color: rgb(36, 29, 68);
     opacity: 0.75;
 }
 
