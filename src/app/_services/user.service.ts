@@ -31,8 +31,8 @@ export class UserService {
             return this.http.post(`${environment.apiUrl}/user/login`, user, httpOptions);
         }
     
-        register(user: User) {
-            return this.http.post(`${environment.apiUrl}/user/register`, user, httpOptions);
+        register(firstName: string, lastName: string, email: string, password: string, pin: number) {
+            return this.http.post(`${environment.apiUrl}/user/register`, { firstName: firstName, lastName: lastName, email: email, password: password, pin: pin } , httpOptions);
         }
     
         update(id: number) {

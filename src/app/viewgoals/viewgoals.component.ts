@@ -21,10 +21,10 @@ export class ViewgoalsComponent implements OnInit{
   ngOnInit() {
     if(this.parent === 'true'){
       this.display = true
-      console.log(this.parent)
+      // console.log(this.parent)
     } else {
       this.display = false
-      console.log(this.parent)
+      // console.log(this.parent)
     }
   }
 

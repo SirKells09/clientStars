@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-// import { Router, ActivatedRoute } from '@angular/router';
-// import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-// import { first } from 'rxjs/operators';
-
-// import { AlertService } from '../_services/alert.service';
-// import { AuthenticationService } from '../_services/authentication.service';
+import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     email = new FormControl('', [Validators.required, Validators.email]);
     hide = true;
     loading = false;
+   
+    submitted = false;
+    _email: string;
+    _password: string;
 
-    constructor() {
+    constructor(
+        
+        private authenticationService: AuthenticationService,
+        private router: Router) {}
 
-    }
-
-    ngOnInit() {
-
-    }
+   
 
     getErrorMessage() {
         return this.email.hasError('required') ? 'You must enter a value' :
@@ -31,7 +31,21 @@ export class LoginComponent implements OnInit {
                 '';
       }
 
-    // loginForm: FormGroup;s
+      onSubmit(email: string, password: string) {
+        this._email = email;
+        this._password = password;
+        this.submitted = true;
+        this.loading = true;
+        this.authenticationService.login(this._email, this._password)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    this.router.navigate(['/goals']);
+                }
+            );
+    }
+
+    // loginForm: FormGroup;
     // loading = false;
     // submitted = false;
     // returnUrl: string;

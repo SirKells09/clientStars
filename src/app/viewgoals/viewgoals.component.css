@@ -1,5 +1,13 @@
 @import url(../../variables.css);
 
+.example-container {
+    width: 600px;
+}
+
 .input {
     border: 0.5px solid black;
+}
+
+.submitPin {
+    margin-top: 20px;
 }
