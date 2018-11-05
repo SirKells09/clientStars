@@ -1,6 +1,16 @@
 @import url(../variables.css);
 
-div {
-    color: var(--y5);
-    font-family: var(--font1);
-}
+  /* responsiveness styles */
+  /* Mobile Styles */
+  @media only screen and (max-width: 400px) {
+  }
+  
+  /* Tablet Styles */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+  }
+  
+  /* Desktop Styles */
+  @media only screen and (min-width: 961px) {
+
+  }
