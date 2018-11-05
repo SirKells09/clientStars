@@ -1,12 +1,17 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Goal Update</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form [formGroup]="goalForm" (ngSubmit)="onCreateGoal()">
+
+
+<div>
+
+  <mat-card>
+    <mat-card-title>Lets get Started!</mat-card-title>
+    
+    <mat-card-actions>
+      <button mat-raised-button (click)="openDialog()">Set Goals!</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  
+</div>
 
 
       <div class="form-group">
@@ -33,3 +38,4 @@
 </div> -->
 
 <hr>
+
