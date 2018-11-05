@@ -1,1 +1,53 @@
+
 @import url(../../variables.css);
+.welcome {
+    background: url("/assets/astronomy.jpg");
+    width: 100;
+    height: 1000px;
+    background-size: contain;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    margin: auto;
+   text-align: center;
+}
+
+h3 {
+    color: white;
+    margin: auto;
+    text-align: center;
+    font-size: 50pt;
+}
+
+/*text for setting goal on welcome page*/
+.firstgoal {
+    font-size: 30pt;
+}
+
+.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/*text for accented text (shoot and stars) on welcome page*/
+.accenttext {
+    /* font-family: Calibri; */
+    font-size: 65pt;
+}
+
+/*positioning for enter button*/
+.enterbutton {
+    margin: 0 auto;
+    position: center;
+    background-color: rgb(166, 132, 245);
+    height: 31px;
+}
+
+.enterbutton:hover {
+    background-color: rgb(174, 160, 238);
+    opacity: 0.75;
+}
+
