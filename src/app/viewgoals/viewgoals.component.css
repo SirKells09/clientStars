@@ -1,0 +1,44 @@
+@import url(../../variables.css);
+
+.example-container {
+    width: 600px;
+}
+
+.input {
+    border: 0.5px solid black;
+}
+
+.submitPin {
+    margin-top: 20px;
+}
+
+.material-icon1{
+    transform: scale(1.5);
+    color: rgb(226, 226, 26);
+    border-radius: 1em;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.material-icon2{
+    transform: scale(1.5);
+    color: rgb(226, 226, 26);
+    border-radius: 1em;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.material-button1 {
+    transform: scale(1.5);
+    background-color: white;
+    margin-top: 100px;
+}
+
+.material-button2 {
+    transform: scale(1.5);
+    background-color: white;
+    margin-top: 100px;
+    
+}
+
+
+
+

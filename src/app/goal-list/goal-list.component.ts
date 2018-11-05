@@ -17,7 +17,6 @@ dialogResult:[]
   constructor(public dialog:MatDialog) { }
 
 
-
   openDialog(): void {
     let dialogRef = this.dialog.open(AddGModalComponent,{
       hasBackdrop: true, autoFocus:true});

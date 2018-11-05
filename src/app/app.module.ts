@@ -4,7 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
@@ -18,21 +20,35 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
+
 import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
 import { NavComponent } from './nav/nav.component';
+
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
+
 import { GoalListService } from './_services/goal-list.service';
-import {MatInputModule} from '@angular/material';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule, MatListModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     ResourcesComponent,
-    NavComponent,
     FooterComponent,
     AlertComponent,
     HomeComponent,
@@ -40,8 +56,13 @@ import {MatInputModule} from '@angular/material';
     LoginComponent,
     SettingsComponent,
     GoalListComponent,
+
     AddGModalComponent,
     
+
+    ViewgoalsComponent,
+    MainNavComponent
+
   ],
 imports: [
     BrowserModule,
@@ -55,7 +76,19 @@ imports: [
     MatCheckboxModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+
+    MatToolbarModule,
+    NgbModule,
+    MatMenuModule,
+    MatIconModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule,
+    MatInputModule,
+    MatCardModule,
+    FlexLayoutModule,
+    MatToolbarModule
+
   ],
   providers: [
     AuthGuard,
@@ -69,3 +102,6 @@ imports: [
   entryComponents: [AddGModalComponent]
 })
 export class AppModule { }
+
+
+
