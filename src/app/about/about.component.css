@@ -47,14 +47,14 @@
     display: inline-block;
     padding: 8px;
     color: white;
-    background-color:  rgb(25, 4, 73);
+    background-color: rgb(166, 132, 245);
     text-align: center;
     cursor: pointer;
     width: 100%;
 }
 
 .button:hover {
-    background-color: rgb(71, 59, 136);
+    background-color: rgb(174, 160, 238);
     opacity: 0.75;
 }
 
