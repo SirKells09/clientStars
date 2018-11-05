@@ -1,0 +1,120 @@
+/* .body {
+    background: url("/assets/astronomy2.jpg");
+} */
+
+/* 4 image containers */
+.column {
+    float: left;
+    width: 10%;
+    padding: 5px;
+  }
+  
+  /* Clear floats after image containers */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  /* 4 columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+/* Add some shadows to create a card effect */
+.card {
+    box-shadow: 0 4px 10px 0 rgba(52, 15, 187, 0.2);
+}
+
+/* Clear floats */
+.container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* team member's title */
+.title {
+    color: rgb(95, 30, 245);
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color:  rgb(25, 4, 73);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: rgb(71, 59, 136);
+    opacity: 0.75;
+}
+
+/* about secion split into 2 columns */
+.aboutcontent {
+    column-count: 2;
+}
+
+/* about section */
+.aboutsection {
+    padding-top: 50px;
+    padding-right: 30px;
+    /* padding-bottom: 10px; */
+    padding-left: 70px;
+}
+
+/* the row of team bios */
+.row {
+    padding-top: 20px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 70px;
+}
+
+/* "The Team" text */
+.theteam {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 2px;
+    padding-left: 70px;
+}
+
+/*quote*/
+.aboutquote { 
+    font-size: 30pt;
+    font-family: 'Open Sans';
+    color: rgb(103, 4, 160);
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.familyrow {
+    /* float: left;  */
+    /* width: 33.33%; */
+    padding: 5px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    display: flex;
+}
+  
+  /* Clear floats after image containers */
+  .familyrow::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+.familycolumn {
+
+        flex: 33.33%;
+        padding: 5px;
+}
