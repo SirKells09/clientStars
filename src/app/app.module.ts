@@ -32,7 +32,7 @@ import { MatSidenavModule, MatListModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 
@@ -71,7 +71,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatCardModule,
     FlexLayoutModule,
-    MatToolbarModule,
+    MatToolbarModule
   ],
   providers: [
     AuthGuard,
