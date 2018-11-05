@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
 import { AddGModalComponent } from '../addGModal/addgmodal.component'
 
 
@@ -13,7 +13,10 @@ import { AddGModalComponent } from '../addGModal/addgmodal.component'
 export class GoalListComponent {
 addGModelRef: MatDialogRef<AddGModalComponent>
 dialogResult:[]
-  constructor(private dialog:MatDialog) { }
+
+  constructor(public dialog:MatDialog) { }
+
+
 
   openDialog(): void {
     let dialogRef = this.dialog.open(AddGModalComponent,{
@@ -23,6 +26,6 @@ dialogResult:[]
       this.dialogResult = result;
     });
   }
-
+  
   }
 

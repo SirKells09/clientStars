@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Goal} from '../_models/goal'
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -19,11 +20,10 @@ export class GoalListService {
   constructor(private http: HttpClient) { }
 
   
-  postGoal(goal: Goal) {
-    return this.http.post(`http://localhost:3000/goal/create`, goal);
+  postGoal(goal:Goal): Observable<Goal> {
+    return this.http.post<Goal>(`http://localhost:3000/goals/create`, goal, httpOptions);
   }
-  
-  
+
 
   getAll(goal:Goal) {
     return this.http.get<Goal[]>(`${environment.apiUrl}/goal/getAll`, )

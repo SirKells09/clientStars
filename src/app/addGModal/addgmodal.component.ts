@@ -1,69 +1,44 @@
-import {Component, Inject,OnInit} from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { Component, Inject, OnInit} from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog, MatInputModule , MatFormField} from '@angular/material';
 import { GoalListService } from '../_services/goal-list.service'
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormBuilder,FormGroup,FormControl} from '@angular/forms'
+import { Goal } from '../_models/goal'
 
 
 
 
 @Component({
-  template: `
-  
-  <form [formGroup]="goalForm" (ngSubmit)="postGoal(goalForm.value)">
-  <mat-dialog-content>
-  <h1 mat-dialog-title>RECORD YOUR GOAL!</h1>
-
-  <Label>Goal </Label>
-  <input matInput placeholder="Goal" type='text' formControlName="goal">
-  
-  <hr>
-  
-  <Label>Due Date</Label>
-  <input matInput type='text' formControlName="dueDate">
-  
-  <hr>
-  
-      <Label>Message</Label>
-      <input matInput type='text' formControlName="message">
-      
-      </mat-dialog-content>
-  <mat-dialog-actions>
-  <button class="submit-btn" color="primary" mat-raised-button type="submit">CONFIRM</button>&nbsp;
-  <button mat-dialog-close (click)="onCloseCancel()">CANCEL</button>
-  </mat-dialog-actions>
-  
-      
-    </form>
-   `,
-  styleUrls: ['./addgmodal.component.css']
+  selector:"app-addgmodal",
+  templateUrl: "./addgmodal.component.html",
+styleUrls: ['./addgmodal.component.css']
 })
+
 export class AddGModalComponent implements OnInit {
-dialogResult:object;
-
-goalForm = this.fb.group({
-  goal: [''],
-  dueDate: [''],
-  message: ['']
-
-})
-
-  constructor(private fb: FormBuilder, private gl: GoalListService, public dialogRef: MatDialogRef<AddGModalComponent>) { 
-    
-  }
-  get gfc() { return this.goalForm.value }
-
-  postGoal() {
-    this.gl.postGoal(this.gfc.value)
-      .subscribe(
-        data => {
-          console.log("Posted", data)
-        }
-      )
-
-      }
+  goal: Goal
+  goalForm: FormGroup
   
-  ngOnInit() {
-  }
+  constructor( private gl: GoalListService,
+    public dialogRef:MatDialogRef<AddGModalComponent>, 
+   public fb:FormBuilder, @Inject(MAT_DIALOG_DATA)public data:any) {this.goal=data}
+  
+  ngOnInit(){
 
+    this.goalForm = this.fb.group({
+      goal: new FormControl,
+      dueDate: new FormControl,
+      message: new FormControl
+      
+    })
+  }
+  
+  addGoal():void{
+    this.gl.postGoal(this.goalForm.value).subscribe(data => {
+      console.log(data);
+      this.dialogRef.close(data);
+    })
+  }
+  
+  close() {
+    this.dialogRef.close()
+  }
 }

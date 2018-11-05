@@ -18,14 +18,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
-import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
 import { GoalListService } from './_services/goal-list.service';
-
+import {MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -40,10 +40,10 @@ import { GoalListService } from './_services/goal-list.service';
     LoginComponent,
     SettingsComponent,
     GoalListComponent,
-    AddGModalComponent
+    AddGModalComponent,
     
   ],
-  imports: [
+imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -54,7 +54,8 @@ import { GoalListService } from './_services/goal-list.service';
     MatDialogModule,
     MatCheckboxModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     AuthGuard,
@@ -62,9 +63,6 @@ import { GoalListService } from './_services/goal-list.service';
     AuthenticationService,
     UserService,
     GoalListService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
