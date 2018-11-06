@@ -2,12 +2,13 @@
 @import url(../../variables.css);
 
 .login {
-    background-color: white;
+    background-color: rgb(250, 250, 250);
     height: 1000px;
 }
 
 h2 {
     text-align: center;
+    color:rgb(50, 4, 70);
 }
 
 .loginform1 {
@@ -16,7 +17,7 @@ h2 {
         border-radius: 3%;
         padding: 20px;
         border: solid 1px;
-        color: rgb(35, 24, 43);
+        color: rgb(83, 75, 128);
         height: 325px;
         /* width: 400px;
         height: 70px;
@@ -29,7 +30,7 @@ h2 {
 /*styling for email and password boxes*/
 .inputfield {
     border: solid 1px;
-    color: rgb(35, 24, 43);
+    color: rgb(83, 75, 128);
     width: 400px;
     height: 70px;
     margin: auto;
@@ -88,4 +89,8 @@ body {
 .loginbutton:hover {
     background-color: rgb(137, 125, 182);
     opacity: 0.75;
+}
+
+.register {
+    color: rgb(83, 75, 128);
 }
