@@ -17,7 +17,6 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-import { ResourcesComponent } from './resources/resources.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FooterComponent } from './footer/footer.component';
@@ -34,13 +33,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ResourcesComponent } from './resources/resources.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    ResourcesComponent,
     FooterComponent,
     AlertComponent,
     HomeComponent,
@@ -49,7 +48,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     SettingsComponent,
     GoalListComponent,
     ViewgoalsComponent,
-    MainNavComponent
+    MainNavComponent,
+    ResourcesComponent,
   ],
   imports: [
     BrowserModule,

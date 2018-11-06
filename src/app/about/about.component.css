@@ -5,6 +5,11 @@
     background: url("/assets/astronomy2.jpg");
 } */
 
+h1 {
+    color: rgb(50, 4, 70);
+    text-align: left;
+}
+
 /* 4 image containers */
 .column {
     float: left;
@@ -82,12 +87,12 @@
     padding-left: 70px;
 }
 
-/* "The Team" text */
-.theteam {
+.theteam1 {
     padding-top: 50px;
     padding-right: 30px;
     padding-bottom: 2px;
     padding-left: 70px;
+    color: white;
 }
 
 /*quote*/
@@ -120,5 +125,9 @@
 
         flex: 33.33%;
         padding: 5px;
+}
+
+.meettheteam {
+    background-color: rgb(69, 58, 97);
 }
 

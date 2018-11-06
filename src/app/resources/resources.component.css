@@ -1,1 +1,37 @@
 @import url(../../variables.css);
+
+/* .column {
+    float: left;
+    box-sizing: border-box;
+    width: 33.33%;
+    padding: 10px;
+}
+
+ .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}  */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.resources {
+    background-color: white;
+    height: 1000px;
+    align-content: center;
+    padding: 5px;
+    padding-top: 30px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+    padding-left: 100px;
+}
+
+h2 {
+    color: rgb(50, 4, 70);
+    text-align: left;
+}
+
