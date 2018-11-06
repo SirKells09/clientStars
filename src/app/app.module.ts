@@ -20,6 +20,10 @@ import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
 
 import {MatButtonModule, MatCheckboxModule,MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
+<<<<<<< HEAD
+=======
+
+>>>>>>> kec-branch
 
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
