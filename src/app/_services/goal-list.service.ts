@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Goal} from '../_models/goal'
+import { Observable } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+};
+
 
 
 @Injectable({
@@ -10,16 +16,27 @@ import {Goal} from '../_models/goal'
 })
 export class GoalListService {
 
-  constructor(private http: HttpClient) { }
-  postGoal(goal: Goal) {
-    return this.http.post(`${environment.apiUrl}/goal/create`, goal);
-  }
-  
-  
 
-  getAll(goal) {
-    return this.http.get(`${environment.apiUrl}/goal/getAll`, goal)
+  constructor(private http: HttpClient) { }
+
+  
+  postGoal(goal:Goal): Observable<Goal> {
+    return this.http.post<Goal>(`http://localhost:3000/goals/create`, goal, httpOptions);
+  }
+
+
+  getAll(goal:Goal) {
+    return this.http.get<Goal[]>(`${environment.apiUrl}/goal/getAll`, )
 }
+
+update(id:number){
+  return this.http.put<Goal[]>(`${environment.apiUrl}/goal/`+ id,httpOptions)
+}
+
+delete(id:number){
+  return this.http.delete(`${environment.apiUrl}/goal/` + id, httpOptions)
+}
+
 }
 
 
