@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './_guards/auth.guard';
@@ -17,11 +18,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+
+import {MatButtonModule, MatCheckboxModule,MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
+
+
 import { FooterComponent } from './footer/footer.component';
+import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GoalListComponent } from './goal-list/goal-list.component';
+
+import { GoalListService } from './_services/goal-list.service';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
 import { MatMenuModule } from '@angular/material/menu';
@@ -46,19 +53,27 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     LoginComponent,
     SettingsComponent,
     GoalListComponent,
+
+    AddGModalComponent,
+    
+
     ViewgoalsComponent,
     MainNavComponent
+
   ],
-  imports: [
+imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
     MatButtonModule,
+    MatDialogModule,
     MatCheckboxModule,
+    MatCardModule,
     MatFormFieldModule,
+
     MatToolbarModule,
     NgbModule,
     MatMenuModule,
@@ -70,15 +85,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCardModule,
     FlexLayoutModule,
     MatToolbarModule
+
   ],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
     UserService,
+    GoalListService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddGModalComponent]
 })
 export class AppModule { }
 
