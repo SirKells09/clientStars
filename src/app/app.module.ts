@@ -6,8 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { AlertService } from './_services/alert.service';
@@ -21,8 +19,7 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
 
-import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
-import { NavComponent } from './nav/nav.component';
+import {MatButtonModule, MatCheckboxModule,MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
 
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
@@ -50,7 +47,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AboutComponent,
     ResourcesComponent,
     FooterComponent,
-    AlertComponent,
     HomeComponent,
     RegisterComponent,
     LoginComponent,

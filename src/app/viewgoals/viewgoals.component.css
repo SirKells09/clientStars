@@ -1,5 +1,10 @@
 @import url(../../variables.css);
 
+.main {
+    background-color: white;
+    height: 100%;
+}
+
 .example-container {
     width: 600px;
 }
@@ -12,18 +17,27 @@
     margin-top: 20px;
 }
 
-.material-icon1{
+.material-icon1 {
     transform: scale(1.5);
-    color: rgb(226, 226, 26);
+    color: rgb(226, 213, 26);
     border-radius: 1em;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.938);
+}
+
+.material-icon1:hover{
+    border: 1px solid gold;
+    box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.712);
 }
 
 .material-icon2{
     transform: scale(1.5);
-    color: rgb(226, 226, 26);
+    color: rgb(226, 213, 26);
     border-radius: 1em;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.938);
+}
+.material-icon2:hover{
+    border: 1px solid gold;
+    box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.712);
 }
 
 .material-button1 {
@@ -36,8 +50,9 @@
     transform: scale(1.5);
     background-color: white;
     margin-top: 100px;
-    
 }
+
+
 
 
 
