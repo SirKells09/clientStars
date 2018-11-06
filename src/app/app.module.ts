@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { AlertService } from './_services/alert.service';
@@ -42,7 +41,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AboutComponent,
     ResourcesComponent,
     FooterComponent,
-    AlertComponent,
     HomeComponent,
     RegisterComponent,
     LoginComponent,
