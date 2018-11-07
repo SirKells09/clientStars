@@ -24,7 +24,6 @@ body {
     padding: 20px;
     margin: auto; 
     border: solid 1px;
-    /* background-color: rgb(248, 230, 191); */
     border-radius: 3%;
     color: rgb(83, 75, 128);
 }
@@ -40,6 +39,7 @@ body {
     opacity: 0.75;
 }
 
+/*cancel link*/
 .cancel {
     color: rgb(83, 75, 128);
 }
