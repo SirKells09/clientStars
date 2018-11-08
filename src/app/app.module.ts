@@ -17,8 +17,13 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import { ResourcesComponent } from './resources/resources.component';
 import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
+
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -29,6 +34,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule, MatListModule, MatIconModule,MatInputModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ResourcesComponent } from './resources/resources.component';
 
 
 
@@ -36,7 +42,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   declarations: [
     AppComponent,
     AboutComponent,
-    ResourcesComponent,
     FooterComponent,
     AlertComponent,
     HomeComponent,
@@ -45,6 +50,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     SettingsComponent,
     AddGModalComponent,
     ViewgoalsComponent,
+
+    MainNavComponent,
+    ResourcesComponent,
+
     MainNavComponent
 
   ],
