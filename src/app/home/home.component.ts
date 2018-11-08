@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 
 })
 export class HomeComponent implements OnInit {
+   
+    users: [];
  
     constructor() {
 
@@ -16,5 +18,6 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         
     }
+    
 
 }

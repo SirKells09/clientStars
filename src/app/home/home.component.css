@@ -1,1 +1,76 @@
+
 @import url(../../variables.css);
+.welcome {
+    background: url("/assets/astronomy.jpg");
+    /* min-height: 100%; */
+    background-size: cover;
+    height: 1000px;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    margin: auto;
+   text-align: center;
+}
+
+h3 {
+    color: white;
+    margin: auto;
+    text-align: center;
+    font-size: 50pt;
+}
+
+/*text for setting goal on welcome page*/
+.firstgoal {
+    font-size: 30pt;
+}
+
+/* centers the text */
+.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/*text for accented text (shoot and stars) on welcome page*/
+.accenttext {
+    /* font-family: Calibri; */
+    font-size: 65pt;
+}
+
+/*positioning for enter button*/
+.enterbutton {
+    margin: 0 auto;
+    position: center;
+    background-color: rgb(69, 63, 102);
+    height: 31px;
+    color: white;
+}
+
+.enterbutton:hover {
+    background-color: rgb(174, 160, 238);
+    opacity: 0.75;
+}
+
+.enterinput {
+    margin: 0 auto;
+    position: center;
+    /* background-color: rgb(114, 106, 121); */
+    height: 31px;
+    color: white;
+    font-size: 14pt;
+}
+
+.setgoal {
+    border-color: rgb(35, 33, 49);
+}
+/* 
+::placeholder.text {
+    text-anchor: white;
+} */
+
+.mat-focused .placeholder {
+    color: white;
+}
+

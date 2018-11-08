@@ -1,0 +1,23 @@
+<div>
+
+    <h2 mat-dialog-title> RECORD YOUR GOAL! </h2> 
+    
+
+<mat-dialog-content [formGroup]="goalForm">
+
+    <mat-form-field>
+        <input matInput placeholder="Goal" formControlName="goal">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Message" formControlName="message" type="text">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Due Date" formControlName="dueDate" type="date">
+    </mat-form-field>
+        </mat-dialog-content>  
+        
+ <mat-dialog-actions>
+     <button class="mat-raised-button mat-primary" (click)="addGoal()"> CONFIRM </button>
+     <button class="mat-raised-button mat-primary" (click)="close()"> CANCEL </button> 
+    </mat-dialog-actions>
+    </div>
