@@ -17,23 +17,25 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+
+import { ResourcesComponent } from './resources/resources.component';
+import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
+
 import { FooterComponent } from './footer/footer.component';
+import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
-import { GoalListComponent } from './goal-list/goal-list.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { GoalListService } from './_services/goal-list.service';
 import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatSidenavModule, MatListModule } from '@angular/material';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatSidenavModule, MatListModule, MatIconModule,MatInputModule } from '@angular/material';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ResourcesComponent } from './resources/resources.component';
+
 
 
 @NgModule({
@@ -46,20 +48,26 @@ import { ResourcesComponent } from './resources/resources.component';
     RegisterComponent,
     LoginComponent,
     SettingsComponent,
-    GoalListComponent,
+    AddGModalComponent,
     ViewgoalsComponent,
+
     MainNavComponent,
     ResourcesComponent,
+
+    MainNavComponent
+
   ],
-  imports: [
+imports:[
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
     MatButtonModule,
+    MatDialogModule,
     MatCheckboxModule,
+    MatCardModule,
     MatFormFieldModule,
     MatToolbarModule,
     NgbModule,
@@ -67,20 +75,20 @@ import { ResourcesComponent } from './resources/resources.component';
     MatIconModule,
     LayoutModule,
     MatSidenavModule,
-    MatListModule,
     MatInputModule,
-    MatCardModule,
-    FlexLayoutModule,
-    MatToolbarModule,
+    MatListModule
+
   ],
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
     UserService,
+    GoalListService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddGModalComponent]
 })
 export class AppModule { }
 
