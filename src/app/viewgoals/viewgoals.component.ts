@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from'@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
+import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
+import { AddGModalComponent } from '../addGModal/addgmodal.component'
 
 @Component({
   selector: 'app-viewgoals',
@@ -15,11 +17,13 @@ export class ViewgoalsComponent implements OnInit{
   parent: string;
   starValue: string;
   star: boolean;
-  
+  addGModalRef: MatDialogRef<AddGModalComponent>
+dialogResult:[]
 
   
 
   constructor(
+    public dialog:MatDialog,
     private router: Router,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer
@@ -70,5 +74,17 @@ export class ViewgoalsComponent implements OnInit{
         localStorage.setItem('parent', 'false');
     }
   }
+
   
-}
+  openDialog(): void {
+    let dialogRef = this.dialog.open(AddGModalComponent,{
+      hasBackdrop: true, autoFocus:true});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed: ${result}`);
+      this.dialogResult = result;
+    });
+  }
+  
+  }
+  
+
