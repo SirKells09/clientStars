@@ -1,9 +1,4 @@
 @import "./app/app.component.css";
-
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 @import "./app/about/about.component.css";
 @import "./app/footer/footer.component.css";
 @import "./app/goal-list/goal-list.component.css";
@@ -14,6 +9,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import "./app/resources/resources.component.css";
 @import "./app/settings/settings.component.css";
 @import "./app/viewgoals/viewgoals.component.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 body, html {
