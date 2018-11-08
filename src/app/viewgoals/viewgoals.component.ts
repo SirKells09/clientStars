@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from'@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
+import {MatDialog,  MatDialogRef} from '@angular/material';
 import { AddGModalComponent } from '../addGModal/addgmodal.component'
 
 @Component({
@@ -18,7 +18,7 @@ export class ViewgoalsComponent implements OnInit{
   starValue: string;
   star: boolean;
   addGModalRef: MatDialogRef<AddGModalComponent>
-dialogResult:[]
+  dialogResult:[]
 
   
 
