@@ -20,7 +20,7 @@ export class GoalListComponent implements OnInit {
   constructor(private modalService: NgbModal, private fb: FormBuilder,private gl:GoalListService ) {}
   ngOnInit() {
     this.goalForm=this.fb.group({
-goal:new FormControl(),
+goal :new FormControl(),
 dueDate: new FormControl(),
 message: new FormControl
 

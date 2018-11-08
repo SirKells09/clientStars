@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+// import { Router } from '@angular/router';
+// import {DomSanitizer} from '@angular/platform-browser'
+import {MatIconRegistry} from '@angular/material'
 import { first } from 'rxjs/operators';
-
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
+import {MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
+import {SettingslistComponent} from '../settings/settingslist/settingslist.component';
+import { FormBuilder,FormGroup,FormControl} from '@angular/forms'
+
+
 
 @Component({
   selector: 'app-settings',
@@ -10,30 +17,32 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-    currentUser: User;
-    users: User[] = [];
+    // currentUser: User;
+    // users: User[] = [];
+    // _email: string;
+    // _pin: number;
+    // _password: string;
 
-    constructor(private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    }
+SettingslistREf: MatDialogRef<SettingslistComponent>
+dialogResult:[]
 
-    ngOnInit() {
-        this.loadAllUsers();
-        
-        
-    }
+  constructor(public dialog: MatDialog){}
 
-    deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => { 
-            this.loadAllUsers() 
+
+  ngOnInit() {
+  }
+
+
+
+    openDialog(): void {
+        let dialogRef = this.dialog.open(SettingslistComponent,{
+          hasBackdrop: true, autoFocus:true});
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog closed: ${result}`);
+          this.dialogResult = result;
         });
-    }
+      }
+     
+      }
 
-    private loadAllUsers() {
-        this.userService.getAll().pipe(first()).subscribe(users => { 
-            this.users = users; 
-        });
-    }
-
-}
 

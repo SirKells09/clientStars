@@ -31,8 +31,12 @@ import {MatMenuModule } from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatSidenavModule, MatListModule } from '@angular/material';
+import { MatSidenavModule, MatListModule, MatDialogModule, MatCardModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
+import { SettingslistComponent } from './settings/settingslist/settingslist.component';
+import { AddGModalComponent } from './add-gmodal/add-gmodal.component';
+import { GoalListService } from './_services/goal-list.service';
+
 
 
 @NgModule({
@@ -48,7 +52,10 @@ import { MatInputModule } from '@angular/material/input';
     SettingsComponent,
     GoalListComponent,
     ViewgoalsComponent,
-    MainNavComponent
+    MainNavComponent,
+    SettingslistComponent,
+    AddGModalComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -67,16 +74,26 @@ import { MatInputModule } from '@angular/material/input';
     LayoutModule,
     MatSidenavModule,
     MatListModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule, 
+    MatCardModule,
+     
   ],
+
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
+    GoalListService,
     UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    { provide:  MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddGModalComponent,
+    SettingslistComponent
+  ]
+
 })
 export class AppModule { }
 

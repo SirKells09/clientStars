@@ -1,0 +1,13 @@
+<h2 mat-dialog-title> User Updates </h2> 
+ <mat-dialog-content [formGroup]="userForm">
+         <mat-form-field><input matInput placeholder="email" formControlName="email" type="text"></mat-form-field>
+        
+        <mat-form-field><input matInput placeholder="password" formControlName="password" type="text"></mat-form-field>
+        
+        <mat-form-field><input matInput placeholder="pin" formControlName="pin" type="number"></mat-form-field>
+        </mat-dialog-content>  
+                
+ <mat-dialog-actions>
+     <button class="mat-raised-button mat-primary" (click)="addUser()"> CONFIRM </button>
+     <button (click)="close()"> CANCEL </button> 
+    </mat-dialog-actions>
