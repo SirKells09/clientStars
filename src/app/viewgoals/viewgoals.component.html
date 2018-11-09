@@ -6,6 +6,7 @@
           
           <mat-card-actions>
             <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
+            <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog2()">update a goal!</button>
           </mat-card-actions>
         </mat-card>
 
@@ -24,7 +25,6 @@
 <br />
 <mat-checkbox>Walk 1 mile</mat-checkbox>
 <button *ngIf="display" mat-raised-button (click)="updateUser(user.id)" class="text-success">Update</button>
-
 
 
 <div class="example-container">

@@ -10,7 +10,6 @@ const httpOptions = {
 };
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,20 +20,21 @@ export class GoalListService {
 
   
   postGoal(goal:Goal): Observable<Goal> {
-    return this.http.post<Goal>(`http://localhost:3000/goals/create`, goal, httpOptions);
+    return this.http.post<Goal>(`http://localhost:3000/goal/create`, goal, httpOptions);
   }
 
-
-  getAll(goal:Goal) {
-    return this.http.get<Goal[]>(`${environment.apiUrl}/goal/getAll`, )
+//user goals
+  getAll(id:number) {
+    return this.http.get(`${environment.apiUrl}/goal/userlist/`+ id, httpOptions )
 }
 
-update(id:number){
-  return this.http.put<Goal[]>(`${environment.apiUrl}/goal/`+ id,httpOptions)
+update(id, goal: Goal){
+  return this.http
+  .put<any>(`http://localhost:3000/goal/updategoal/` + id, goal, httpOptions )
 }
 
 delete(id:number){
-  return this.http.delete(`${environment.apiUrl}/goal/` + id, httpOptions)
+  return this.http.delete(`${environment.apiUrl}/goal/delete/` + id, httpOptions)
 }
 
 }

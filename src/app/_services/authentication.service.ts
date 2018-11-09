@@ -21,6 +21,7 @@ export class AuthenticationService {
                 if (user) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     localStorage.setItem('pin', user.user.pin);
+                    localStorage.setItem('stars', user.user.stars);
                 }
                 return user;
                              
@@ -33,9 +34,10 @@ export class AuthenticationService {
             if (user) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 localStorage.setItem('pin', user.user.pin);
+                localStorage.setItem('stars', user.user.stars);
             }
             return user;
                          
         }));
     }
-}       
+}  

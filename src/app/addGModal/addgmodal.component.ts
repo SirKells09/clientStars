@@ -26,7 +26,6 @@ export class AddGModalComponent implements OnInit {
       goal: new FormControl,
       dueDate: new FormControl,
       message: new FormControl
-      
     })
   }
   
