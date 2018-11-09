@@ -23,7 +23,6 @@ import { ResourcesComponent } from './resources/resources.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ResourcesComponent } from './resources/resources.component';
 import { MatDialogModule, MatCardModule, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 import { FooterComponent } from './footer/footer.component';
