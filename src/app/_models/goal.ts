@@ -1,7 +1,7 @@
 export class Goal {
     goal: string;
-    dueDate: string;
     message: string;
+    dueDate: string;
     starred: boolean;
     userId: number;
 }

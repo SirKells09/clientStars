@@ -18,7 +18,6 @@ export class MainNavComponent implements OnInit{
     this.parent = localStorage.getItem('parent');
   }
   
-
   ngOnInit() {
     if(this.parent === 'true'){
       this.display = true
@@ -33,9 +32,9 @@ export class MainNavComponent implements OnInit{
     localStorage.removeItem('currentUser');
     localStorage.removeItem('parent');
     localStorage.removeItem('pin');
+    localStorage.removeItem('id');
     localStorage.removeItem('stars');
     this.router.navigate(['']);
     window.location.reload();
   }
-
 }

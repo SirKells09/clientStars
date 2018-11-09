@@ -9,6 +9,7 @@ import { RegisterComponent } from '../app/register/register.component';
 import { AuthGuard } from '../app/_guards/auth.guard';
 import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: "about", component: AboutComponent },
