@@ -16,7 +16,6 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-
 import { ResourcesComponent } from './resources/resources.component';
 
 
@@ -41,6 +40,7 @@ import { SettingslistComponent } from './settingslist/settingslist.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
+import { StarDirective } from './viewgoals/star.directive';
 
 
 
@@ -62,7 +62,8 @@ import { MatPaginatorModule } from '@angular/material';
     AddGModalComponent,
     ResourcesComponent,
     MainNavComponent,
-    UpdateGModalComponent 
+    UpdateGModalComponent,
+    StarDirective 
   ],
   imports:[
     BrowserModule,

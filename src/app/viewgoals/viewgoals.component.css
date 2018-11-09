@@ -22,9 +22,9 @@
 }
 
 .enterPin {
-    width: 1000px;
-    height: 150px;
-    margin-left: 25%;
+    width: 60%;
+    height: 100%;
+    margin: auto;
     background-color: white;
     border: 2px solid black;
     border-radius: 1em;
@@ -36,6 +36,7 @@
     height: 40px;
     width: 400px;
     margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .enterPin .submitPinButton {
@@ -66,39 +67,52 @@
     background-color: rgb(198, 236, 248);
 }
 
-.actualTable th{
-    height: 50px;
-    color: solid black;
+.table th {
+    font-size: 25px;
+    border-bottom: 0.5px solid black;
+    text-align: center;
 }
 
-/*
+/* .table tr {
+    height: 50px;
+    color: solid black;
+    font-size: 40px;
+} */
+
+
 .material-icon1 {
     transform: scale(1.2);
     color: rgb(226, 213, 26);
     border-radius: 1em;
     box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.938);
+    margin: auto;
 }
 
 .material-icon1:hover{
     border: 1px solid gold;
     box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.712);
+    margin: auto;
 }
 .material-icon2{
     transform: scale(1.2); 
     color: rgb(226, 213, 26);
     border-radius: 1em;
     box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.938);
+    margin: auto;
 }
 .material-icon2:hover{
     border: 1px solid gold;
     box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.712);
+    margin: auto;
 }
 .material-button1 {
-    /* transform: scale(1.2);
+    transform: scale(1.2);
     background-color: white;
+    margin: auto;
 }
 .material-button2 {
-    /* transform: scale(1.2);
+    transform: scale(1.2);
     background-color: white;
-} */
+    margin: auto;
+} 
 

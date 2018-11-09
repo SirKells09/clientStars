@@ -22,6 +22,7 @@ export class AddGModalComponent implements OnInit {
     
    close() {
      this.dialogRef.close()
+     window.location.reload();
    }
   ngOnInit(){
     this.userId = JSON.parse(localStorage.getItem('id'));
