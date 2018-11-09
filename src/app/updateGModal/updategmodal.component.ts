@@ -14,7 +14,7 @@ styleUrls: ['./updategmodal.component.css']
 export class UpdateGModalComponent implements OnInit {
   @Input()
   goal: Goal
-  updateForm: FormGroup
+  private updateForm: FormGroup
   
   constructor( private gl: GoalListService,
     private dialogRef:MatDialogRef<UpdateGModalComponent>, 
@@ -22,24 +22,25 @@ export class UpdateGModalComponent implements OnInit {
    {this.goal=data}
   
    ngOnInit(){
-
-
-     this.updateForm = this.fb.group({
-       goal: new FormControl,
-       dueDate: new FormControl,
-       message: new FormControl,
-  
-     })
+     
+          this.updateForm = this.fb.group({
+            goal: new FormControl,
+            dueDate: new FormControl,
+            message: new FormControl,
+       
+          })
+     
 
   }
   
   updateGoal(){
-    let goalId = sessionStorage.getItem('user.id')
+    let goalId = sessionStorage.getItem('goal.id')
   this.gl.update( goalId, this.updateForm.value)
-  .subscribe()
-  this.dialogRef.close()
-  }
-    
+  .subscribe(data => {
+    console.log(data);
+    this.dialogRef.close(data);
+  })
+}
   
   close() {
    this.dialogRef.close()

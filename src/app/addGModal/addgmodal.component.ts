@@ -30,7 +30,8 @@ export class AddGModalComponent implements OnInit {
   }
   
   addGoal():void{
-    this.gl.postGoal(this.goalForm.value).subscribe(data => {
+    let id = sessionStorage.getItem('user.id')
+    this.gl.postGoal(id, this.goalForm.value).subscribe(data => {
       console.log(data);
       this.dialogRef.close(data);
     })

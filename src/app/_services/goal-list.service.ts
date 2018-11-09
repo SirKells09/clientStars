@@ -19,8 +19,8 @@ export class GoalListService {
   constructor(private http: HttpClient) { }
 
   
-  postGoal(goal:Goal): Observable<Goal> {
-    return this.http.post<Goal>(`http://localhost:3000/goal/create`, goal, httpOptions);
+  postGoal(id:1, goal:any ) {
+    return this.http.put(`http://localhost:3000/goal/addgoal/` + id, goal, httpOptions);
   }
 
 //user goals
@@ -28,7 +28,7 @@ export class GoalListService {
     return this.http.get(`${environment.apiUrl}/goal/userlist/`+ id, httpOptions )
 }
 
-update(id, goal: Goal){
+update(id:string , goal: Goal){
   return this.http
   .put<any>(`http://localhost:3000/goal/updategoal/` + id, goal, httpOptions )
 }

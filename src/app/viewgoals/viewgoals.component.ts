@@ -78,6 +78,7 @@ export class ViewgoalsComponent implements OnInit{
 
   
   openDialog(): void {
+    
     let dialogRef = this.dialog.open(AddGModalComponent,{
       hasBackdrop: true, autoFocus:true});
     dialogRef.afterClosed().subscribe(result => {
@@ -87,6 +88,7 @@ export class ViewgoalsComponent implements OnInit{
   }
   
   openDialog2(): void {
+    sessionStorage.getItem('goalId')
     let dialogRef = this.dialog.open(UpdateGModalComponent,{
       hasBackdrop: true, autoFocus:true});
     dialogRef.afterClosed().subscribe(result => {
@@ -97,4 +99,3 @@ export class ViewgoalsComponent implements OnInit{
   
   }
   
-
