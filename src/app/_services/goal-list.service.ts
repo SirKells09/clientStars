@@ -19,7 +19,7 @@ export class GoalListService {
   constructor(private http: HttpClient) { }
 
   
-  postGoal(id:1, goal:any ) {
+  postGoal(id:any, goal:any ) {
     return this.http.put(`http://localhost:3000/goal/addgoal/` + id, goal, httpOptions);
   }
 

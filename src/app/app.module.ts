@@ -18,7 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
-import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MatSidenavModule, MatListModule, MatIconModule,MatInputModule, MatToolbarModule } from '@angular/material';
+import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MatSidenavModule, MatListModule, MatIconModule,MatInputModule, MatToolbarModule,MatTableModule,MatPaginatorModule } from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -46,10 +46,10 @@ import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
     MainNavComponent,
     ResourcesComponent,
     MainNavComponent,
-    UpdateGModalComponent
-
+    UpdateGModalComponent,
+    
   ],
-imports:[
+  imports:[
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -68,8 +68,10 @@ imports:[
     LayoutModule,
     MatSidenavModule,
     MatInputModule,
-    MatListModule
-
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule
+    
   ],
   providers: [
     AuthGuard,
