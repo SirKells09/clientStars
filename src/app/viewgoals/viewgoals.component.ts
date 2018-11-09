@@ -6,28 +6,14 @@ import { MatDialog,  MatDialogRef } from '@angular/material';
 import { AddGModalComponent } from '../addGModal/addgmodal.component';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { UserService } from '../_services/user.service';
-import { GoalListService } from '../_services/goal-list.service'
-import { first } from 'rxjs/operators';
-import { UpdateGModalComponent} from '../updateGModal/updategmodal.component'
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { GoalListService } from '../_services/goal-list.service';
+import { Observable, } from 'rxjs';
+import { first, catchError, switchMap } from 'rxjs/operators';
+import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
+import { Goal } from '../_models/goal';
+import {DataSource} from '@angular/cdk/collections';
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+
 
 @Component({
   selector: 'app-viewgoals',
@@ -46,9 +32,14 @@ export class ViewgoalsComponent implements OnInit{
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
   dialogResult:[];
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'stars'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars'];
   currentUser: {};
+  currentGoals: any;
+  goals: Goal[] = [];
+  updateResult: [];
+  dataSource = new GoalDataSource(this.gl);
+  resultsLength: number
+  
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -59,7 +50,8 @@ export class ViewgoalsComponent implements OnInit{
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private userService: UserService,
-    private gl:GoalListService
+    private gl:GoalListService,
+    
     ) {
     this.pin = JSON.parse(localStorage.getItem('pin'));
     this.parent = localStorage.getItem('parent');
@@ -94,10 +86,17 @@ export class ViewgoalsComponent implements OnInit{
     } else {
       this.display = false
     };
+
+        
     
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+    this.gl.getAll(this.currentId)
+      .subscribe(data => {
+      console.log(data)
+      this.currentGoals = data
+      console.log(this.currentGoals)
+      })
+    }
+    
 
   deleteGoal(){
     let goalId:any = sessionStorage.getItem('goalId')
@@ -159,18 +158,39 @@ export class ViewgoalsComponent implements OnInit{
         hasBackdrop: true, autoFocus:true});
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog closed: ${result}`);
-        this.dialogResult = result;
+        this.updateResult = result;
       });
     }
 
- 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  applyFilter(filterValue: string) {
+    this.currentGoals.filter = filterValue.trim().toLowerCase();
+
+    if (this.currentGoals.paginator) {
+      this.currentGoals.paginator.firstPage();
     }
   }
+}
 
-  
+export class GoalDataSource extends DataSource<any> {
+  userId: number;
+  constructor(private gl:GoalListService) {
+    super();
+    this.userId = JSON.parse(localStorage.getItem('id'));
+  }
+  connect(): Observable<Goal[]> {
+    return this.gl.getAll(this.userId);
+  }
+  disconnect() {}
+}
+
+// export interface Database {
+//   goalItems: Goals[];
+//   total_count: number;
+// }
+
+export interface Goal {
+  id: number;
+  goal: string;
+  dueDate: string;
 }

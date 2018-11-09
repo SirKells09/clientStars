@@ -48,7 +48,7 @@ updateUser(id: number, email: string, pin: number, password: string) {
   this._pin = pin;
   this._password = password;
 
-  this.us.update(this.currentId, this._email, this._pin, this._password)
+  this.us.updateUser(this.currentId, this._email, this._pin, this._password)
   .pipe(first())
   .subscribe( data => {
       this.dialogRef.close(data);
