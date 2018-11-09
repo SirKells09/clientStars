@@ -28,6 +28,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
+import { SettingslistComponent } from './settingslist/settingslist.component';
+
+
 
 
 
@@ -43,7 +46,8 @@ import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
     SettingsComponent,
     AddGModalComponent,
     ViewgoalsComponent,
-    MainNavComponent,
+    SettingslistComponent,
+    AddGModalComponent,
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent,
@@ -73,16 +77,22 @@ import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
     MatPaginatorModule
     
   ],
+
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
-    UserService,
     GoalListService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    // { provide:  MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AddGModalComponent, UpdateGModalComponent]
+
+  entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent],
+
+ 
+
 })
 export class AppModule { }
 

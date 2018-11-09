@@ -19,18 +19,18 @@ export class GoalListService {
   constructor(private http: HttpClient) { }
 
   
-  postGoal(id:any, goal:any ) {
-    return this.http.put(`http://localhost:3000/goal/addgoal/` + id, goal, httpOptions);
+  postGoal(goal:Goal ) {
+    return this.http.put(`http://localhost:3000/goal/addgoal/` , goal, httpOptions);
   }
 
 //user goals
-  getAll(id:number) {
+  getAll(id:any) {
     return this.http.get(`${environment.apiUrl}/goal/userlist/`+ id, httpOptions )
 }
 
-update(id:string , goal: Goal){
+update(userId:any , goal: Goal){
   return this.http
-  .put<any>(`http://localhost:3000/goal/updategoal/` + id, goal, httpOptions )
+  .put<any>(`http://localhost:3000/goal/updategoal/` + userId, goal, httpOptions )
 }
 
 delete(id:number){

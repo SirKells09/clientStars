@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { UserService } from '../_services/user.service';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../_services/authentication.service';
 
@@ -27,12 +26,9 @@ export class RegisterComponent {
     _pin: number;
 
     constructor(
-    
         private router: Router,
         private authenticationService: AuthenticationService
     ) {}
-
-   
 
     firstNameErrorMessage() {
         return this.firstName.hasError('required') ? 'You must enter a value' : '';
@@ -81,5 +77,4 @@ export class RegisterComponent {
                 this.router.navigate(['/goals']);
         })
     }
-    
 }

@@ -4,11 +4,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { MatDialog,  MatDialogRef } from '@angular/material';
 import { AddGModalComponent } from '../addGModal/addgmodal.component';
-import { UpdateGModalComponent }  from '../updateGModal/updategmodal.component'
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { UserService } from '../_services/user.service';
+import { GoalListService } from '../_services/goal-list.service'
 import { first } from 'rxjs/operators';
-
+import { UpdateGModalComponent} from '../updateGModal/updategmodal.component'
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -58,7 +58,8 @@ export class ViewgoalsComponent implements OnInit{
     private router: Router,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    private userService: UserService
+    private userService: UserService,
+    private gl:GoalListService
     ) {
     this.pin = JSON.parse(localStorage.getItem('pin'));
     this.parent = localStorage.getItem('parent');
@@ -97,6 +98,15 @@ export class ViewgoalsComponent implements OnInit{
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
+  deleteGoal(){
+    let goalId:any = sessionStorage.getItem('goalId')
+  this.gl.delete(goalId)
+  .subscribe()
+  } 
+
+
+
   onSubmit(input: number){
     this._input = input
     console.log(this.pin)
@@ -142,17 +152,18 @@ export class ViewgoalsComponent implements OnInit{
       this.dialogResult = result;
     });
   }
+    
+    openDialog2(): void {
+      // sessionStorage.getItem('goalId')
+      let dialogRef = this.dialog.open(UpdateGModalComponent,{
+        hasBackdrop: true, autoFocus:true});
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog closed: ${result}`);
+        this.dialogResult = result;
+      });
+    }
 
-  openDialog2(): void {
-    sessionStorage.getItem('goalId')
-    let dialogRef = this.dialog.open(UpdateGModalComponent,{
-      hasBackdrop: true, autoFocus:true});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog closed: ${result}`);
-      this.dialogResult = result;
-    });
-  }
-
+ 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -163,9 +174,3 @@ export class ViewgoalsComponent implements OnInit{
 
   
 }
-
-
-  
-  
-  
-  
