@@ -1,0 +1,51 @@
+@import url(../../variables.css);
+
+.sidenav-container {
+  height: 100%;
+  background-color: rgb(83, 75, 128);
+}
+
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,0.24);
+  background-color: rgb(83, 75, 128); 
+}
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  flex: 1 1 auto;
+}
+
+#title {
+  padding: 10px;
+  color: white;
+  text-align: center;
+  font-size: 25pt;
+}
+
+#logout {
+  color: white;
+}
+
+#title:hover {
+    background-color: rgb(137, 125, 182);
+}
+
+mat-nav-list a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  width: 100px;
+}
+
+.nav-link:hover {
+    background-color: rgb(137, 125, 182);
+}
