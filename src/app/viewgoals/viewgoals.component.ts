@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from'@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
+import { UpdateGModalComponent } from '../updateGModal/updategmodal.component'
 import {MatDialog, MatDialogRef} from '@angular/material';
 import { AddGModalComponent } from '../addGModal/addgmodal.component';
+
 
 @Component({
   selector: 'app-viewgoals',
@@ -18,8 +20,11 @@ export class ViewgoalsComponent implements OnInit{
   parent: string;
   starValue: string;
   star: boolean;
-  addGModalRef: MatDialogRef<AddGModalComponent>
-dialogResult:[]
+
+  // addGModalRef: MatDialogRef<AddGModalComponent>
+  dialogResult:[]
+
+
   
   constructor(
     public dialog:MatDialog,
@@ -71,7 +76,18 @@ dialogResult:[]
   }
   
   openDialog(): void {
+    
     let dialogRef = this.dialog.open(AddGModalComponent,{
+      hasBackdrop: true, autoFocus:true});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed: ${result}`);
+      this.dialogResult = result;
+    });
+  }
+  
+  openDialog2(): void {
+    sessionStorage.getItem('goalId')
+    let dialogRef = this.dialog.open(UpdateGModalComponent,{
       hasBackdrop: true, autoFocus:true});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog closed: ${result}`);
@@ -81,3 +97,4 @@ dialogResult:[]
   
   }
   
+
