@@ -19,6 +19,10 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
 import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MatSidenavModule, MatListModule, MatIconModule,MatInputModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ResourcesComponent } from './resources/resources.component';
+import {MatDialogModule, MatCardModule, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -28,6 +32,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
+import { MatSidenavModule, MatListModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { SettingslistComponent } from './settingslist/settingslist.component';
+import { MatIconModule } from '@angular/material';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 
 
@@ -43,10 +53,12 @@ import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
     SettingsComponent,
     AddGModalComponent,
     ViewgoalsComponent,
-    MainNavComponent,
+    SettingslistComponent,
+    AddGModalComponent,
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent
+
 
   ],
 imports:[
@@ -67,20 +79,30 @@ imports:[
     MatIconModule,
     LayoutModule,
     MatSidenavModule,
+    MatListModule,
     MatInputModule,
-    MatListModule
-
+    MatDialogModule, 
+    MatCardModule,
+     
   ],
+
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
-    UserService,
     GoalListService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    // { provide:  MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AddGModalComponent, UpdateGModalComponent]
+
+  entryComponents: [AddGModalComponent, UpdateGModalComponent],
+
+  entryComponents: [AddGModalComponent,
+    SettingslistComponent
+  ],
+
 })
 export class AppModule { }
 

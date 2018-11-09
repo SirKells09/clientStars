@@ -1,3 +1,5 @@
+ <div>
+
 
 <div>
             
@@ -26,6 +28,16 @@
 <mat-checkbox>Walk 1 mile</mat-checkbox>
 <button *ngIf="display" mat-raised-button (click)="updateUser(user.id)" class="text-success">Update</button>
 
+    <mat-card>
+      <mat-card-title>Lets get Started!</mat-card-title>
+
+
+      <mat-card-actions>
+        <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
+      </mat-card-actions>
+    </mat-card>
+
+</div>
 
 <div class="example-container">
 <div>
@@ -48,4 +60,4 @@
         <mat-icon class="material-icon2" svgIcon="star"></mat-icon>
         </button>
     </div>
-</div>
+</div> 

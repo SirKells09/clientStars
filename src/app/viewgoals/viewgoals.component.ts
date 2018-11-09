@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from'@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
-import {MatDialog} from '@angular/material';
-import { AddGModalComponent } from '../addGModal/addgmodal.component'
 import { UpdateGModalComponent } from '../updateGModal/updategmodal.component'
+import {MatDialog, MatDialogRef} from '@angular/material';
+import { AddGModalComponent } from '../addGModal/addgmodal.component';
+
 
 @Component({
   selector: 'app-viewgoals',
   templateUrl: './viewgoals.component.html',
   styleUrls: ['./viewgoals.component.css']
 })
+
 export class ViewgoalsComponent implements OnInit{
   _input: number;
   display: boolean;
@@ -18,11 +20,12 @@ export class ViewgoalsComponent implements OnInit{
   parent: string;
   starValue: string;
   star: boolean;
+
   // addGModalRef: MatDialogRef<AddGModalComponent>
   dialogResult:[]
 
-  
 
+  
   constructor(
     public dialog:MatDialog,
     private router: Router,
@@ -39,7 +42,6 @@ export class ViewgoalsComponent implements OnInit{
       sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-star-24px.svg'));
     
   }
-
   ngOnInit() {
     this.star = false;
     if(this.parent === 'true'){
@@ -50,17 +52,14 @@ export class ViewgoalsComponent implements OnInit{
       // console.log(this.parent)
     }
   }
-
   onStarClicked() {
     this.starValue = "1"
     this.star = true;
     JSON.stringify(localStorage.setItem('stars', this.starValue));
   }
-
   onStarUnclicked() {
     this.star = false;
   }
-
   onSubmit(input: number){
     this._input = input
     console.log(this.pin)
@@ -75,7 +74,6 @@ export class ViewgoalsComponent implements OnInit{
         localStorage.setItem('parent', 'false');
     }
   }
-
   
   openDialog(): void {
     
@@ -99,3 +97,4 @@ export class ViewgoalsComponent implements OnInit{
   
   }
   
+
