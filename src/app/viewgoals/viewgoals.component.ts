@@ -33,6 +33,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './viewgoals.component.html',
   styleUrls: ['./viewgoals.component.css']
 })
+
 export class ViewgoalsComponent implements OnInit{
   // checked: false;
   _input: number;
@@ -83,7 +84,6 @@ export class ViewgoalsComponent implements OnInit{
       'search',
       sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-search-24px.svg'));
   }
-
   ngOnInit() {
     this.starred = false;
 
@@ -96,7 +96,6 @@ export class ViewgoalsComponent implements OnInit{
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
   onSubmit(input: number){
     this._input = input
     console.log(this.pin)
@@ -113,7 +112,6 @@ export class ViewgoalsComponent implements OnInit{
   }
   
   onStarClicked():void {
-    // this.starValue = 1
     this.starred = true;
     this.currentStars = this.currentStars + 1;
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));

@@ -70,18 +70,6 @@
     width: 100%;
 }
 
-.material-button multiple{
-    transform: scale(2);
-    background-color: yellow;
-}
-
-.material-icon {
-    transform: scale(2);
-}
-
-mat-button-toggle .material-icon{
-   color: pink;
-}
 
 
 

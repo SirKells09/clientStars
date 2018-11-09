@@ -38,7 +38,7 @@ export class AuthenticationService {
                 localStorage.setItem('stars', user.user.stars);
                 localStorage.setItem('id', user.user.id);
             }
-            return user;
+            return user
                          
         }));
     }
