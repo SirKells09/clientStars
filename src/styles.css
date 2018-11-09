@@ -9,6 +9,7 @@
 @import "./app/viewgoals/viewgoals.component.css";
 @import "./app/resources/resources.component.css";
 
+
 body, html {
     height: 100%;
 }
