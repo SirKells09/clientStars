@@ -62,10 +62,10 @@
                                         <mat-icon class="iconButton material-icon2" svgIcon="star"></mat-icon>
                                     </button>
                                     <button #editGoal mat-icon-button class="material-button2">
-                                        <mat-icon class="iconButton material-icon3" svgIcon="create"></mat-icon>
+                                        <mat-icon class="iconButton material-icon3" svgIcon="create"  (click)="openDialog2()" ></mat-icon>
                                     </button>
                                     <button #deleteGoal mat-icon-button class="material-button2">
-                                        <mat-icon class="iconButton material-icon4" svgIcon="delete"></mat-icon>
+                                        <mat-icon class="iconButton material-icon4" svgIcon="delete" (click)="deleteGoal()"></mat-icon>
                                     </button>
                                 </td>
                                 
@@ -81,9 +81,3 @@
            
         </div>
     </div>
-
-
-
-
-
-    
