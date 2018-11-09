@@ -34,6 +34,7 @@ import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ResourcesComponent } from './resources/resources.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { ResourcesComponent } from './resources/resources.component';
     MatCardModule,
     FlexLayoutModule,
     MatToolbarModule,
+    MatSnackBarModule,
   ],
   providers: [
     AuthGuard,
