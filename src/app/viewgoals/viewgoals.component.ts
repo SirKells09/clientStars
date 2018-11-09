@@ -111,6 +111,7 @@ export class ViewgoalsComponent implements OnInit{
         localStorage.setItem('parent', 'false');
     }
   }
+
   
   onStarClicked():void {
     // this.starValue = 1
