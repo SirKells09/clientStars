@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Goal} from '../_models/goal'
@@ -19,18 +18,19 @@ export class GoalListService {
   constructor(private http: HttpClient) { }
 
   
-  postGoal(goal:Goal ) {
-    return this.http.put(`http://localhost:3000/goal/addgoal/` , goal, httpOptions);
+  postGoal(userId: number, goal:Goal ) {
+    return this.http.put(`${environment.apiUrl}/user/goal/` + userId, goal, httpOptions)
   }
 
 //user goals
-  getAll(id:any) {
-    return this.http.get(`${environment.apiUrl}/goal/userlist/`+ id, httpOptions )
+  getAll(userId: number):Observable<Goal[]>{
+    return this.http.get<Goal[]>(`${environment.apiUrl}/user/userlist/`+ userId, httpOptions )
+    // return this.http.get(`${environment.apiUrl}/user/`+ userId, httpOptions )
 }
 
 update(userId:any , goal: Goal){
   return this.http
-  .put<any>(`http://localhost:3000/goal/updategoal/` + userId, goal, httpOptions )
+  .put<any>(`http://${environment.apiUrl}/goal/updategoal/` + userId, goal, httpOptions )
 }
 
 delete(id:number){
@@ -38,6 +38,8 @@ delete(id:number){
 }
 
 }
+
+
 
 
 

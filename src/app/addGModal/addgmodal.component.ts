@@ -11,19 +11,20 @@ styleUrls: ['./addgmodal.component.css']
 })
 
 export class AddGModalComponent implements OnInit {
-  goal: Goal
-  goalForm: FormGroup
+  goal: Goal;
+  goalForm: FormGroup;
+  userId: number;
   
   constructor( private gl: GoalListService,
     public dialogRef:MatDialogRef<AddGModalComponent>, 
    public fb:FormBuilder, @Inject(MAT_DIALOG_DATA)public data:any) 
    {this.goal=data}
-  
+    
    close() {
      this.dialogRef.close()
    }
   ngOnInit(){
-
+    this.userId = JSON.parse(localStorage.getItem('id'));
     this.goalForm = this.fb.group({
       goal: new FormControl,
       dueDate: new FormControl,
@@ -32,8 +33,8 @@ export class AddGModalComponent implements OnInit {
   }
   
 addGoal(){
-  let userId = sessionStorage.getItem('userid')
-  this.gl.postGoal( this.goalForm.value).subscribe()
+  // let userId = sessionStorage.getItem('userid')
+  this.gl.postGoal(this.userId, this.goalForm.value).subscribe()
   this.dialogRef.close()
 }
 
