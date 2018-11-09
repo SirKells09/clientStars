@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import { Router } from '@angular/router';
-// import {DomSanitizer} from '@angular/platform-browser'
-import {MatIconRegistry} from '@angular/material'
-import { first } from 'rxjs/operators';
-import { User } from '../_models/user';
+import {MatDialog, MatDialogRef } from '@angular/material';
+import {SettingslistComponent} from '../settingslist/settingslist.component';
 import { UserService } from '../_services/user.service';
-import {MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
-import {SettingslistComponent} from '../settings/settingslist/settingslist.component';
-import { FormBuilder,FormGroup,FormControl} from '@angular/forms'
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -22,18 +15,29 @@ export class SettingsComponent implements OnInit {
     // _email: string;
     // _pin: number;
     // _password: string;
+    currentId: number;
 
-SettingslistREf: MatDialogRef<SettingslistComponent>
+SettingslistRef: MatDialogRef<SettingslistComponent>
 dialogResult:[]
+currentUser:[]
 
-  constructor(public dialog: MatDialog){}
-
+  constructor(public dialog: MatDialog, private us: UserService, private router: Router){
+    this.currentId = JSON.parse(localStorage.getItem('id'))
+  }
 
   ngOnInit() {
   }
+  deleteUser(id: number) {
+    this.us.delete(this.currentId).subscribe(data => { 
+      localStorage.removeItem('currentUser');
+    localStorage.removeItem('parent');
+    localStorage.removeItem('pin');
+    localStorage.removeItem('id');
+    this.router.navigate(['']);
+    window.location.reload();
 
-
-
+    });
+}
     openDialog(): void {
         let dialogRef = this.dialog.open(SettingslistComponent,{
           hasBackdrop: true, autoFocus:true});

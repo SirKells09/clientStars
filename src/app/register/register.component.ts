@@ -26,12 +26,9 @@ export class RegisterComponent {
     _pin: number;
 
     constructor(
-    
         private router: Router,
         private authenticationService: AuthenticationService
     ) {}
-
-   
 
     firstNameErrorMessage() {
         return this.firstName.hasError('required') ? 'You must enter a value' : '';
@@ -80,5 +77,4 @@ export class RegisterComponent {
                 this.router.navigate(['/goals']);
         })
     }
-    
 }

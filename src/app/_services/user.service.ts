@@ -4,8 +4,7 @@ import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
 
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'
-                                })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
 @Injectable({
   providedIn: 'root'
@@ -13,9 +12,9 @@ const httpOptions = {
 
 
 export class UserService {
-    constructor(private http: HttpClient) { }
-        
-        get() {
+    constructor(private http: HttpClient) {}
+      
+          get() {
             return this.http.get<User>(`${environment.apiUrl}/user`, httpOptions);
         }
 
@@ -24,8 +23,9 @@ export class UserService {
         }
 
         getById(id: number) {
-            return this.http.get(`${environment.apiUrl}/user/` + id, httpOptions);
+            return this.http.get<User>(`${environment.apiUrl}/user/` + id, httpOptions);
         }
+
 
         login(user: User) {
             return this.http.post(`${environment.apiUrl}/user/login`, user, httpOptions);
@@ -35,12 +35,11 @@ export class UserService {
             return this.http.post(`${environment.apiUrl}/user/register`, { firstName: firstName, lastName: lastName, email: email, password: password, pin: pin } , httpOptions);
         }
     
-        update(id: number) {
-            return this.http.put<any>(`${environment.apiUrl}/user/` + id, httpOptions);
+        update(id: number, email: string, pin: number, password: string) {
+            return this.http.put<any>(`${environment.apiUrl}/user/` + id, { email: email, pin: pin, password: password }, httpOptions);
         }
     
         delete(id: number) {
             return this.http.delete(`${environment.apiUrl}/user/` + id, httpOptions);
         }
-
 }

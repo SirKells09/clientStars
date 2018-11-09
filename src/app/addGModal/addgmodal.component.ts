@@ -4,7 +4,6 @@ import { GoalListService } from '../_services/goal-list.service'
 import { FormBuilder,FormGroup,FormControl} from '@angular/forms'
 import { Goal } from '../_models/goal'
 
-
 @Component({
   selector:"app-addgmodal",
   templateUrl: "./addgmodal.component.html",

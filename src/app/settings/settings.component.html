@@ -1,19 +1,20 @@
 <div>
 
     <p>You're logged in with Angular 6!!</p>
-    <h3>All registered users:</h3>
-    <ul>
+    <h3>All registered users:
+      <ul>
         <li *ngFor="let user of users">
-            {{user.email}} ({{user.firstName}} {{user.lastName}})
-            - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-            <button mat-raised-button (click)="addUser" class="text-success">Update</button>
-        </li>
-    </ul>
-</div>
- <div>
-        <mat-card>
-          <mat-card-title>Lets get Started!</mat-card-title>
+          {{email}} {{password}} {{pin}}</li>
+         </ul>
+    </h3>
+    
+   
  
+        <mat-card>
+          <mat-card-title>Update/Delete</mat-card-title>
+          <mat-card-actions>
+                <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="deleteUser()">Delete User</button>
+              </mat-card-actions>
           <mat-card-actions>
             <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Update User</button>
           </mat-card-actions>

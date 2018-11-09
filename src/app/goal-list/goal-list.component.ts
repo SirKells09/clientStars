@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import {GoalListService} from '../_services/goal-list.service';
-// import { environment } from '../../environments/environment';
-// import { ReactiveFormsModule } from '@angular/forms';
-
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -27,8 +24,6 @@ message: new FormControl
     })
   }
   onCreateGoal(){
-  
-    
   }
 
   open(content) {
