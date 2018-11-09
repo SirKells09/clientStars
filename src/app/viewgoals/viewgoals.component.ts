@@ -9,6 +9,7 @@ import { UserService } from '../_services/user.service';
 import { GoalListService } from '../_services/goal-list.service'
 import { first } from 'rxjs/operators';
 import { UpdateGModalComponent} from '../updateGModal/updategmodal.component'
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -163,7 +164,6 @@ export class ViewgoalsComponent implements OnInit{
       });
     }
 
- 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 

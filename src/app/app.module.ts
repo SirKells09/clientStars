@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { AlertService } from './_services/alert.service';
@@ -17,8 +16,16 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
+
 import { ResourcesComponent } from './resources/resources.component';
-import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MatSidenavModule, MatListModule, MatIconModule,MatInputModule, MatToolbarModule,MatTableModule,MatPaginatorModule } from '@angular/material';
+
+
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ResourcesComponent } from './resources/resources.component';
+import { MatDialogModule, MatCardModule, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -27,8 +34,15 @@ import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+
 import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
+
+import { MatSidenavModule, MatListModule, MatIconModule, MatInputModule } from '@angular/material';
 import { SettingslistComponent } from './settingslist/settingslist.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
+
 
 
 
@@ -39,7 +53,6 @@ import { SettingslistComponent } from './settingslist/settingslist.component';
     AppComponent,
     AboutComponent,
     FooterComponent,
-    AlertComponent,
     HomeComponent,
     RegisterComponent,
     LoginComponent,
@@ -50,8 +63,7 @@ import { SettingslistComponent } from './settingslist/settingslist.component';
     AddGModalComponent,
     ResourcesComponent,
     MainNavComponent,
-    UpdateGModalComponent,
-    
+    UpdateGModalComponent 
   ],
   imports:[
     BrowserModule,
@@ -74,8 +86,10 @@ import { SettingslistComponent } from './settingslist/settingslist.component';
     MatInputModule,
     MatListModule,
     MatTableModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    MatButtonToggleModule,
+    MatDialogModule, 
+    MatCardModule
   ],
 
   providers: [
@@ -84,8 +98,7 @@ import { SettingslistComponent } from './settingslist/settingslist.component';
     AuthenticationService,
     GoalListService,
     UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    // { provide:  MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
 

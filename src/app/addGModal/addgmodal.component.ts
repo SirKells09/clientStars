@@ -30,11 +30,11 @@ export class AddGModalComponent implements OnInit {
       message: new FormControl
     })
   }
-
-
+  
 addGoal(){
   let userId = sessionStorage.getItem('userid')
   this.gl.postGoal( this.goalForm.value).subscribe()
   this.dialogRef.close()
 }
+
 }
