@@ -20,7 +20,7 @@ import {DataSource} from '@angular/cdk/collections';
 })
 
 export class ViewgoalsComponent implements OnInit{
-  // checked: false;
+  color = 'black';
   _input: number;
   display: boolean;
   pin: number;
