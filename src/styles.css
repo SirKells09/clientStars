@@ -1,17 +1,14 @@
 @import "./app/app.component.css";
 @import "./app/about/about.component.css";
 @import "./app/footer/footer.component.css";
-@import "./app/goal-list/goal-list.component.css";
 @import "./app/home/home.component.css";
 @import "./app/login/login.component.css";
 @import "./app/main-nav/main-nav.component.css";
 @import "./app/register/register.component.css";
-@import "./app/resources/resources.component.css";
 @import "./app/settings/settings.component.css";
 @import "./app/viewgoals/viewgoals.component.css";
+/* @import ".app/resources/resources.component.css"; */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
 body, html {
@@ -21,4 +18,3 @@ body, html {
 body {
     margin: 0;
 }
-

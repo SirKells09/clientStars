@@ -21,7 +21,7 @@ export class GoalListService {
 
   
   postGoal(goal:Goal): Observable<Goal> {
-    return this.http.post<Goal>(`http://localhost:3000/goals/create`, goal, httpOptions);
+    return this.http.post<Goal>(`${environment.apiUrl}/goal/create`, goal, httpOptions);
   }
 
 
