@@ -16,7 +16,6 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-import { GoalListComponent } from './goal-list/goal-list.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { ResourcesComponent } from './resources/resources.component';
@@ -49,7 +48,7 @@ import { MatPaginatorModule } from '@angular/material';
     SettingsComponent,
     AddGModalComponent,
     ViewgoalsComponent,
-    GoalListComponent,
+  
 
     MainNavComponent,
     ResourcesComponent,

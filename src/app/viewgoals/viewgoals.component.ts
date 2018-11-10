@@ -43,7 +43,7 @@ export class ViewgoalsComponent implements OnInit{
   starred: boolean;
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
-  dialogResult:[];
+  dialogResult:any;
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'stars'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   currentUser: {};
@@ -112,7 +112,8 @@ export class ViewgoalsComponent implements OnInit{
     }
   }
 
-  
+
+
   onStarClicked():void {
     // this.starValue = 1
     this.starred = true;
