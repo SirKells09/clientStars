@@ -1,8 +1,7 @@
-
 @import url(../../variables.css);
 
 
-h1 {
+.body h1 {
     color: rgb(50, 4, 70);
     text-align: left;
 }

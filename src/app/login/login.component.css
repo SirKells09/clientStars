@@ -1,4 +1,3 @@
-
 @import url(../../variables.css);
 
 /* login page background color */
@@ -23,7 +22,7 @@ h2 {
 }
 
 /*styling for email and password boxes*/
-.inputfield {
+.login .inputfield {
     border: solid 1px;
     color: rgb(83, 75, 128);
     width: 400px;
@@ -78,4 +77,5 @@ body {
 
 .register {
     color: rgb(83, 75, 128);
+
 }

@@ -1,71 +1,123 @@
 @import url(../../variables.css);
 
-.viewGoals {
+
+ .viewgoals {
+    position: relative;
     background-color: white;
-    padding-bottom: 100px;
+    padding-bottom: 170px;
+    height: 100%;
 }
 
 .main {
     position: relative;
     padding-top: 50px;
+    background-color: grey;
+    height: 100%;
+    padding-bottom: 125px;
+    border: solid black;
+}
+
+.main mat-card {
+    margin-bottom: 50px;
+    background-color: white;
+    color: black;
 }
 
 
 .enterPin {
-    width: 600px;
+    width: 60%;
+    height: 100%;
     margin: auto;
     background-color: white;
-    padding: 5%;
-}
-.input {
-    border: 0.5px solid black;
-}
-.submitPin {
-    margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 1em;
+    
 }
 
+.enterPin mat-form-field {
+    border: 2px solid rgba(168, 31, 231, 0.616);
+    height: 40px;
+    width: 400px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.enterPin .submitPinButton {
+    background-color: rgb(198, 236, 248);
+    margin-left: 20px;
+}
+
+.enterPin .submitPinButton:hover {
+    background-color: rgba(168, 31, 231, 0.616);
+}
+
+
+.tableWrap {
+    /* position: absolute; */
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 1em;
+    
+    padding: 5%;
+}
+
+
+.actualTable {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(198, 236, 248);
+}
+
+.table th {
+    font-size: 25px;
+    border-bottom: 0.5px solid black;
+    text-align: center;
+}
+
+/* .table tr {
+    height: 50px;
+    color: solid black;
+    font-size: 40px;
+} */
+
+
 .material-icon1 {
-    /* transform: scale(1.2); */
+    transform: scale(1.2);
     color: rgb(226, 213, 26);
     border-radius: 1em;
     box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.938);
+    margin: auto;
 }
 
 .material-icon1:hover{
     border: 1px solid gold;
     box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.712);
+    margin: auto;
 }
 .material-icon2{
-    /* transform: scale(1.2); */
+    transform: scale(1.2); 
     color: rgb(226, 213, 26);
     border-radius: 1em;
     box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.938);
+    margin: auto;
 }
 .material-icon2:hover{
     border: 1px solid gold;
     box-shadow: 2px 2px 6px rgba(173, 158, 19, 0.712);
+    margin: auto;
 }
 .material-button1 {
-    /* transform: scale(1.2); */
+    transform: scale(1.2);
     background-color: white;
+    margin: auto;
 }
 .material-button2 {
-    /* transform: scale(1.2); */
+    transform: scale(1.2);
     background-color: white;
-}
+    margin: auto;
+} 
 
-.tableWrap {
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 50px;
-    border: solid black;
-    background-color: white;
-}
 
-.tableWrap mat-form-field {
-    width: 50%;
-}
-
-.table table{
-    width: 100%;
-}
