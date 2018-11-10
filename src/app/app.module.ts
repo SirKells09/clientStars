@@ -17,10 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
 import { ResourcesComponent } from './resources/resources.component';
-import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
-
+import { MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -29,12 +27,13 @@ import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatSidenavModule, MatListModule, MatIconModule,MatInputModule } from '@angular/material';
+import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
+import { MatSidenavModule, MatListModule, MatIconModule, MatInputModule } from '@angular/material';
+import { SettingslistComponent } from './settingslist/settingslist.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
-
-
+import { HighlightDirective } from './highlight.directive';
 
 
 @NgModule({
@@ -56,7 +55,7 @@ import { MatPaginatorModule } from '@angular/material';
     MainNavComponent
 
   ],
-imports:[
+  imports:[
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -81,16 +80,21 @@ imports:[
     MatButtonToggleModule
 
   ],
+
   providers: [
     AuthGuard,
     AlertService,
     AuthenticationService,
-    UserService,
     GoalListService,
+    UserService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
-  entryComponents: [AddGModalComponent]
+
+  entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent],
+
+ 
+
 })
 export class AppModule { }
 

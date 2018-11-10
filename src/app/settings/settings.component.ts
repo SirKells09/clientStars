@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
-
-import { User } from '../_models/user';
+import {MatDialog, MatDialogRef } from '@angular/material';
+import {SettingslistComponent} from '../settingslist/settingslist.component';
 import { UserService } from '../_services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-settings',
@@ -10,30 +10,43 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-    currentUser: User;
-    users: User[] = [];
+    // currentUser: User;
+    // users: User[] = [];
+    // _email: string;
+    // _pin: number;
+    // _password: string;
+    currentId: number;
 
-    constructor(private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    }
+SettingslistRef: MatDialogRef<SettingslistComponent>
+dialogResult:[]
+currentUser:[]
 
-    ngOnInit() {
-        this.loadAllUsers();
-        
-        
-    }
+  constructor(public dialog: MatDialog, private us: UserService, private router: Router){
+    this.currentId = JSON.parse(localStorage.getItem('id'))
+  }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => { 
-            this.loadAllUsers() 
-        });
-    }
+  ngOnInit() {
+  }
+  deleteUser(id: number) {
+    this.us.delete(this.currentId).subscribe(data => { 
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('parent');
+    localStorage.removeItem('pin');
+    localStorage.removeItem('id');
+    this.router.navigate(['']);
+    window.location.reload();
 
-    private loadAllUsers() {
-        this.userService.getAll().pipe(first()).subscribe(users => { 
-            this.users = users; 
-        });
-    }
-
+    });
 }
+    openDialog(): void {
+        let dialogRef = this.dialog.open(SettingslistComponent,{
+          hasBackdrop: true, autoFocus:true});
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog closed: ${result}`);
+          this.dialogResult = result;
+        });
+      }
+     
+      }
+
 

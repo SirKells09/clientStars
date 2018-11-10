@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div class = "viewGoals">
     <div class="main">
@@ -5,88 +6,96 @@
             <h3>Lets get Started!</h3>
             <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
         </div>
+=======
+<div class = "viewgoals">
 
-        <div>
-            <h1>Goals</h1>
-            <mat-checkbox>Clean Room</mat-checkbox>
-            <br />
-            <mat-checkbox>Paint Picture</mat-checkbox>
-            <br />
-            <mat-checkbox>Therapy at 4 pm</mat-checkbox>
-            <br />
-            <mat-checkbox>Walk Dog</mat-checkbox>
-            <br />
-            <mat-checkbox>Walk 1 mile</mat-checkbox>
-            <button *ngIf="display" mat-raised-button (click)="updateUser(user.id)" class="text-success">Update</button>
-        </div>
+        <button [appHighlight]="color">Highlighted in black</button>
 
-        <div class="enterPin">
-            <div>
-                <mat-form-field hintLabel="Max 4 characters">
-                <input class="input" matInput #input maxlength="4" placeholder="">
-                <mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>
-                </mat-form-field>
+    <div class="main">
+            <div>      
+                <mat-card>
+                    <mat-card-title>Lets get Started!</mat-card-title>
+>>>>>>> a02a12c2e1ed0f6965d1c18bc68a3d5221193f85
+
+                    <mat-card-actions>
+                        <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
+                    </mat-card-actions>
+                </mat-card>
             </div>
-
-            <button class="submitPin" mat-raised-button (click)="onSubmit(input.value)">Submit Pin</button>
-        </div>
-    <div class = "tableWrap">
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field>
-        <div class = "table">
-            <table mat-table [dataSource]="dataSource" matSort>
-                <!-- Position Column -->
-                <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef> No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-                </ng-container>
             
-                <!-- Name Column -->
-                <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
+            <div class="enterPin">
+                    <mat-form-field hintLabel="Max 4 characters">
+                        <input class="input" matInput #input maxlength="4" placeholder="">
+                        <mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>
+                    </mat-form-field> 
+                    <button class="submitPinButton" mat-raised-button (click)="onSubmit(input.value)">Submit Pin</button>
+            </div>
             
-                <!-- Weight Column -->
-                <ng-container matColumnDef="weight">
-                <th mat-header-cell *matHeaderCellDef> Weight </th>
-                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-                </ng-container>
-            
-                <!-- Symbol Column -->
-                <ng-container matColumnDef="symbol">
-                <th mat-header-cell *matHeaderCellDef> Symbol </th>
-                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-                </ng-container>
-
-                <!-- Star Column -->
-                <ng-container matColumnDef="stars">
-                    <th mat-header-cell *matHeaderCellDef>Stars</th>
-                    <td mat-cell *matCellDef="let element">
-                        <button #emptyStar *ngIf="starred === false" mat-icon-button (click)="onStarClicked()" class="material-button1">
-                            <mat-icon class="iconButton material-icon1" svgIcon="star_border"></mat-icon>
-                        </button>
-                        <button #filledStar *ngIf="starred === true" mat-icon-button (click)="onStarUnclicked()" class="material-button2">
-                            <mat-icon class="iconButton material-icon2" svgIcon="star"></mat-icon>
-                        </button>
-                        <button #editGoal mat-icon-button class="material-button2">
-                            <mat-icon class="iconButton material-icon3" svgIcon="create"></mat-icon>
-                        </button>
-                        <button #deleteGoal mat-icon-button class="material-button2">
-                            <mat-icon class="iconButton material-icon4" svgIcon="delete"></mat-icon>
-                        </button>
-                    </td>
+            <div class = "tableWrap">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+                <div class="table">
                     
-                </ng-container>
+                          <table class="actualTable" mat-table [dataSource]="currentGoals" matSort>
+                            <ng-container matColumnDef="id">
+                              <th mat-header-cell *matHeaderCellDef> # </th>
+                              <td mat-cell *matCellDef="let goal">{{goal.id}}</td>
+                            </ng-container>
+                      
+                            <ng-container matColumnDef="goal">
+                              <th mat-header-cell *matHeaderCellDef> Goal </th>
+                              <td mat-cell *matCellDef="let goal">{{goal.goal}}</td>
+                            </ng-container>
+                      
+                            <ng-container matColumnDef="dueDate">
+                              <th mat-header-cell *matHeaderCellDef> Due Date </th>
+                              <td mat-cell *matCellDef="let goal">{{goal.dueDate}}</td>
+                            </ng-container>
+                            
+                            <ng-container matColumnDef="stars">
+                                <th mat-header-cell *matHeaderCellDef> Stars </th>
+                                <td mat-cell *matCellDef="let goal">
+                                        <mat-button-toggle-group>
+                                                <mat-button-toggle mat-icon-button #emptyStar (click)="onStarClicked(goal.id)" class="material-button1">
+                                                  <mat-icon class="material-icon1" svgIcon="star_border"></mat-icon>
+                                                </mat-button-toggle>
+                                                <mat-button-toggle mat-icon-button #filledStar (click)="onStarUnclicked(goal.id)" class="material-button2">
+                                                  <mat-icon class="material-icon2" svgIcon="star"></mat-icon>
+                                                </mat-button-toggle>
+                                            </mat-button-toggle-group>
+                                    <!-- <button #emptyStar [appHighlight]="color" *ngIf="goalId === rowId" mat-icon-button (click)="onStarClicked(goal.id)" class="material-button1">
+                                        <mat-icon class="iconButton material-icon1" svgIcon="star_border"></mat-icon>
+                                    </button>
+                                    <button #filledStar [appHighlight]="color" *ngIf="unstarred === true" mat-icon-button (click)="onStarUnclicked(goal.id)" class="material-button2">
+                                        <mat-icon class="iconButton material-icon2" svgIcon="star"></mat-icon>
+                                    </button> -->
+                                </td>
+                            </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-            </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-        </div>
+                            <ng-container matColumnDef="editDelete">
+                                    <th mat-header-cell *matHeaderCellDef> Edit/Delete </th>
+                                    <td mat-cell *matCellDef="let goal">
+                                        <button #editGoal mat-icon-button class="material-button2">
+                                            <mat-icon class="iconButton material-icon3" svgIcon="create"  (click)="openDialog2()" ></mat-icon>
+                                        </button>
+                                        <button #deleteGoal mat-icon-button class="material-button2">
+                                            <mat-icon class="iconButton material-icon4" svgIcon="delete" (click)="deleteGoal()"></mat-icon>
+                                        </button>
+                                    </td>
+                                </ng-container>
+                      
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="selectRow(row)"></tr>
+                          </table>
+                    
+                          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                </div> 
+            </div>
     </div>
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a02a12c2e1ed0f6965d1c18bc68a3d5221193f85
 
