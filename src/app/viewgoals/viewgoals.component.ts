@@ -31,7 +31,6 @@ export class ViewgoalsComponent implements OnInit{
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
   dialogResult:[];
-
   displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
   currentGoals: any;
@@ -59,6 +58,9 @@ export class ViewgoalsComponent implements OnInit{
     this.parent = localStorage.getItem('parent');
     this.currentStars = JSON.parse(localStorage.getItem('stars'));
     this.currentId = JSON.parse(localStorage.getItem('id'));
+    this.goalId=JSON.parse(sessionStorage.getItem('goalid'));
+
+
     
   
     iconRegistry.addSvgIcon(
@@ -126,6 +128,7 @@ export class ViewgoalsComponent implements OnInit{
   selectRow(row) {
     console.log(row.id);
     this.rowId = row.id;
+
   }
 
   onStarClicked(id: number) {
@@ -165,13 +168,16 @@ export class ViewgoalsComponent implements OnInit{
     });
   }
     
-    openDialog2(goal) {
-     sessionStorage.setItem("goalId", goal.id)
-      let dialogRef = this.dialog.open(UpdateGModalComponent,{
-        hasBackdrop: true, autoFocus:true});
+    openDialog2(id:number):void {
+      sessionStorage.setItem('goalId',id);
+      console.log('vc.ts', id)
+      let dialogRef = this.dialog.open(UpdateGModalComponent);
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog closed: ${result}`);
         this.updateResult = result;
+      
+
+
       });
     }
 

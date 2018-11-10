@@ -26,18 +26,18 @@ export class GoalListService {
 //user goals
   getAll(userId:any):Observable<Goal[]>{
     console.log("here you are my friend the goals you asked for")
-    return this.http.get<Goal[]>(`${environment.apiUrl}/user/userlist/`+ userId)
+    return this.http.get<Goal[]>(`${environment.apiUrl}/goal/userlist/`+ userId)
     // return this.http.get(`${environment.apiUrl}/user/`+ userId, httpOptions )
 }
 
 getAItem(id){
   console.log('single goal id =', id)
-  return this.http.get(`${environment.apiUrl}/goal/onegoal/${id}`)
+  return this.http.get(`${environment.apiUrl}/goal/onegoal/` +id )
 }
 
-update(id: number, goal: Goal){  
+update(id, goal){  
   console.log('goal has been gone and gotten for you kind sir')  
-  return this.http.put(`${environment.apiUrl}/goal/updategoal/` + id, goal, httpOptions )
+  return this.http.put(`${environment.apiUrl}/goal/updategoal/${id}`, goal, httpOptions )
 }
 
 delete(id:number){

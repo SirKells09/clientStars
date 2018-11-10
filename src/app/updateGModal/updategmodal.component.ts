@@ -44,13 +44,12 @@ getAGoal(){
 }
    
   updateGoal(){
-    this.id = JSON.parse(sessionStorage.getItem('goalId'))
-    console.log(this.id)
-    this.gl.update(this.id, this.updateForm.value)
+    let goalId = sessionStorage.getItem('goalId')
+    this.gl.update(goalId, this.updateForm.value)
     .subscribe(data => {
       console.log(data)
       console.log('goal has been updated')
     })
-    this.dialogRef.close(this.id)
+    this.dialogRef.close(goalId)
   }
 }
