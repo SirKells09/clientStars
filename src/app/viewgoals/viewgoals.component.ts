@@ -7,12 +7,11 @@ import { AddGModalComponent } from '../addGModal/addgmodal.component';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { UserService } from '../_services/user.service';
 import { GoalListService } from '../_services/goal-list.service';
-import { Observable, } from 'rxjs';
-import { first, catchError, switchMap } from 'rxjs/operators';
+import { merge, Observable, of as observableOf } from 'rxjs';
+import { first, map, catchError, switchMap } from 'rxjs/operators';
 import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
 import { Goal } from '../_models/goal';
 import {DataSource} from '@angular/cdk/collections';
-
 
 
 @Component({
@@ -22,27 +21,30 @@ import {DataSource} from '@angular/cdk/collections';
 })
 
 export class ViewgoalsComponent implements OnInit{
-  // checked: false;
+  color = 'black';
   _input: number;
   display: boolean;
   pin: number;
   parent: string;
   currentId: number;
-  starred: boolean;
+  unstarred: boolean;
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
   dialogResult:[];
-  displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars'];
+
+  displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
   currentGoals: any;
   goals: Goal[] = [];
-  updateResult: [];
   dataSource = new GoalDataSource(this.gl);
-  resultsLength: number
-  
-  
+  resultsLength: number;
+  rowId: number;
+  goalId: number;
+  updateResult: [];
+ 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
 
   constructor(
     public dialog: MatDialog,
@@ -79,8 +81,8 @@ export class ViewgoalsComponent implements OnInit{
       sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-search-24px.svg'));
   }
   ngOnInit() {
-    this.starred = false;
-
+    this.unstarred = false;
+    // this.sameRow = false;
     if(this.parent === 'true'){
       this.display = true
     } else {
@@ -120,21 +122,32 @@ export class ViewgoalsComponent implements OnInit{
         localStorage.setItem('parent', 'false');
     }
   }
-  
-  onStarClicked():void {
-    this.starred = true;
+
+  selectRow(row) {
+    console.log(row.id);
+    this.rowId = row.id;
+  }
+
+  onStarClicked(id: number) {
+    console.log(id);
+    this.goalId = id;
+    console.log(this.goalId);
+    this.unstarred = true;
     this.currentStars = this.currentStars + 1;
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
     this.currentUser = this.userService.getById(this.currentId)
     .pipe(first())
     .subscribe(data => {
-      console.log(this.currentUser)
-    });
+      console.log(data)
+    })
   }
+  
 
 
-  onStarUnclicked():void {
-    this.starred = false;
+  onStarUnclicked(id: number) {
+    console.log(id);
+    this.goalId = id;
+    console.log(this.goalId);
     if (this.currentStars === 1){
       this.currentStars = 0
     } else {
@@ -184,10 +197,6 @@ export class GoalDataSource extends DataSource<any> {
   disconnect() {}
 }
 
-// export interface Database {
-//   goalItems: Goals[];
-//   total_count: number;
-// }
 
 export interface Goal {
   id: number;

@@ -53,7 +53,9 @@ updateUser(id: number, email: string, pin: number, password: string) {
   .subscribe( data => {
       this.dialogRef.close(data);
       window.location.reload();
+      
     });
+  
 }
 
 currentUser(id: number) {
