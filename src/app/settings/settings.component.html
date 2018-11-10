@@ -1,4 +1,15 @@
 <div>
+
+    <p>You're logged in with Angular 6!!</p>
+    <h3>All registered users:
+      <ul>
+        <li *ngFor="let user of users">
+          {{email}} {{password}} {{pin}}</li>
+         </ul>
+    </h3>
+    
+   
+ 
         <mat-card>
           <mat-card-title>Update/Delete</mat-card-title>
           <mat-card-actions>

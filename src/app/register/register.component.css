@@ -1,3 +1,4 @@
+
 @import url(../../variables.css);
 
 
@@ -14,30 +15,19 @@ body {
 }
 
 
-
-/* register form positioning
+/*register form positioning*/
 .registerform {
     display: block;
     text-align: center;
     justify-content: center;
     position: relative;
-    width: 80%;
+    width: 30%;
     height: 65%;
     padding: 20px;
     margin: auto; 
     border: solid 1px;
     border-radius: 3%;
     color: rgb(83, 75, 128);
-} */
-
-.registerform {
-    margin: auto;
-    width: 900px;
-    border-radius: 3%;
-    padding: 20px;
-    border: solid 1px;
-    color: rgb(83, 75, 128);
-    height: 65%;
 }
 
 /*register button styling*/
@@ -55,14 +45,3 @@ body {
 .cancel {
     color: rgb(83, 75, 128);
 }
-
-/*styling for email and password boxes*/
-.register .inputfield {
-    border: solid 1px;
-    color: rgb(83, 75, 128);
-    width: 800px;
-    height: 70px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 40px;
-  }

@@ -22,9 +22,8 @@ export class AddGModalComponent implements OnInit {
     
    close() {
      this.dialogRef.close()
-     window.location.reload();
    }
-
+ 
  
    addGoal(){
      this.gl.postGoal(this.userId, this.goalForm.value)
@@ -33,14 +32,19 @@ export class AddGModalComponent implements OnInit {
    }
 
    ngOnInit(){
-      this.userId = JSON.parse(localStorage.getItem('id'))
      this.goalForm = this.fb.group({
        goal: new FormControl,
        dueDate: new FormControl,
        message: new FormControl
       }),
-     
+      this.userId = JSON.parse(localStorage.getItem('id'))
   }
   
-
+  // addGoal(){
+  //   console.log(this.userId)
+  //   console.log(this.goalForm.value)
+  //   this.gl.postGoal(this.userId, this.goalForm.value)
+  //   .subscribe()
+  //   this.dialogRef.close()
+  // }
 }

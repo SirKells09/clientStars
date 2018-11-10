@@ -74,7 +74,7 @@ export class RegisterComponent {
         .pipe(first())
         .subscribe(
             data => {
-                this.router.navigate(['/viewgoals']);
+                this.router.navigate(['/goals']);
         })
     }
 }

@@ -29,7 +29,7 @@ currentUser:[]
   }
   deleteUser(id: number) {
     this.us.delete(this.currentId).subscribe(data => { 
-    localStorage.removeItem('currentUser');
+      localStorage.removeItem('currentUser');
     localStorage.removeItem('parent');
     localStorage.removeItem('pin');
     localStorage.removeItem('id');

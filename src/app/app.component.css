@@ -1,18 +1,37 @@
 @import url(../variables.css);
 
-  /* responsiveness styles */
+
+
+/* responsiveness styles */
+
+  /* Mobile Styles */
+  @media only screen and (max-width: 400px) {
+  }
   
-    /* Mobile Styles */
-    @media only screen and (max-width: 400px) {
+  /* Tablet Styles */
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+
+  }
+  
+  /* Desktop Styles */
+  @media only screen and (min-width: 961px) {
+    
+  }
+
+  
+
+  div {
+      color: var(--y5);
+      font-family: var(--font1);
+  }
+  body { 
+      font-family: Roboto, Arial, sans-serif;
+      margin: 0;
     }
     
-    /* Tablet Styles */
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
   
-    }
-    
-    /* Desktop Styles */
-    @media only screen and (min-width: 961px) {
-      
-    }
   
+  .wrapper {
+      background-color: white;
+      height: 100%;
+  }

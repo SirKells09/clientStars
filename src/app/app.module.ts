@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlertComponent } from './_directives/alert.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { AlertService } from './_services/alert.service';
@@ -17,11 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDialogModule, MatCardModule, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
-
+import {MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MatSidenavModule, MatListModule, MatIconModule,MatInputModule, MatToolbarModule,MatTableModule,MatPaginatorModule } from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -31,13 +28,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
-import { MatSidenavModule, MatListModule, MatIconModule, MatInputModule } from '@angular/material';
 import { SettingslistComponent } from './settingslist/settingslist.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material';
-import { HighlightDirective } from './highlight.directive';
-
 
 
 
@@ -48,6 +39,7 @@ import { HighlightDirective } from './highlight.directive';
     AppComponent,
     AboutComponent,
     FooterComponent,
+    AlertComponent,
     HomeComponent,
     RegisterComponent,
     LoginComponent,
@@ -59,7 +51,7 @@ import { HighlightDirective } from './highlight.directive';
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent,
-    HighlightDirective 
+    
   ],
   imports:[
     BrowserModule,
@@ -82,10 +74,8 @@ import { HighlightDirective } from './highlight.directive';
     MatInputModule,
     MatListModule,
     MatTableModule,
-    MatPaginatorModule,
-    MatButtonToggleModule,
-    MatDialogModule, 
-    MatCardModule
+    MatPaginatorModule
+    
   ],
 
   providers: [
@@ -94,7 +84,8 @@ import { HighlightDirective } from './highlight.directive';
     AuthenticationService,
     GoalListService,
     UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    // { provide:  MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}},
   ],
   bootstrap: [AppComponent],
 
