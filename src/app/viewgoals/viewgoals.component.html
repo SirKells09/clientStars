@@ -73,8 +73,8 @@
                                         (click)="openDialog2(goal.id)"  class="material-button2" >
                                         <mat-icon class="iconButton material-icon3" svgIcon="create" ></mat-icon>
                                     </button>
-                                    <button #deleteGoal mat-icon-button class="material-button2">
-                                        <mat-icon class="iconButton material-icon4" svgIcon="delete" (click)="deleteGoal(goal.id)"></mat-icon>
+                                    <button #deleteGoal mat-icon-button class="material-button2" (click)="deleteGoal(goal.id)">
+                                        <mat-icon class="iconButton material-icon4" svgIcon="delete" ></mat-icon>
                                     </button>
                                 </mat-button-toggle-group>
                                 </td>

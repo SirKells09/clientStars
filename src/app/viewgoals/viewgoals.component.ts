@@ -168,7 +168,7 @@ export class ViewgoalsComponent implements OnInit{
     });
   }
     
-    openDialog2(id:number):void {
+    openDialog2(id:any):void {
       sessionStorage.setItem('goalId',id);
       console.log('vc.ts', id)
       let dialogRef = this.dialog.open(UpdateGModalComponent);
