@@ -62,8 +62,8 @@
                                         <button #filledStar *ngIf="starred === true" mat-icon-button (click)="onStarUnclicked()" class="material-button2">
                                             <mat-icon class="iconButton material-icon2" svgIcon="star"></mat-icon>
                                         </button>
-                                        <button #editGoal mat-icon-button class="material-button2">
-                                            <mat-icon class="iconButton material-icon3" svgIcon="create"  (click)="openDialog2()" ></mat-icon>
+                                        <button #editGoal mat-icon-button class="material-button2" [id]='goal.id' >
+                                            <mat-icon class="iconButton material-icon3" svgIcon="create" (click)="openDialog2(goal)" cdkFocusInitial></mat-icon>
                                         </button>
                                         <button #deleteGoal mat-icon-button class="material-button2">
                                             <mat-icon class="iconButton material-icon4" svgIcon="delete" (click)="deleteGoal()"></mat-icon>

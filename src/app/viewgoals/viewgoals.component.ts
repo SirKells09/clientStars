@@ -152,8 +152,8 @@ export class ViewgoalsComponent implements OnInit{
     });
   }
     
-    openDialog2(): void {
-      // sessionStorage.getItem('goalId')
+    openDialog2(goal) {
+     sessionStorage.setItem("goalId", goal.id)
       let dialogRef = this.dialog.open(UpdateGModalComponent,{
         hasBackdrop: true, autoFocus:true});
       dialogRef.afterClosed().subscribe(result => {
