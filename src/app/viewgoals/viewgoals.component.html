@@ -1,8 +1,29 @@
+<<<<<<< HEAD
 <div class = "viewGoals">
     <div class="main">
             <div>      
                 <mat-card>
                     <mat-card-title>Lets get Started!</mat-card-title>
+=======
+<<<<<<< HEAD
+
+<div class = "viewGoals">
+    <div class="main">
+        <div>      
+            <h3>Lets get Started!</h3>
+            <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
+        </div>
+=======
+<div class = "viewgoals">
+
+        <button [appHighlight]="color">Highlighted in black</button>
+
+    <div class="main">
+            <div>      
+                <mat-card>
+                    <mat-card-title>Lets get Started!</mat-card-title>
+>>>>>>> a02a12c2e1ed0f6965d1c18bc68a3d5221193f85
+>>>>>>> kec-wip
 
                     <mat-card-actions>
                         <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
@@ -43,12 +64,20 @@
                             <ng-container matColumnDef="stars">
                                 <th mat-header-cell *matHeaderCellDef> Stars </th>
                                 <td mat-cell *matCellDef="let goal">
-                                    <button #emptyStar *ngIf="goalId === rowId" mat-icon-button (click)="onStarClicked(goal.id)" class="material-button1">
+                                        <mat-button-toggle-group>
+                                                <mat-button-toggle mat-icon-button #emptyStar (click)="onStarClicked(goal.id)" class="material-button1">
+                                                  <mat-icon class="material-icon1" svgIcon="star_border"></mat-icon>
+                                                </mat-button-toggle>
+                                                <mat-button-toggle mat-icon-button #filledStar (click)="onStarUnclicked(goal.id)" class="material-button2">
+                                                  <mat-icon class="material-icon2" svgIcon="star"></mat-icon>
+                                                </mat-button-toggle>
+                                            </mat-button-toggle-group>
+                                    <!-- <button #emptyStar [appHighlight]="color" *ngIf="goalId === rowId" mat-icon-button (click)="onStarClicked(goal.id)" class="material-button1">
                                         <mat-icon class="iconButton material-icon1" svgIcon="star_border"></mat-icon>
                                     </button>
-                                    <button #filledStar *ngIf="unstarred === true" mat-icon-button (click)="onStarUnclicked(goal.id)" class="material-button2">
+                                    <button #filledStar [appHighlight]="color" *ngIf="unstarred === true" mat-icon-button (click)="onStarUnclicked(goal.id)" class="material-button2">
                                         <mat-icon class="iconButton material-icon2" svgIcon="star"></mat-icon>
-                                    </button>
+                                    </button> -->
                                 </td>
                             </ng-container>
 
@@ -73,5 +102,12 @@
             </div>
     </div>
 </div>
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> a02a12c2e1ed0f6965d1c18bc68a3d5221193f85
+>>>>>>> kec-wip
 

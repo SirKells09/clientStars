@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
+<<<<<<< HEAD
 import { ResourcesComponent } from './resources/resources.component';
 
 
@@ -24,6 +25,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule, MatCardModule, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
+=======
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ResourcesComponent } from './resources/resources.component';
+import { MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
+>>>>>>> kec-wip
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -32,19 +38,13 @@ import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-
 import { UpdateGModalComponent } from './updateGModal/updategmodal.component';
-
 import { MatSidenavModule, MatListModule, MatIconModule, MatInputModule } from '@angular/material';
 import { SettingslistComponent } from './settingslist/settingslist.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
-import { StarDirective } from './viewgoals/star.directive';
-
-
-
-
+import { HighlightDirective } from './highlight.directive';
 
 
 
@@ -59,12 +59,22 @@ import { StarDirective } from './viewgoals/star.directive';
     SettingsComponent,
     AddGModalComponent,
     ViewgoalsComponent,
+<<<<<<< HEAD
     SettingslistComponent,
     AddGModalComponent,
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent,
     StarDirective 
+=======
+  
+
+    MainNavComponent,
+    ResourcesComponent,
+
+    MainNavComponent
+
+>>>>>>> kec-wip
   ],
   imports:[
     BrowserModule,
@@ -88,9 +98,14 @@ import { StarDirective } from './viewgoals/star.directive';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
+<<<<<<< HEAD
     MatButtonToggleModule,
     MatDialogModule, 
     MatCardModule
+=======
+    MatButtonToggleModule
+
+>>>>>>> kec-wip
   ],
 
   providers: [
