@@ -38,8 +38,9 @@ export class ViewgoalsComponent implements OnInit{
   dataSource = new GoalDataSource(this.gl);
   resultsLength: number;
   rowId: number;
-  goalId: number;
+  goalId: any;
   updateResult: [];
+  id:any;
  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -101,14 +102,6 @@ export class ViewgoalsComponent implements OnInit{
       })
     }
     
-
-  deleteGoal(){
-    let goalId:any = sessionStorage.getItem('goalId')
-  this.gl.delete(goalId)
-  .subscribe()
-  } 
-
-
 
   onSubmit(input: number){
     this._input = input
@@ -180,6 +173,8 @@ export class ViewgoalsComponent implements OnInit{
 
       });
     }
+
+
 
 
   applyFilter(filterValue: string) {

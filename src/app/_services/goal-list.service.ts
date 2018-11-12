@@ -40,9 +40,9 @@ update(id, goal){
   return this.http.put(`${environment.apiUrl}/goal/updategoal/${id}`, goal, httpOptions )
 }
 
-delete(id:number){
+goalDelete(id){
   console.log('that goal is out the window')
-  return this.http.delete(`${environment.apiUrl}/goal/delete/` + id, httpOptions)
+  return this.http.delete(`${environment.apiUrl}/goal/delete/${id}` , httpOptions)
 }
 
 }

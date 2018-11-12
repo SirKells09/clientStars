@@ -15,6 +15,7 @@ export class UpdateGModalComponent implements OnInit {
   goal: Goal;
    updateForm: FormGroup;
    id: number;
+   goalId:any;
   
   constructor( private gl: GoalListService,
     private dialogRef:MatDialogRef<UpdateGModalComponent>, 
@@ -26,7 +27,6 @@ export class UpdateGModalComponent implements OnInit {
   } 
   
   ngOnInit(){
-     
           this.updateForm = this.fb.group({
             goal: new FormControl,
             message: new FormControl,
@@ -36,20 +36,28 @@ export class UpdateGModalComponent implements OnInit {
   }
   
 
-getAGoal(){
-  this.gl.getAItem(this.id)
-  .subscribe(this.data)
-
-  
-}
    
   updateGoal(){
-    let goalId = sessionStorage.getItem('goalId')
-    this.gl.update(goalId, this.updateForm.value)
+    this.goalId = sessionStorage.getItem('goalId')
+    console.log('GOALID =',this.goalId)
+    this.gl.update(this.goalId, this.updateForm.value)
     .subscribe(data => {
       console.log(data)
       console.log('goal has been updated')
     })
-    this.dialogRef.close(goalId)
+    this.dialogRef.close(this.goalId)
   }
+
+
+      
+  deleteGoal(){
+    this.goalId = sessionStorage.getItem('goalId')
+    console.log(this.goalId)
+    console.log('deleting shall commence')
+  this.gl.goalDelete(this.goalId)
+  .subscribe(data=>
+    console.log(data)
+    )
+  } 
+
 }
