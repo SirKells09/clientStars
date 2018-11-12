@@ -15,7 +15,7 @@ client - https://github.com/SirKells09/clientStars.git
 <br />
 server - https://github.com/SirKells09/serverStars.git
 
-## Development server installation
+## Development client installation
 
 Install NPM packages `npm intall`
 <br />
@@ -23,10 +23,23 @@ Ensure all NPM packages are up-to-date `npm update`
 <br />
 Ensure all Angular packages are up-to-date `ng update --all`
 <br />
-Install Angular Material `npm install —save @angular/cdk` 
-<br />
 Install Angular Material `npm install — @angular/cdk @angular/material` 
+<br />
 Run `ng serve --open` to start up the Angular Navigation. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Development server installation
+
+Install NPM packages `npm init` 
+<br />
+Install Sequelize `npm install sequelize`
+<br />
+Install Sequelize CLI `npm install i -g sequelize--cli` and then `sequelize init`
+<br />
+Install Express `npm install express`
+<br />
+Install PG Admin `npm install pg` 
+<br />
+Install Nodemon `npm install nodemon`
 
 
 ## Code scaffolding
