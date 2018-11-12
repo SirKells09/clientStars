@@ -15,7 +15,7 @@ client - https://github.com/SirKells09/clientStars.git
 <br />
 server - https://github.com/SirKells09/serverStars.git
 
-## Development client installation
+## Development Client Installation
 
 Install NPM packages `npm intall`
 <br />
@@ -29,7 +29,7 @@ Run `ng serve --open` to start up the Angular Navigation.
 <br />
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Development server installation
+## Development Server Installation
 
 Install NPM packages `npm init` 
 <br />
