@@ -1,12 +1,5 @@
 <div class = "viewgoals">
 
-<<<<<<< HEAD
-        <!-- <button [appHighlight]="color">Highlighted in black</button> -->
-=======
-
-        <button [appHighlight]="color">Highlighted in black</button>
->>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
-
     <div class="main">
             <div>      
                 <mat-card>
@@ -78,14 +71,19 @@
                             <ng-container matColumnDef="editDelete">
                                     <th mat-header-cell *matHeaderCellDef> Edit/Delete </th>
                                     <td mat-cell *matCellDef="let goal">
+                                        <button #emptyStar *ngIf="starred === false" mat-icon-button (click)="onStarClicked()" class="material-button1">
+                                            <mat-icon class="iconButton material-icon1" svgIcon="star_border"></mat-icon>
+                                        </button>
+                                        <button #filledStar *ngIf="starred === true" mat-icon-button (click)="onStarUnclicked()" class="material-button2">
+                                            <mat-icon class="iconButton material-icon2" svgIcon="star"></mat-icon>
+                                        </button>
+                                        <button #editGoal mat-icon-button class="material-button2" [id]='goal.id' >
+                                            <mat-icon class="iconButton material-icon3" svgIcon="create" (click)="openDialog2(goal.id)" ></mat-icon>
+                                        </button>
+                                        <div>
 
-                                        <button #editGoal mat-icon-button class="material-button2">
-                                            <mat-icon class="iconButton material-icon3" svgIcon="create"  (click)="openDialog2()" ></mat-icon>
-                                        </button>
-                                        <button #deleteGoal mat-icon-button class="material-button2">
-                                            <mat-icon class="iconButton material-icon4" svgIcon="delete" (click)="deleteGoal()"></mat-icon>
-                                        </button>
-                                    </td>
+                                        </div>
+                                        </td>
 
                                 </ng-container>
                       

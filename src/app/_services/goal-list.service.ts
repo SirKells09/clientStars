@@ -26,38 +26,28 @@ export class GoalListService {
 //user goals
   getAll(userId:any):Observable<Goal[]>{
     console.log("here you are my friend the goals you asked for")
-    return this.http.get<Goal[]>(`${environment.apiUrl}/user/userlist/`+ userId)
+    return this.http.get<Goal[]>(`${environment.apiUrl}/goal/userlist/`+ userId)
     // return this.http.get(`${environment.apiUrl}/user/`+ userId, httpOptions )
 }
 
-<<<<<<< HEAD
-update(userId: any , goal: Goal){
-  return this.http
-  .put<any>(`${environment.apiUrl}/goal/updategoal/` + userId, goal, httpOptions )
-=======
 getAItem(id){
   console.log('single goal id =', id)
   return this.http.get(`${environment.apiUrl}/goal/onegoal/${id}`)
->>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
 }
 
-update(id: number, goal: Goal){  
+update(id, goal){  
   console.log('goal has been gone and gotten for you kind sir')  
-  return this.http.put(`${environment.apiUrl}/goal/updategoal/` + id, goal, httpOptions )
+  return this.http.put(`${environment.apiUrl}/goal/updategoal/${id}`, goal, httpOptions )
 }
 
-<<<<<<< HEAD
 updateStarred(userId: number, starred: boolean){
   return this.http
   .put<any>(`${environment.apiUrl}/user/goal/` + userId, {starred:starred}, httpOptions)
 }
 
-
-=======
-delete(id:number){
+goalDelete(id){
   console.log('that goal is out the window')
-  return this.http.delete(`${environment.apiUrl}/goal/delete/` + id, httpOptions)
->>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
+  return this.http.delete(`${environment.apiUrl}/goal/delete/${id}` , httpOptions)
 }
 
 }

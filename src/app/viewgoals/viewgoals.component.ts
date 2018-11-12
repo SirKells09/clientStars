@@ -35,7 +35,6 @@ export class ViewgoalsComponent implements OnInit{
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
   dialogResult:[];
-
   displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
   currentGoals: any;
@@ -44,16 +43,13 @@ export class ViewgoalsComponent implements OnInit{
   resultsLength: number;
   rowId: number;
   goalId: number;
-<<<<<<< HEAD
   starred: boolean;
   goal: boolean;
-=======
   updateResult: [];
+  id:any;
  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
->>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
 
   constructor(
     public dialog: MatDialog,
@@ -68,6 +64,7 @@ export class ViewgoalsComponent implements OnInit{
     this.parent = localStorage.getItem('parent');
     this.currentStars = JSON.parse(localStorage.getItem('stars'));
     this.userId = JSON.parse(localStorage.getItem('id'));
+    this.goalId=JSON.parse(sessionStorage.getItem('goalid'));
     
   
     iconRegistry.addSvgIcon(
@@ -109,14 +106,6 @@ export class ViewgoalsComponent implements OnInit{
     }
     
 
-  deleteGoal(){
-    let goalId:any = sessionStorage.getItem('goalId')
-  this.gl.delete(goalId)
-  .subscribe()
-  } 
-
-
-
   onSubmit(input: number){
     this._input = input
     console.log(this.pin)
@@ -135,6 +124,7 @@ export class ViewgoalsComponent implements OnInit{
   selectRow(row) {
     console.log(row.id);
     this.rowId = row.id;
+
   }
 
   onStarClicked(goal) {
@@ -181,15 +171,20 @@ export class ViewgoalsComponent implements OnInit{
     });
   }
     
-    openDialog2(): void {
-      // sessionStorage.getItem('goalId')
-      let dialogRef = this.dialog.open(UpdateGModalComponent,{
-        hasBackdrop: true, autoFocus:true});
+    openDialog2(id:any):void {
+      sessionStorage.setItem('goalId',id);
+      console.log('Grabbed a number from the back', id)
+      let dialogRef = this.dialog.open(UpdateGModalComponent);
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog closed: ${result}`);
         this.updateResult = result;
+      
+
+
       });
     }
+
+
 
 
   applyFilter(filterValue: string) {

@@ -29,6 +29,7 @@ export class AddGModalComponent implements OnInit {
    addGoal(){
      this.gl.postGoal(this.userId, this.goalForm.value)
      .subscribe(this.data)
+     console.log(this.data)
      this.dialogRef.close()
    }
 
@@ -38,9 +39,8 @@ export class AddGModalComponent implements OnInit {
        goal: new FormControl,
        dueDate: new FormControl,
        message: new FormControl
-      }),
-     
+      })
+    
   }
-  
 
 }
