@@ -1,20 +1,5 @@
-<<<<<<< HEAD
-<div class = "viewGoals">
-    <div class="main">
-            <div>      
-                <mat-card>
-                    <mat-card-title>Lets get Started!</mat-card-title>
-=======
-<<<<<<< HEAD
-
-<div class = "viewGoals">
-    <div class="main">
-        <div>      
-            <h3>Lets get Started!</h3>
-            <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
-        </div>
-=======
 <div class = "viewgoals">
+
 
         <button [appHighlight]="color">Highlighted in black</button>
 
@@ -22,8 +7,6 @@
             <div>      
                 <mat-card>
                     <mat-card-title>Lets get Started!</mat-card-title>
->>>>>>> a02a12c2e1ed0f6965d1c18bc68a3d5221193f85
->>>>>>> kec-wip
 
                     <mat-card-actions>
                         <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
@@ -39,6 +22,7 @@
                     <button class="submitPinButton" mat-raised-button (click)="onSubmit(input.value)">Submit Pin</button>
             </div>
             
+
             <div class = "tableWrap">
                 <mat-form-field>
                     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -84,6 +68,7 @@
                             <ng-container matColumnDef="editDelete">
                                     <th mat-header-cell *matHeaderCellDef> Edit/Delete </th>
                                     <td mat-cell *matCellDef="let goal">
+
                                         <button #editGoal mat-icon-button class="material-button2">
                                             <mat-icon class="iconButton material-icon3" svgIcon="create"  (click)="openDialog2()" ></mat-icon>
                                         </button>
@@ -91,6 +76,7 @@
                                             <mat-icon class="iconButton material-icon4" svgIcon="delete" (click)="deleteGoal()"></mat-icon>
                                         </button>
                                     </td>
+
                                 </ng-container>
                       
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -102,12 +88,4 @@
             </div>
     </div>
 </div>
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> a02a12c2e1ed0f6965d1c18bc68a3d5221193f85
->>>>>>> kec-wip
 

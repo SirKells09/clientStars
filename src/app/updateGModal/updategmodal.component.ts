@@ -33,14 +33,15 @@ export class UpdateGModalComponent implements OnInit {
 
   }
   
-  updateGoal(){
-    let goalId = sessionStorage.getItem('goal.id')
-  this.gl.update( goalId, this.updateForm.value)
-  .subscribe(data => {
-    console.log(data);
-    this.dialogRef.close(data);
-  })
-}
+  // updateGoal(){
+  //   let goalId = sessionStorage.getItem('goal.id')
+  //   this.gl.update( goalId, this.updateForm.value)
+//     .subscribe(data => {
+//       console.log(data);
+//       console.log(goalId)
+//     this.dialogRef.close(data);
+//   })
+// }
   
   close() {
    this.dialogRef.close()

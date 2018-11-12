@@ -16,22 +16,13 @@ import { RegisterComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-<<<<<<< HEAD
 import { ResourcesComponent } from './resources/resources.component';
-
-
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule, MatCardModule, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
-
-=======
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { ResourcesComponent } from './resources/resources.component';
-import { MatButtonModule, MatCheckboxModule,MatDialogModule,MatCardModule,MatFormFieldModule,MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material';
->>>>>>> kec-wip
 import { FooterComponent } from './footer/footer.component';
-import { AddGModalComponent } from './addGModal/addgmodal.component';
+// import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GoalListService } from './_services/goal-list.service';
 import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
@@ -46,8 +37,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import { HighlightDirective } from './highlight.directive';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,24 +46,14 @@ import { HighlightDirective } from './highlight.directive';
     RegisterComponent,
     LoginComponent,
     SettingsComponent,
-    AddGModalComponent,
     ViewgoalsComponent,
-<<<<<<< HEAD
     SettingslistComponent,
-    AddGModalComponent,
+    // AddGModalComponent,
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent,
-    StarDirective 
-=======
-  
-
-    MainNavComponent,
-    ResourcesComponent,
-
-    MainNavComponent
-
->>>>>>> kec-wip
+    HighlightDirective,
+    SettingslistComponent,
   ],
   imports:[
     BrowserModule,
@@ -98,14 +77,9 @@ import { HighlightDirective } from './highlight.directive';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-<<<<<<< HEAD
     MatButtonToggleModule,
     MatDialogModule, 
     MatCardModule
-=======
-    MatButtonToggleModule
-
->>>>>>> kec-wip
   ],
 
   providers: [
@@ -118,12 +92,11 @@ import { HighlightDirective } from './highlight.directive';
   ],
   bootstrap: [AppComponent],
 
-  entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent],
+  entryComponents: [UpdateGModalComponent, SettingslistComponent],//need to add AddNgModalComponent later
 
  
 
 })
 export class AppModule { }
-
 
 

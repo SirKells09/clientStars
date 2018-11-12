@@ -3,7 +3,7 @@ import { Router } from'@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { MatDialog,  MatDialogRef } from '@angular/material';
-import { AddGModalComponent } from '../addGModal/addgmodal.component';
+// import { AddGModalComponent } from '../addGModal/addgmodal.component';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { UserService } from '../_services/user.service';
 import { GoalListService } from '../_services/goal-list.service';
@@ -13,6 +13,7 @@ import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
 import { Goal } from '../_models/goal';
 import {DataSource} from '@angular/cdk/collections';
 
+
 @Component({
   selector: 'app-viewgoals',
   templateUrl: './viewgoals.component.html',
@@ -20,7 +21,7 @@ import {DataSource} from '@angular/cdk/collections';
 })
 
 export class ViewgoalsComponent implements OnInit{
-  // checked: false;
+  color = 'black';
   _input: number;
   display: boolean;
   pin: number;
@@ -28,8 +29,9 @@ export class ViewgoalsComponent implements OnInit{
   currentId: number;
   unstarred: boolean;
   currentStars: number;
-  addGModalRef: MatDialogRef<AddGModalComponent>;
-  dialogResult:any[];
+  // addGModalRef: MatDialogRef<AddGModalComponent>;
+  dialogResult: any[];
+
   displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
   currentGoals: any;
@@ -38,6 +40,11 @@ export class ViewgoalsComponent implements OnInit{
   resultsLength: number;
   rowId: number;
   goalId: number;
+  updateResult: any[];
+ 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
 
   constructor(
     public dialog: MatDialog,
@@ -149,14 +156,14 @@ export class ViewgoalsComponent implements OnInit{
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
   }
 
-  openDialog(): void {
-    let dialogRef = this.dialog.open(AddGModalComponent,{
-      hasBackdrop: true, autoFocus:true});
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog closed: ${result}`);
-      this.dialogResult = result;
-    });
-  }
+  // openDialog(): void {
+  //   let dialogRef = this.dialog.open(AddGModalComponent,{
+  //     hasBackdrop: true, autoFocus:true});
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(`Dialog closed: ${result}`);
+  //     this.dialogResult = result;
+  //   });
+  // }
     
     openDialog2(): void {
       // sessionStorage.getItem('goalId')
@@ -164,9 +171,10 @@ export class ViewgoalsComponent implements OnInit{
         hasBackdrop: true, autoFocus:true});
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog closed: ${result}`);
-        this.dialogResult = result;
+        this.updateResult = result;
       });
     }
+
 
   applyFilter(filterValue: string) {
     this.currentGoals.filter = filterValue.trim().toLowerCase();
@@ -189,13 +197,10 @@ export class GoalDataSource extends DataSource<any> {
   disconnect() {}
 }
 
-// export interface Database {
-//   goalItems: Goals[];
-//   total_count: number;
-// }
 
 export interface Goal {
   id: number;
   goal: string;
   dueDate: string;
 }
+
