@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import {Goal} from '../_models/goal'
 import { Observable } from 'rxjs';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
 };
 
 
@@ -19,26 +20,37 @@ export class GoalListService {
   constructor(private http: HttpClient) { }
 
   
-  postGoal(id:1, goal:any ) {
-    return this.http.put(`http://localhost:3000/goal/addgoal/` + id, goal, httpOptions);
+  postGoal(userId: number, goal:Goal ) {
+    console.log("wow you posted something")
+    return this.http.put(`${environment.apiUrl}/user/goal/` + userId, goal, httpOptions)
   }
 
+
 //user goals
-  getAll(id:number) {
-    return this.http.get(`${environment.apiUrl}/goal/userlist/`+ id, httpOptions )
+  getAll(userId:number):Observable<Goal[]>{
+    console.log("here you are my friend the goals you asked for")
+    return this.http.get<Goal[]>(`${environment.apiUrl}/user/userlist/`+ userId, httpOptions)
 }
 
-update(id:string , goal: Goal){
+getAItem(id){
+  console.log('single goal id =', id)
+  return this.http.get(`${environment.apiUrl}/goal/onegoal/` + id )
+
+}
+
+update(goalId, goal){  
+  console.log('goal has been gone and gotten for you kind sir')  
+  return this.http.put(`${environment.apiUrl}/user/updategoal/` + goalId, goal, httpOptions)
+}
+
+updateStarred(goalId: number, starred: boolean){
   return this.http
-  .put<any>(`http://localhost:3000/goal/updategoal/` + id, goal, httpOptions )
+  .put(`${environment.apiUrl}/user/updategoal/` + goalId, {starred:starred}, httpOptions)
 }
 
-delete(id:number){
-  return this.http.delete(`${environment.apiUrl}/goal/delete/` + id, httpOptions)
+goalDelete(id){
+  console.log('that goal is out the window')
+  return this.http.delete(`${environment.apiUrl}/user/delete/${id}` , httpOptions)
 }
 
 }
-
-
-
-

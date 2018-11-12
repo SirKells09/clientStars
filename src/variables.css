@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
+    /*yellows*/
     --y1: #FFDC90;
     --y2: #FFCE61;
     --y3: #FFC23A;
@@ -15,9 +16,7 @@
     --p4: rgb(137, 125, 182);
     --p5: rgb(83, 75, 128);
     --p6: rgb(33, 2, 46);
-
+    
     --font1: 'Verdana', sans-serif;
     --font2: "Georgia", sans-serif;
-
-
 }

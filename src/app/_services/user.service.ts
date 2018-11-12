@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
+import { map } from 'rxjs/operators';
 
 const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
@@ -23,23 +24,54 @@ export class UserService {
         }
 
         getById(id: number) {
-            return this.http.get<User>(`${environment.apiUrl}/user/` + id, httpOptions);
+            return this.http.get<any>(`${environment.apiUrl}/user/` + id, httpOptions)
+            .pipe(map(user => {
+                console.log(user);
+                console.log(user.email);
+                console.log(user.pin);
+                console.log(user.password);
+                return user
+            }))
         }
 
-
-        login(user: User) {
-            return this.http.post(`${environment.apiUrl}/user/login`, user, httpOptions);
+        login(email: string, password: string) {
+            return this.http.post<any>(`${environment.apiUrl}/user/login`, { email: email, password: password }, httpOptions)
+                  .pipe(map(user => {
+                    if (user) {
+                        localStorage.setItem('currentUser', JSON.stringify(user));
+                        localStorage.setItem('pin', user.user.pin);
+                        localStorage.setItem('stars', user.user.stars);
+                    }
+                    return user;
+                                 
+                }));
         }
     
         register(firstName: string, lastName: string, email: string, password: string, pin: number) {
-            return this.http.post(`${environment.apiUrl}/user/register`, { firstName: firstName, lastName: lastName, email: email, password: password, pin: pin } , httpOptions);
+            return this.http.post<any>(`${environment.apiUrl}/user/register`, { firstName: firstName, lastName: lastName, email: email, password: password, pin: pin } , httpOptions)
+            .pipe(map(user => {
+                if (user) {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('pin', user.user.pin);
+                    localStorage.setItem('stars', user.user.stars);
+                }
+                return user;
+                             
+            }));
         }
     
-        update(id: number, email: string, pin: number, password: string) {
-            return this.http.put<any>(`${environment.apiUrl}/user/` + id, { email: email, pin: pin, password: password }, httpOptions);
+        updateStars(id: number, stars: number) {
+            return this.http.put<any>(`${environment.apiUrl}/user/stars/` + id, { stars: stars }, httpOptions);
+        }
+
+
+        updateUser(id, userInfo) {
+            
+            console.log(userInfo)
+            return this.http.put<any>(`${environment.apiUrl}/user/` + id, userInfo, httpOptions);
         }
     
         delete(id: number) {
             return this.http.delete(`${environment.apiUrl}/user/` + id, httpOptions);
         }
-}
+}   
