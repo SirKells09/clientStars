@@ -132,13 +132,13 @@ export class ViewgoalsComponent implements OnInit{
     goal.starred = this.starred;
     // this.goal = goal.starred;
     this.goalId = goal.id;
-    this.currentStars = this.currentStars + 1;
+    this.currentStars = this.currentStars + 1;    
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
-    // this.currentUser = this.userService.getById(this.userId)
-    // .pipe(first())
-    // .subscribe(data => {
-    //   console.log(data)
-    // });
+    this.currentUser = this.userService.getById(this.userId)
+    .pipe(first())
+    .subscribe(data => {
+      console.log(data)
+    });
     this.userService.updateStars(this.userId, this.currentStars)
     .subscribe();
     this.gl.updateStarred(this.goalId, this.starred)
