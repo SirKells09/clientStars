@@ -43,7 +43,7 @@ Install PG Admin `npm install pg`
 <br />
 Install Nodemon `npm install nodemon`
 <br />
-Run `nodemon` in terman to startup server
+Run `nodemon` in termal to startup server
 
 ## This Application Was Built With 
 Angular - The web framework used
