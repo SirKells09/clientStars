@@ -33,6 +33,7 @@ export class GoalListService {
 getAItem(id){
   console.log('single goal id =', id)
   return this.http.get(`${environment.apiUrl}/goal/onegoal/${id}`)
+<<<<<<< HEAD
 }
 
 update(id: number, goal: Goal){  
@@ -43,12 +44,18 @@ update(id: number, goal: Goal){
 delete(id:number){
   console.log('that goal is out the window')
   return this.http.delete(`${environment.apiUrl}/goal/delete/` + id, httpOptions)
+=======
+}
+
+update(id: number, goal: Goal){  
+  console.log('goal has been gone and gotten for you kind sir')  
+  return this.http.put(`${environment.apiUrl}/goal/updategoal/` + id, goal, httpOptions )
+>>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
+}
+
+delete(id:number){
+  console.log('that goal is out the window')
+  return this.http.delete(`${environment.apiUrl}/goal/delete/` + id, httpOptions)
 }
 
 }
-
-
-
-
-
-

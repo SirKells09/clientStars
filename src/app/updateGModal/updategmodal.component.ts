@@ -33,6 +33,7 @@ export class UpdateGModalComponent implements OnInit {
 
   }
   
+<<<<<<< HEAD
 //   updateGoal(){
 //     let goalId = sessionStorage.getItem('goal.id')
 //     this.gl.update( goalId, this.updateForm.value)
@@ -42,6 +43,17 @@ export class UpdateGModalComponent implements OnInit {
 //     this.dialogRef.close(data);
 //   })
 // }
+=======
+  updateGoal(){
+    let goalId = sessionStorage.getItem('goal.id')
+    this.gl.update( goalId, this.updateForm.value)
+    .subscribe(data => {
+      console.log(data);
+      console.log(goalId)
+    this.dialogRef.close(data);
+  })
+}
+>>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
   
 //   close() {
 //    this.dialogRef.close()

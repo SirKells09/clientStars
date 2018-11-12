@@ -30,7 +30,11 @@ export class ViewgoalsComponent implements OnInit{
   unstarred: boolean;
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
+<<<<<<< HEAD
   dialogResult: any[];
+=======
+  dialogResult:[];
+>>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
 
   displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
@@ -40,7 +44,11 @@ export class ViewgoalsComponent implements OnInit{
   resultsLength: number;
   rowId: number;
   goalId: number;
+<<<<<<< HEAD
   updateResult: any[];
+=======
+  updateResult: [];
+>>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
