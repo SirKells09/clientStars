@@ -50,7 +50,7 @@ Node.js - Database management
 <br />
 Heroku - The cloud platform used for deployment
 
-##Authors 
+## Authors 
 
 Below is a list of contributors who participated in this project:
 
