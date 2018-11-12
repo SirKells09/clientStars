@@ -8,9 +8,26 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
-## Development server
+# Installation 
+You can clone the repository for this application here: 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+client - https://github.com/SirKells09/clientStars.git
+<br />
+server - https://github.com/SirKells09/serverStars.git
+
+## Development server installation
+
+Install NPM packages `npm intall`
+<br />
+Ensure all NPM packages are up-to-date `npm update` 
+<br />
+Ensure all Angular packages are up-to-date `ng update --all`
+<br />
+Install Angular Material `npm install —save @angular/cdk` 
+<br />
+Install Angular Material `npm install — @angular/cdk @angular/material` 
+Run `ng serve --open` to start up the Angular Navigation. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 
 ## Code scaffolding
 
