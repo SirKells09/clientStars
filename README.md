@@ -1,5 +1,5 @@
 # Shooting Stars
-About this application 
+Shooting Stars is a productivity tool aimed to provide a structured environment for children with special needs. The application allows parents, care givers and teachers the ability to set daily goals to aid in providing a visual representation of a child’s day, teach important skills and encourage independence.  
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
 
