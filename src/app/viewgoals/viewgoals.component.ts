@@ -163,7 +163,7 @@ export class ViewgoalsComponent implements OnInit{
     
     openDialog2(id:any):void {
       sessionStorage.setItem('goalId',id);
-      console.log('vc.ts', id)
+      console.log('Grabbed a number from the back', id)
       let dialogRef = this.dialog.open(UpdateGModalComponent);
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog closed: ${result}`);
