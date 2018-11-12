@@ -22,7 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule, MatCardModule, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
-// import { AddGModalComponent } from './addGModal/addgmodal.component';
+import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GoalListService } from './_services/goal-list.service';
 import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
@@ -48,12 +48,13 @@ import { HighlightDirective } from './highlight.directive';
     SettingsComponent,
     ViewgoalsComponent,
     SettingslistComponent,
-    // AddGModalComponent,
+    AddGModalComponent,
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent,
     HighlightDirective,
     SettingslistComponent,
+    AddGModalComponent,
   ],
   imports:[
     BrowserModule,
@@ -92,7 +93,7 @@ import { HighlightDirective } from './highlight.directive';
   ],
   bootstrap: [AppComponent],
 
-  entryComponents: [UpdateGModalComponent, SettingslistComponent],//need to add AddNgModalComponent later
+  entryComponents: [ AddGModalComponent, UpdateGModalComponent, SettingslistComponent],//need to add AddGModalComponent later
 
  
 
