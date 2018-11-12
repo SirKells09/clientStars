@@ -13,19 +13,17 @@ import { first } from 'rxjs/operators';
 export class SettingslistComponent{
 user : User;
 users: User[] = [];
-// userForm: FormGroup;
+userUpdate: FormGroup;
 currentId: number;
 currentEmail: string;
 _email: string;
 _password: string;
 _pin: number;
-email = new FormControl('', [Validators.required, Validators.email]);
-password = new FormControl ('', [Validators.required, Validators.minLength(6)]);
-pin = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]);
+
 
   constructor(private us: UserService ,
     public dialogRef: MatDialogRef<SettingslistComponent>,
-    // public fb : FormBuilder,
+    public fb : FormBuilder,
     @Inject(MAT_DIALOG_DATA)public data:any)
 {
  this.user = data
@@ -35,27 +33,30 @@ pin = new FormControl('', [Validators.required, Validators.minLength(4), Validat
 ngOnInit(){
   this.loadAllUsers();
   console.log(this.loadAllUsers);
-}
-  
-  deleteUser(id: number) {
-    this.us.delete(this.currentId).subscribe(() => { 
-        this.loadAllUsers()
-    });
+
+  this.userUpdate = this.fb.group({
+    email:new FormControl('', [Validators.required, Validators.email]),
+password: new FormControl ('', [Validators.required, Validators.minLength(6)]),
+pin: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)])
+
+  })
 }
 
-updateUser(id: number, email: string, pin: number, password: string) {
-  this._email = email;
-  this._pin = pin;
-  this._password = password;
-
-  this.us.updateUser(this.currentId, this._email, this._pin, this._password)
+updateUser() {
+  this.us.updateUser(this.currentId, this.userUpdate.value)
   .pipe(first())
   .subscribe( data => {
-      this.dialogRef.close(data);
-      window.location.reload();
-      
-    });
+    this.dialogRef.close(data);
+    // window.location.reload();
+    
+  });
   
+}
+
+deleteUser(id: number) {
+  this.us.delete(this.currentId).subscribe(() => { 
+      this.loadAllUsers()
+  });
 }
 
 currentUser(id: number) {

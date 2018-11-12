@@ -18,21 +18,19 @@ export class GoalListService {
   constructor(private http: HttpClient) { }
 
   
-  postGoal(userId: any, goal:Goal ) {
+  postGoal(userId: number, goal:Goal ) {
     console.log("wow you posted something")
     return this.http.put(`${environment.apiUrl}/user/goal/` + userId, goal, httpOptions)
   }
 
-//user goals
-  getAll(userId:any):Observable<Goal[]>{
+  getAll(userId:number):Observable<Goal[]>{
     console.log("here you are my friend the goals you asked for")
-    return this.http.get<Goal[]>(`${environment.apiUrl}/goal/userlist/`+ userId)
-    // return this.http.get(`${environment.apiUrl}/user/`+ userId, httpOptions )
+    return this.http.get<Goal[]>(`${environment.apiUrl}/user/userlist/`+ userId, httpOptions)
 }
 
 getAItem(id){
   console.log('single goal id =', id)
-  return this.http.get(`${environment.apiUrl}/goal/onegoal/` +id )
+  return this.http.get(`${environment.apiUrl}/goal/onegoal/` + id )
 }
 
 update(id, goal){  
