@@ -15,6 +15,7 @@ import {DataSource} from '@angular/cdk/collections';
 import { FormGroup } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-viewgoals',
   templateUrl: './viewgoals.component.html',
@@ -34,6 +35,7 @@ export class ViewgoalsComponent implements OnInit{
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
   dialogResult:[];
+
   displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
   currentGoals: any;
@@ -42,8 +44,16 @@ export class ViewgoalsComponent implements OnInit{
   resultsLength: number;
   rowId: number;
   goalId: number;
+<<<<<<< HEAD
   starred: boolean;
   goal: boolean;
+=======
+  updateResult: [];
+ 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+>>>>>>> 6669066b40cb951d2b4d9ee202afa961d908feb5
 
   constructor(
     public dialog: MatDialog,
@@ -177,9 +187,10 @@ export class ViewgoalsComponent implements OnInit{
         hasBackdrop: true, autoFocus:true});
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog closed: ${result}`);
-        this.dialogResult = result;
+        this.updateResult = result;
       });
     }
+
 
   applyFilter(filterValue: string) {
     this.currentGoals.filter = filterValue.trim().toLowerCase();
@@ -202,10 +213,6 @@ export class GoalDataSource extends DataSource<any> {
   disconnect() {}
 }
 
-// export interface Database {
-//   goalItems: Goals[];
-//   total_count: number;
-// }
 
 export interface Goal {
   id: number;
