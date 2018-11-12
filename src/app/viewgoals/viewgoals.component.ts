@@ -12,6 +12,8 @@ import { first, map, catchError, switchMap } from 'rxjs/operators';
 import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
 import { Goal } from '../_models/goal';
 import {DataSource} from '@angular/cdk/collections';
+import { FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-viewgoals',
@@ -20,12 +22,14 @@ import {DataSource} from '@angular/cdk/collections';
 })
 
 export class ViewgoalsComponent implements OnInit{
-  color = 'black';
+  color = 'blue';
+  multiple: boolean;
+  checked: boolean;
   _input: number;
   display: boolean;
   pin: number;
   parent: string;
-  currentId: number;
+  userId: number;
   unstarred: boolean;
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
@@ -38,6 +42,8 @@ export class ViewgoalsComponent implements OnInit{
   resultsLength: number;
   rowId: number;
   goalId: number;
+  starred: boolean;
+  goal: boolean;
 
   constructor(
     public dialog: MatDialog,
@@ -51,7 +57,7 @@ export class ViewgoalsComponent implements OnInit{
     this.pin = JSON.parse(localStorage.getItem('pin'));
     this.parent = localStorage.getItem('parent');
     this.currentStars = JSON.parse(localStorage.getItem('stars'));
-    this.currentId = JSON.parse(localStorage.getItem('id'));
+    this.userId = JSON.parse(localStorage.getItem('id'));
     
   
     iconRegistry.addSvgIcon(
@@ -74,7 +80,7 @@ export class ViewgoalsComponent implements OnInit{
       sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-search-24px.svg'));
   }
   ngOnInit() {
-    this.unstarred = false;
+    // this.starred = false;
     // this.sameRow = false;
     if(this.parent === 'true'){
       this.display = true
@@ -84,7 +90,7 @@ export class ViewgoalsComponent implements OnInit{
 
         
     
-    this.gl.getAll(this.currentId)
+    this.gl.getAll(this.userId)
       .subscribe(data => {
       console.log(data)
       this.currentGoals = data
@@ -121,32 +127,39 @@ export class ViewgoalsComponent implements OnInit{
     this.rowId = row.id;
   }
 
-  onStarClicked(id: number) {
-    console.log(id);
-    this.goalId = id;
-    console.log(this.goalId);
-    this.unstarred = true;
+  onStarClicked(goal) {
+    this.starred = true;
+    goal.starred = this.starred;
+    this.goal = goal.starred;
+    this.goalId = goal.id;
     this.currentStars = this.currentStars + 1;
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
-    this.currentUser = this.userService.getById(this.currentId)
-    .pipe(first())
-    .subscribe(data => {
-      console.log(data)
-    })
+    this.gl.updateStarred(this.userId, this.starred)
+    .subscribe();
+    // this.currentUser = this.userService.getById(this.userId)
+    // .pipe(first())
+    // .subscribe(data => {
+    //   console.log(data)
+    // });
+    this.userService.updateStars(this.userId, this.currentStars)
+    .subscribe();
   }
   
 
 
-  onStarUnclicked(id: number) {
-    console.log(id);
-    this.goalId = id;
-    console.log(this.goalId);
+  onStarUnclicked(goal) {
+    this.starred = false;
+    goal.starred = this.starred;
+    this.goalId = goal.id;
+    console.log(goal.id)
     if (this.currentStars === 1){
       this.currentStars = 0
     } else {
       this.currentStars = this.currentStars - 1;
     };
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
+    this.userService.updateStars(this.userId, this.currentStars)
+    .subscribe();
   }
 
   openDialog(): void {

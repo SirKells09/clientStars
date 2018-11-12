@@ -28,14 +28,20 @@ export class GoalListService {
     // return this.http.get(`${environment.apiUrl}/user/`+ userId, httpOptions )
 }
 
-update(userId:any , goal: Goal){
+update(userId: any , goal: Goal){
   return this.http
-  .put<any>(`http://${environment.apiUrl}/goal/updategoal/` + userId, goal, httpOptions )
+  .put<any>(`${environment.apiUrl}/goal/updategoal/` + userId, goal, httpOptions )
 }
 
 delete(id:number){
   return this.http.delete(`${environment.apiUrl}/goal/delete/` + id, httpOptions)
 }
+
+updateStarred(userId: number, starred: boolean){
+  return this.http
+  .put<any>(`${environment.apiUrl}/user/goal/` + userId, {starred:starred}, httpOptions)
+}
+
 
 }
 
