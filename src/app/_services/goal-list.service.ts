@@ -5,7 +5,9 @@ import {Goal} from '../_models/goal'
 import { Observable } from 'rxjs';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
 };
 
 
@@ -18,16 +20,15 @@ export class GoalListService {
   constructor(private http: HttpClient) { }
 
   
-  postGoal(userId: any, goal:Goal ) {
+  postGoal(userId: number, goal:Goal ) {
     console.log("wow you posted something")
     return this.http.put(`${environment.apiUrl}/user/goal/` + userId, goal, httpOptions)
   }
 
 //user goals
-  getAll(userId:any):Observable<Goal[]>{
+  getAll(userId: number):Observable<Goal[]>{
     console.log("here you are my friend the goals you asked for")
-    return this.http.get<Goal[]>(`${environment.apiUrl}/goal/userlist/`+ userId)
-    // return this.http.get(`${environment.apiUrl}/user/`+ userId, httpOptions )
+    return this.http.get<Goal[]>(`${environment.apiUrl}/user/userlist/`+ userId, httpOptions)
 }
 
 getAItem(id){
@@ -35,19 +36,19 @@ getAItem(id){
   return this.http.get(`${environment.apiUrl}/goal/onegoal/${id}`)
 }
 
-update(id, goal){  
+update(goalId, goal){  
   console.log('goal has been gone and gotten for you kind sir')  
-  return this.http.put(`${environment.apiUrl}/goal/updategoal/${id}`, goal, httpOptions )
+  return this.http.put(`${environment.apiUrl}/user/updategoal/` + goalId, goal, httpOptions)
 }
 
-updateStarred(userId: number, starred: boolean){
+updateStarred(goalId: number, starred: boolean){
   return this.http
-  .put<any>(`${environment.apiUrl}/user/goal/` + userId, {starred:starred}, httpOptions)
+  .put(`${environment.apiUrl}/user/updategoal/` + goalId, {starred:starred}, httpOptions)
 }
 
 goalDelete(id){
   console.log('that goal is out the window')
-  return this.http.delete(`${environment.apiUrl}/goal/delete/${id}` , httpOptions)
+  return this.http.delete(`${environment.apiUrl}/user/delete/${id}` , httpOptions)
 }
 
 }

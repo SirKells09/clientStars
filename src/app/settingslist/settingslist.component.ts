@@ -20,8 +20,8 @@ _email: string;
 _password: string;
 _pin: number;
 email = new FormControl('', [Validators.required, Validators.email]);
-password = new FormControl ('', [Validators.required, Validators.minLength(6)]);
 pin = new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)]);
+password = new FormControl ('', [Validators.required, Validators.minLength(6)]);
 
   constructor(private us: UserService ,
     public dialogRef: MatDialogRef<SettingslistComponent>,
@@ -43,20 +43,30 @@ ngOnInit(){
     });
 }
 
-updateUser(id: number, email: string, pin: number, password: string) {
+updateUser(email: string, pin: number, password: string) {
   this._email = email;
   this._pin = pin;
   this._password = password;
-
+  
   this.us.updateUser(this.currentId, this._email, this._pin, this._password)
   .pipe(first())
   .subscribe( data => {
-      this.dialogRef.close(data);
-      window.location.reload();
+      console.log(data)
+      this.dialogRef.close(data)
+      // window.location.reload();df
       
-    });
+    })
+  // this.getUserInfo();
   
+
 }
+
+// getUserInfo() {
+//   this.us.getById(this.currentId)
+//   .subscribe(res => {
+//     console.log(res);
+//   })
+// }
 
 currentUser(id: number) {
   

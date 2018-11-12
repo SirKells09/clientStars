@@ -44,7 +44,7 @@ export class ViewgoalsComponent implements OnInit{
   rowId: number;
   goalId: number;
   starred: boolean;
-  goal: boolean;
+  // goal: boolean;
   updateResult: [];
   id:any;
  
@@ -130,18 +130,18 @@ export class ViewgoalsComponent implements OnInit{
   onStarClicked(goal) {
     this.starred = true;
     goal.starred = this.starred;
-    this.goal = goal.starred;
+    // this.goal = goal.starred;
     this.goalId = goal.id;
     this.currentStars = this.currentStars + 1;
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
-    this.gl.updateStarred(this.userId, this.starred)
-    .subscribe();
     // this.currentUser = this.userService.getById(this.userId)
     // .pipe(first())
     // .subscribe(data => {
     //   console.log(data)
     // });
     this.userService.updateStars(this.userId, this.currentStars)
+    .subscribe();
+    this.gl.updateStarred(this.goalId, this.starred)
     .subscribe();
   }
   
@@ -159,6 +159,8 @@ export class ViewgoalsComponent implements OnInit{
     };
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
     this.userService.updateStars(this.userId, this.currentStars)
+    .subscribe();
+    this.gl.updateStarred(this.goalId, this.starred)
     .subscribe();
   }
 
@@ -178,8 +180,6 @@ export class ViewgoalsComponent implements OnInit{
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog closed: ${result}`);
         this.updateResult = result;
-      
-
 
       });
     }

@@ -29,7 +29,7 @@ export class UserService {
                 console.log(user);
                 console.log(user.email);
                 console.log(user.pin);
-                console.log(user.passwordhash);
+                console.log(user.password);
                 return user
             }))
         }
@@ -64,7 +64,7 @@ export class UserService {
             return this.http.put<any>(`${environment.apiUrl}/user/` + id, { stars: stars }, httpOptions);
         }
 
-        updateUser(id: number, email: string, pin: number, password: string) {
+        updateUser(id: number, email: string, pin: number, password: string,) {
             return this.http.put<any>(`${environment.apiUrl}/user/` + id, { email: email, pin: pin, password: password }, httpOptions);
         }
     
