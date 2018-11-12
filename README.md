@@ -11,9 +11,9 @@ These instructions will get you a copy of the project up and allow you to to run
 # Installation 
 You can clone the repository for this application here: 
 
-client - https://github.com/SirKells09/clientStars.git
+Client - https://github.com/SirKells09/clientStars.git
 <br />
-server - https://github.com/SirKells09/serverStars.git
+Server - https://github.com/SirKells09/serverStars.git
 
 ## Development Client Installation
 
