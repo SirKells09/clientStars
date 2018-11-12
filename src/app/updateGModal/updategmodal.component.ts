@@ -45,8 +45,7 @@ export class UpdateGModalComponent implements OnInit {
     console.log('goalId =',this.goalId)
     this.gl.update(this.goalId, this.updateForm.value)
     .subscribe(data => {
-      console.log(data)
-      console.log('goal has been updated')
+      console.log('goal has been updated', data)
     })
     this.dialogRef.close()
     // window.location.reload();
@@ -60,8 +59,10 @@ export class UpdateGModalComponent implements OnInit {
     console.log('deleting shall commence')
   this.gl.goalDelete(this.goalId)
   .subscribe(data=>
-    console.log(data)
+    console.log(data, "is gone out the window")
     )
+    this.dialogRef.close()
+    window.location.reload();
   } 
 
 }

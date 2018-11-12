@@ -178,9 +178,7 @@ export class ViewgoalsComponent implements OnInit{
       console.log('Grabbed a number from the back', id)
       let dialogRef = this.dialog.open(UpdateGModalComponent);
       dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog closed: ${result}`);
         this.updateResult = result;
-
       });
     }
 
