@@ -5,7 +5,9 @@ import {Goal} from '../_models/goal'
 import { Observable } from 'rxjs';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
 };
 
 
@@ -23,6 +25,8 @@ export class GoalListService {
     return this.http.put(`${environment.apiUrl}/user/goal/` + userId, goal, httpOptions)
   }
 
+
+//user goals
   getAll(userId:number):Observable<Goal[]>{
     console.log("here you are my friend the goals you asked for")
     return this.http.get<Goal[]>(`${environment.apiUrl}/user/userlist/`+ userId, httpOptions)
@@ -31,16 +35,22 @@ export class GoalListService {
 getAItem(id){
   console.log('single goal id =', id)
   return this.http.get(`${environment.apiUrl}/goal/onegoal/` + id )
+
 }
 
-update(id, goal){  
+update(goalId, goal){  
   console.log('goal has been gone and gotten for you kind sir')  
-  return this.http.put(`${environment.apiUrl}/goal/updategoal/${id}`, goal, httpOptions )
+  return this.http.put(`${environment.apiUrl}/user/updategoal/` + goalId, goal, httpOptions)
+}
+
+updateStarred(goalId: number, starred: boolean){
+  return this.http
+  .put(`${environment.apiUrl}/user/updategoal/` + goalId, {starred:starred}, httpOptions)
 }
 
 goalDelete(id){
   console.log('that goal is out the window')
-  return this.http.delete(`${environment.apiUrl}/goal/delete/${id}` , httpOptions)
+  return this.http.delete(`${environment.apiUrl}/user/delete/${id}` , httpOptions)
 }
 
 }

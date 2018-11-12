@@ -64,6 +64,7 @@ export class UserService {
             return this.http.put<any>(`${environment.apiUrl}/user/` + id, { stars: stars }, httpOptions);
         }
 
+
         updateUser(id, userInfo) {
             console.log(userInfo)
             return this.http.put<any>(`${environment.apiUrl}/user/` + id, userInfo, httpOptions);

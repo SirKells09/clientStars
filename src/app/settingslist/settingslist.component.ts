@@ -34,6 +34,7 @@ ngOnInit(){
   this.loadAllUsers();
   console.log(this.loadAllUsers);
 
+
   this.userUpdate = this.fb.group({
     email:new FormControl('', [Validators.required, Validators.email]),
 password: new FormControl ('', [Validators.required, Validators.minLength(6)]),
@@ -50,8 +51,8 @@ updateUser() {
     // window.location.reload();
     
   });
-  
 }
+
 
 deleteUser(id: number) {
   this.us.delete(this.currentId).subscribe(() => { 

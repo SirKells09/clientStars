@@ -16,6 +16,7 @@ export class UpdateGModalComponent implements OnInit {
    updateForm: FormGroup;
    id: number;
    goalId:any;
+   userId: number;
   
   constructor( private gl: GoalListService,
     private dialogRef:MatDialogRef<UpdateGModalComponent>, 
@@ -33,13 +34,15 @@ export class UpdateGModalComponent implements OnInit {
             dueDate: new FormControl
        
           })
+          this.userId = JSON.parse(localStorage.getItem('id'));
   }
   
 
    
   updateGoal(){
-    this.goalId = sessionStorage.getItem('goalId')
-    console.log('GOALID =',this.goalId)
+    this.goalId = JSON.parse(sessionStorage.getItem('goalId'));
+    // this.userId = localStorage.getItem('id');
+    console.log('goalId =',this.goalId)
     this.gl.update(this.goalId, this.updateForm.value)
     .subscribe(data => {
       console.log('goal has been updated', data)
