@@ -13,6 +13,7 @@ import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
 import { Goal } from '../_models/goal';
 import {DataSource} from '@angular/cdk/collections';
 
+
 @Component({
   selector: 'app-viewgoals',
   templateUrl: './viewgoals.component.html',
@@ -20,7 +21,7 @@ import {DataSource} from '@angular/cdk/collections';
 })
 
 export class ViewgoalsComponent implements OnInit{
-  // checked: false;
+  color = 'black';
   _input: number;
   display: boolean;
   pin: number;
@@ -29,7 +30,8 @@ export class ViewgoalsComponent implements OnInit{
   unstarred: boolean;
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
-  dialogResult:any[];
+  dialogResult: any[];
+
   displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
   currentGoals: any;
@@ -38,6 +40,11 @@ export class ViewgoalsComponent implements OnInit{
   resultsLength: number;
   rowId: number;
   goalId: number;
+  updateResult: any[];
+ 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
 
   constructor(
     public dialog: MatDialog,
@@ -164,9 +171,10 @@ export class ViewgoalsComponent implements OnInit{
         hasBackdrop: true, autoFocus:true});
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog closed: ${result}`);
-        this.dialogResult = result;
+        this.updateResult = result;
       });
     }
+
 
   applyFilter(filterValue: string) {
     this.currentGoals.filter = filterValue.trim().toLowerCase();
@@ -189,13 +197,10 @@ export class GoalDataSource extends DataSource<any> {
   disconnect() {}
 }
 
-// export interface Database {
-//   goalItems: Goals[];
-//   total_count: number;
-// }
 
 export interface Goal {
   id: number;
   goal: string;
   dueDate: string;
 }
+
