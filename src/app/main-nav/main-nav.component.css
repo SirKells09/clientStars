@@ -43,9 +43,11 @@ mat-nav-list a {
   display: inline-block;
   color: white;
   text-decoration: none;
-  width: 100px;
+  width: 120px;
 }
 
 .nav-link:hover {
     background-color: rgb(137, 125, 182);
 }
+
+

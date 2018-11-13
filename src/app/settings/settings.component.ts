@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
-
-import { User } from '../_models/user';
+import {MatDialog, MatDialogRef } from '@angular/material';
+import {SettingslistComponent} from '../settingslist/settingslist.component';
 import { UserService } from '../_services/user.service';
+import { Router } from '@angular/router';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-settings',
@@ -10,30 +11,59 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-    currentUser: User;
+    disabled: boolean;
     users: User[] = [];
+    currentId: number;
+    parent: string;
 
-    constructor(private userService: UserService) {
-        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    }
+SettingslistRef: MatDialogRef<SettingslistComponent>
+dialogResult:[]
+// currentUser:[]
 
-    ngOnInit() {
-        this.loadAllUsers();
-        
-        
-    }
+  constructor(public dialog: MatDialog, private us: UserService, private router: Router){
+    this.currentId = JSON.parse(localStorage.getItem('id'));
+    this.parent = localStorage.getItem('parent');
+  }
 
-    deleteUser(id: number) {
-        this.userService.delete(id).pipe(first()).subscribe(() => { 
-            this.loadAllUsers() 
-        });
-    }
+  ngOnInit() {
+    if(this.parent === 'true'){
+      this.disabled = false
+    } else {
+      this.disabled = true
+    };
+    this.us.getAll()
+    .subscribe(data => {
+      // console.log(data);
+      this.users = data;
+      console.log(this.users)
+    })
+    
+  }
+  deleteUser(id: number) {
+    this.us.delete(this.currentId).subscribe(data => { 
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('parent');
+    localStorage.removeItem('pin');
+    localStorage.removeItem('id');
+    this.router.navigate(['']);
+    window.location.reload();
 
-    private loadAllUsers() {
-        this.userService.getAll().pipe(first()).subscribe(users => { 
-            this.users = users; 
-        });
-    }
-
+    });
 }
+    openDialog(): void {
+        let dialogRef = this.dialog.open(SettingslistComponent,{
+          hasBackdrop: true, autoFocus:true});
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog closed: ${result}`);
+          this.dialogResult = result;
+        })
+        this.us.getAll()
+          .subscribe(data => {
+          this.users = data;
+          console.log(this.users)
+        })
+      }
+     
+}
+
 

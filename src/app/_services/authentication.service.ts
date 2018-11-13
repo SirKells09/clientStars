@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 
 const httpOptions = {
@@ -13,7 +14,7 @@ const httpOptions = {
 })
 
 export class AuthenticationService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private router: Router) { }
 
     login(email: string, password: string) {
         return this.http.post<any>(`${environment.apiUrl}/user/login`, { email: email, password: password }, httpOptions)
@@ -38,8 +39,18 @@ export class AuthenticationService {
                 localStorage.setItem('stars', user.user.stars);
                 localStorage.setItem('id', user.user.id);
             }
-            return user;
+            return user
                          
         }));
     }
-}       
+
+    logout() {
+        localStorage.removeItem('currentUser');
+        localStorage.removeItem('parent');
+        localStorage.removeItem('pin');
+        localStorage.removeItem('id');
+        localStorage.removeItem('stars');
+        this.router.navigate(['']);
+        window.location.reload();
+      }
+}  

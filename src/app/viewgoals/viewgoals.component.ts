@@ -6,48 +6,49 @@ import { MatDialog,  MatDialogRef } from '@angular/material';
 import { AddGModalComponent } from '../addGModal/addgmodal.component';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { UserService } from '../_services/user.service';
-import { first } from 'rxjs/operators';
+import { GoalListService } from '../_services/goal-list.service';
+import { merge, Observable, of as observableOf } from 'rxjs';
+import { first, map, catchError, switchMap } from 'rxjs/operators';
+import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
+import { Goal } from '../_models/goal';
+import {DataSource} from '@angular/cdk/collections';
+import { FormGroup } from '@angular/forms';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 
 @Component({
   selector: 'app-viewgoals',
   templateUrl: './viewgoals.component.html',
   styleUrls: ['./viewgoals.component.css']
 })
+
 export class ViewgoalsComponent implements OnInit{
-  // checked: false;
+  color = 'blue';
+  multiple: boolean;
+  checked: boolean;
   _input: number;
   display: boolean;
   pin: number;
   parent: string;
-  currentId: number;
-  starred: boolean;
+  userId: number;
+  unstarred: boolean;
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
-  dialogResult:[];
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'stars'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dialogResult: any[];
+  displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
-  
+  currentGoals: any;
+  goals: Goal[] = [];
+  dataSource = new GoalDataSource(this.gl);
+  resultsLength: number;
+  rowId: number;
+  goalId: number;
+  starred: boolean;
+  // goal: boolean;
+  updateResult: any[];
+  id:any;
+  disabled: boolean;
+ 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -56,12 +57,15 @@ export class ViewgoalsComponent implements OnInit{
     private router: Router,
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
-    private userService: UserService
+    private userService: UserService,
+    private gl:GoalListService,
+    
     ) {
     this.pin = JSON.parse(localStorage.getItem('pin'));
     this.parent = localStorage.getItem('parent');
     this.currentStars = JSON.parse(localStorage.getItem('stars'));
-    this.currentId = JSON.parse(localStorage.getItem('id'));
+    this.userId = JSON.parse(localStorage.getItem('id'));
+    this.goalId=JSON.parse(sessionStorage.getItem('goalid'));
     
   
     iconRegistry.addSvgIcon(
@@ -83,19 +87,25 @@ export class ViewgoalsComponent implements OnInit{
       'search',
       sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-search-24px.svg'));
   }
-
   ngOnInit() {
-    this.starred = false;
-
     if(this.parent === 'true'){
-      this.display = true
+      // this.display = true;
+      this.disabled = false
     } else {
-      this.display = false
+      // this.display = false;
+      this.disabled = true
     };
+
+        
     
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
+    this.gl.getAll(this.userId)
+      .subscribe(data => {
+      console.log(data)
+      this.currentGoals = data
+      console.log(this.currentGoals)
+      })
+    }
+    
 
   onSubmit(input: number){
     this._input = input
@@ -103,7 +113,7 @@ export class ViewgoalsComponent implements OnInit{
     console.log(input)
     if(this.pin == this._input){
         console.log('you rock!')
-        this.display = true
+        // this.display = true
         localStorage.setItem('parent', 'true');
         window.location.reload();
     } else {
@@ -112,28 +122,49 @@ export class ViewgoalsComponent implements OnInit{
     }
   }
 
-  
-  onStarClicked():void {
-    // this.starValue = 1
-    this.starred = true;
-    this.currentStars = this.currentStars + 1;
-    JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
-    this.currentUser = this.userService.getById(this.currentId)
-    .pipe(first())
-    .subscribe(data => {
-      console.log(this.currentUser)
-    });
+  selectRow(row) {
+    console.log(row.id);
+    this.rowId = row.id;
+
   }
 
+  onStarClicked(goal) {
+    this.starred = true;
+    goal.starred = this.starred;
+    // this.goal = goal.starred;
+    this.goalId = goal.id;
+    this.currentStars = this.currentStars + 1;    
+    JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
+    this.currentUser = this.userService.getById(this.userId)
+    .pipe(first())
+    .subscribe(data => {
+      console.log(data)
+    });
+    this.userService.updateStars(this.userId, this.currentStars)
+    .subscribe();
+    this.gl.updateStarred(this.goalId, this.starred)
+    .subscribe(data => {
+      console.log(data)
+    });
+  }
+  
 
-  onStarUnclicked():void {
+
+  onStarUnclicked(goal) {
     this.starred = false;
+    goal.starred = this.starred;
+    this.goalId = goal.id;
+    console.log(goal.id)
     if (this.currentStars === 1){
       this.currentStars = 0
     } else {
       this.currentStars = this.currentStars - 1;
     };
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
+    this.userService.updateStars(this.userId, this.currentStars)
+    .subscribe();
+    this.gl.updateStarred(this.goalId, this.starred)
+    .subscribe();
   }
 
   openDialog(): void {
@@ -144,14 +175,43 @@ export class ViewgoalsComponent implements OnInit{
       this.dialogResult = result;
     });
   }
+    
+    openDialog2(id:any):void {
+      sessionStorage.setItem('goalId',id);
+      console.log('Grabbed a number from the back', id)
+      let dialogRef = this.dialog.open(UpdateGModalComponent);
+      dialogRef.afterClosed().subscribe(result => {
+        this.updateResult = result;
+      });
+    }
+
+
+
 
   applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.currentGoals.filter = filterValue.trim().toLowerCase();
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    if (this.currentGoals.paginator) {
+      this.currentGoals.paginator.firstPage();
     }
   }
+}
 
-  
+export class GoalDataSource extends DataSource<any> {
+  userId: number;
+  constructor(private gl:GoalListService) {
+    super();
+    this.userId = JSON.parse(localStorage.getItem('id'));
+  }
+  connect(): Observable<Goal[]> {
+    return this.gl.getAll(this.userId);
+  }
+  disconnect() {}
+}
+
+
+export interface Goal {
+  id: number;
+  goal: string;
+  dueDate: string;
 }

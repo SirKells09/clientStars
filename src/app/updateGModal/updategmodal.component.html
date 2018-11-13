@@ -1,7 +1,9 @@
 <div>
-    <h2 mat-dialog-title> RECORD YOUR GOAL! </h2> 
+
+    <h2 mat-dialog-title> UPDATE DAT GOAL! </h2> 
     
-<mat-dialog-content [formGroup]="goalForm">
+
+<mat-dialog-content [formGroup]="updateForm">
 
     <mat-form-field>
         <input matInput placeholder="Goal" formControlName="goal">
@@ -15,7 +17,9 @@
         </mat-dialog-content>  
         
  <mat-dialog-actions>
-     <button class="mat-raised-button mat-primary" (click)="addGoal()"> CONFIRM </button>
+     <button class="mat-raised-button mat-primary" (click)="updateGoal()"> CONFIRM </button>
      <button class="mat-raised-button mat-primary" (click)="close()"> CANCEL </button> 
+    
+     <button mat-icon-button class="material-button2" (click)="deleteGoal()" ><mat-icon class="iconButton material-icon4" svgIcon="delete" ></mat-icon></button>
     </mat-dialog-actions>
     </div>
