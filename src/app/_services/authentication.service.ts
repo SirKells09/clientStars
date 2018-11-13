@@ -17,7 +17,7 @@ export class AuthenticationService {
     constructor(private http: HttpClient, private router: Router) { }
 
     login(email: string, password: string) {
-        return this.http.post<any>(`${APIURL}/user/login`, { email: email, password: password }, httpOptions)
+        return this.http.post<any>(`https://kew-serverstars.herokuapp.com/user/login`, { email: email, password: password }, httpOptions)
               .pipe(map(user => {
                 if (user&&user.token) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
@@ -31,7 +31,8 @@ export class AuthenticationService {
     }
 
     register(firstName: string, lastName: string, email: string, password: string, pin: number) {
-        return this.http.post<any>(`${APIURL}/user/register`, { firstName: firstName, lastName: lastName, email: email, password: password, pin: pin } , httpOptions)
+        alert("register attempted")
+        return this.http.post<any>(`https://kew-serverstars.herokuapp.com/user/register`, { firstName: firstName, lastName: lastName, email: email, password: password, pin: pin } , httpOptions)
         .pipe(map(user => {
             if (user) {
                 localStorage.setItem('currentUser', JSON.stringify(user));
