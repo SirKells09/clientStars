@@ -1,6 +1,24 @@
 <div>
         <mat-card>
-          <mat-card-title>Update/Delete</mat-card-title>
+          <mat-card-title>Current User Settings</mat-card-title>
+          <mat-card-content>
+              <div class="listWrapper">
+                  <mat-list class="settingsLabels">
+                      <mat-list-item>Email:</mat-list-item>
+                      <mat-divider></mat-divider>
+                      <mat-list-item>Pin:</mat-list-item>
+                    </mat-list>
+                  <mat-list class="settingsList" *ngFor="let user of users">
+                    <mat-list-item class="listItem" *ngIf="user.id === currentId">
+                      {{user.email}}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item class="listItem" *ngIf="user.id === currentId">
+                        {{user.pin}}
+                    </mat-list-item>
+                  </mat-list>
+                </div>
+          </mat-card-content>
           <mat-card-actions>
                 <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="deleteUser()">Delete User</button>
               </mat-card-actions>
@@ -8,8 +26,9 @@
             <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Update User</button>
           </mat-card-actions>
         </mat-card>
-       
  </div>
+
+
    
 
 

@@ -1,2 +1,28 @@
 @import url(../../variables.css);
-  
+
+.listWrapper {
+    position: relative;
+    width: 400px;
+    margin: auto;
+    border: solid black;
+    height: 120px;
+    background-color: grey;
+}
+
+.settingsLabels {
+    position: absolute;
+    /* border: solid white; */
+    width: 100px;
+    height: 120px;
+    left: 0;
+    border-right: solid black;
+}
+
+.settingsList {
+    position: absolute;
+    /* border: solid white; */
+    width: 300px;
+    height: 120px;
+    right: 0;
+}
+

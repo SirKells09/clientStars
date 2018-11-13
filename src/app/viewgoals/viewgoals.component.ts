@@ -142,7 +142,9 @@ export class ViewgoalsComponent implements OnInit{
     this.userService.updateStars(this.userId, this.currentStars)
     .subscribe();
     this.gl.updateStarred(this.goalId, this.starred)
-    .subscribe();
+    .subscribe(data => {
+      console.log(data)
+    });
   }
   
 

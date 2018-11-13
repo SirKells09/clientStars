@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef } from '@angular/material';
 import {SettingslistComponent} from '../settingslist/settingslist.component';
 import { UserService } from '../_services/user.service';
 import { Router } from '@angular/router';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-settings',
@@ -10,22 +11,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-    // currentUser: User;
-    // users: User[] = [];
-    // _email: string;
-    // _pin: number;
-    // _password: string;
+    // currentUser: boolean;
+    users: User[] = [];
     currentId: number;
 
 SettingslistRef: MatDialogRef<SettingslistComponent>
 dialogResult:[]
-currentUser:[]
+// currentUser:[]
 
   constructor(public dialog: MatDialog, private us: UserService, private router: Router){
-    this.currentId = JSON.parse(localStorage.getItem('id'))
+    this.currentId = JSON.parse(localStorage.getItem('id'));
   }
 
   ngOnInit() {
+    this.us.getAll()
+    .subscribe(data => {
+      // console.log(data);
+      this.users = data;
+      console.log(this.users)
+    })
+    
   }
   deleteUser(id: number) {
     this.us.delete(this.currentId).subscribe(data => { 
