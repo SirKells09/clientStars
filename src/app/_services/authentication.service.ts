@@ -19,7 +19,7 @@ export class AuthenticationService {
     login(email: string, password: string) {
         return this.http.post<any>(`${APIURL}/user/login`, { email: email, password: password }, httpOptions)
               .pipe(map(user => {
-                if (user) {
+                if (user&&user.token) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                     localStorage.setItem('pin', user.user.pin);
                     localStorage.setItem('stars', user.user.stars);
