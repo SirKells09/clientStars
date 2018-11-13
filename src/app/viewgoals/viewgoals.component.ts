@@ -47,6 +47,7 @@ export class ViewgoalsComponent implements OnInit{
   // goal: boolean;
   updateResult: [];
   id:any;
+  disabled: boolean;
  
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -87,12 +88,12 @@ export class ViewgoalsComponent implements OnInit{
       sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-search-24px.svg'));
   }
   ngOnInit() {
-    // this.starred = false;
-    // this.sameRow = false;
     if(this.parent === 'true'){
-      this.display = true
+      // this.display = true;
+      this.disabled = false
     } else {
-      this.display = false
+      // this.display = false;
+      this.disabled = true
     };
 
         
@@ -112,7 +113,7 @@ export class ViewgoalsComponent implements OnInit{
     console.log(input)
     if(this.pin == this._input){
         console.log('you rock!')
-        this.display = true
+        // this.display = true
         localStorage.setItem('parent', 'true');
         window.location.reload();
     } else {

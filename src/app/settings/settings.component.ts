@@ -11,9 +11,10 @@ import { User } from '../_models/user';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-    // currentUser: boolean;
+    disabled: boolean;
     users: User[] = [];
     currentId: number;
+    parent: string;
 
 SettingslistRef: MatDialogRef<SettingslistComponent>
 dialogResult:[]
@@ -21,9 +22,15 @@ dialogResult:[]
 
   constructor(public dialog: MatDialog, private us: UserService, private router: Router){
     this.currentId = JSON.parse(localStorage.getItem('id'));
+    this.parent = localStorage.getItem('parent');
   }
 
   ngOnInit() {
+    if(this.parent === 'true'){
+      this.disabled = false
+    } else {
+      this.disabled = true
+    };
     this.us.getAll()
     .subscribe(data => {
       // console.log(data);
