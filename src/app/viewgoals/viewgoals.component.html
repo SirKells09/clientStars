@@ -3,11 +3,11 @@
     <div class="main">
             <div>      
                 <mat-card>
-                    <mat-card-title>Lets get Started!</mat-card-title>
+                    <mat-card-title>Lets Shoot For The Stars!</mat-card-title>
 
                     <mat-card-actions>
-                        <button mat-raised-button disabled *ngIf="this.disabled === true" class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
-                        <button mat-raised-button *ngIf="this.disabled === false" class="btn btn-lg btn-outline-primary" (click)="openDialog()">Add a goal!</button>
+                        <button mat-raised-button disabled *ngIf="this.disabled === true" class="addgoalbutton" (click)="openDialog()">Add a Goal!</button>
+                        <button mat-raised-button *ngIf="this.disabled === false" class="addgoalbutton" (click)="openDialog()">Add a Goal!</button>
                     </mat-card-actions>
                 </mat-card>
             </div>

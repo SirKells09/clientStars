@@ -95,18 +95,21 @@
     color: rgb(103, 4, 160);
 }
 
-/* Three image containers (use 25% for four, and 50% for two, etc) */
+/* family pics */
 .familyrow {
-    /* float: left;  */
-    /* width: 33.33%; */
-    padding: 5px;
     padding-top: 30px;
-    padding-right: 30px;
     padding-bottom: 20px;
-    padding-left: 50px;
-    display: flex;
+    padding-left: 20%; 
     background-color: rgb(250, 250, 250);
 }
+
+.kelly {
+    position: absolute;
+}
+
+/* .kristen {
+    float: right;
+}  */
   
   /* Clear floats after image containers */
   .familyrow::after {

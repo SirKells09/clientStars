@@ -34,7 +34,7 @@ export class ViewgoalsComponent implements OnInit{
   unstarred: boolean;
   currentStars: number;
   addGModalRef: MatDialogRef<AddGModalComponent>;
-  dialogResult:[];
+  dialogResult: any[];
   displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
   currentUser: {};
   currentGoals: any;
@@ -45,7 +45,7 @@ export class ViewgoalsComponent implements OnInit{
   goalId: number;
   starred: boolean;
   // goal: boolean;
-  updateResult: [];
+  updateResult: any[];
   id:any;
   disabled: boolean;
  

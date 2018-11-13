@@ -81,9 +81,11 @@ input {
 .enterbutton {
     margin: 0 auto;
     position: center;
-    background-color: rgb(69, 63, 102);
-    height: 31px;
+    background-color: rgb(85, 78, 126);
+    height: 20%;
     color: white;
+    width: 10%;
+    font-size: 18pt;
 }
 
 .enterbutton:hover {
