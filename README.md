@@ -47,7 +47,6 @@ Run `nodemon` in terminal to startup server
 
 ## This Application Was Built With 
 Angular Version 7.0.2 - The web framework used
-
 <br />
 Node.js - Database management 
 <br />
