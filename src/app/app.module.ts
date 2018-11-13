@@ -35,7 +35,7 @@ import { SettingslistComponent } from './settingslist/settingslist.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
-import { StarDirective } from './viewgoals/star.directive';
+import { HighlightDirective } from './highlight.directive';
 
 
 
@@ -59,7 +59,7 @@ import { StarDirective } from './viewgoals/star.directive';
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent,
-    StarDirective 
+    HighlightDirective 
   ],
   imports:[
     BrowserModule,
@@ -94,7 +94,7 @@ import { StarDirective } from './viewgoals/star.directive';
     AuthenticationService,
     GoalListService,
     UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 

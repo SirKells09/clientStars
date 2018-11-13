@@ -1,15 +1,21 @@
 <div>
 <h2 mat-dialog-title> User Updates </h2> 
- <mat-dialog-content>
-         <mat-form-field><input #email matInput placeholder="email" type="text"></mat-form-field>
+ <mat-dialog-content [formGroup]="userUpdate">
+         <mat-form-field>
+             <input  matInput placeholder="email"  formControlName="email" type="text">
+            </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="password"  formControlName="password" type="text">
+        </mat-form-field>
         
-        <mat-form-field><input #password matInput placeholder="password"  type="text"></mat-form-field>
-        
-        <mat-form-field><input #pin matInput placeholder="pin" type="number"></mat-form-field>
+        <mat-form-field>
+            <input matInput  formControlName="pin" placeholder="pin" type="number">
+        </mat-form-field>
         </mat-dialog-content>  
                 
  <mat-dialog-actions>
-     <button class="mat-raised-button mat-primary" (click)="updateUser(email.value, password.value, pin.value)"> CONFIRM </button>
+     <button class="mat-raised-button mat-primary" (click)="updateUser()"> CONFIRM </button>
      <button (click)="close()"> CANCEL </button> 
     </mat-dialog-actions>
 </div>

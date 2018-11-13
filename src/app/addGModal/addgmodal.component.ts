@@ -24,19 +24,23 @@ export class AddGModalComponent implements OnInit {
      this.dialogRef.close()
      window.location.reload();
    }
-  ngOnInit(){
-    this.userId = JSON.parse(localStorage.getItem('id'));
-    this.goalForm = this.fb.group({
-      goal: new FormControl,
-      dueDate: new FormControl,
-      message: new FormControl
-    })
+
+ 
+   addGoal(){
+     this.gl.postGoal(this.userId, this.goalForm.value)
+     .subscribe(this.data)
+     console.log(this.data)
+     this.dialogRef.close()
+   }
+
+   ngOnInit(){
+      this.userId = JSON.parse(localStorage.getItem('id'))
+     this.goalForm = this.fb.group({
+       goal: new FormControl,
+       dueDate: new FormControl,
+       message: new FormControl
+      })
+    
   }
-  
-addGoal(){
-  // let userId = sessionStorage.getItem('userid')
-  this.gl.postGoal(this.userId, this.goalForm.value).subscribe()
-  this.dialogRef.close()
-}
 
 }
