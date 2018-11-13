@@ -5,6 +5,7 @@ The child is awarded a star each time a goal is completed and the stars are trac
 
 You can view this application by following this link: https://kew-clientstars.herokuapp.com/
 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
 
 # Getting Started
@@ -49,6 +50,7 @@ Run `nodemon` in terminal to startup server
 
 ## This Application Was Built With 
 Angular Version 7.0.2 - The web framework used
+
 <br />
 Node.js - Database management 
 <br />
