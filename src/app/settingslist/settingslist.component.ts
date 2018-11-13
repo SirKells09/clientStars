@@ -1,15 +1,16 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms'
-import {User} from '../_models/user';
+import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogRef } from '@angular/material';
+import {SettingslistComponent} from '../settingslist/settingslist.component';
 import { UserService } from '../_services/user.service';
 import { first, timeout } from 'rxjs/operators';
 
+
 @Component({
-  selector: 'app-settingslist',
-  templateUrl: './settingslist.component.html',
-  styleUrls: ['./settingslist.component.css']
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.css']
 })
+
 export class SettingslistComponent{
 user : User;
 users: User[] = [];
@@ -53,18 +54,20 @@ updateUser() {
 }
 
 
-deleteUser(id: number) {
-  this.us.delete(this.currentId).subscribe(() => { 
-      this.loadAllUsers()
-  });
-}
+  ngOnInit() {
+  }
+  deleteUser(id: number) {
+    this.us.delete(this.currentId).subscribe(data => { 
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('parent');
+    localStorage.removeItem('pin');
+    localStorage.removeItem('id');
+    this.router.navigate(['']);
+    window.location.reload();
 
-currentUser(id: number) {
-  
-    this.us.getById(this.currentId).pipe(first()).subscribe(users => { 
-      console.log(this.currentUser)
     });
 }
+
 
 private loadAllUsers(){
 this.us.getAll().pipe(first()).subscribe(users =>{
@@ -77,3 +80,4 @@ this.us.getAll().pipe(first()).subscribe(users =>{
   }
 
 }
+

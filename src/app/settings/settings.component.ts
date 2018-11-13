@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef } from '@angular/material';
-import {SettingslistComponent} from '../settingslist/settingslist.component';
+import { first } from 'rxjs/operators';
+
+import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
+
 import { Router } from '@angular/router';
 import { User } from '../_models/user';
 
@@ -11,6 +13,7 @@ import { User } from '../_models/user';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
+
     // currentUser: boolean;
     users: User[] = [];
     currentId: number;
@@ -60,3 +63,10 @@ dialogResult:[]
 }
 
 
+
+    private loadAllUsers() {
+        this.userService.getAll().pipe(first()).subscribe(users => { 
+            this.users = users; 
+        });
+    }
+}

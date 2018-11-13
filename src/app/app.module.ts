@@ -20,7 +20,6 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule, MatCardModule, MatFormFieldModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
-
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -37,11 +36,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import { HighlightDirective } from './highlight.directive';
 
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,14 +45,15 @@ import { HighlightDirective } from './highlight.directive';
     RegisterComponent,
     LoginComponent,
     SettingsComponent,
-    AddGModalComponent,
     ViewgoalsComponent,
     SettingslistComponent,
     AddGModalComponent,
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent,
-    HighlightDirective 
+    HighlightDirective,
+    SettingslistComponent,
+    AddGModalComponent,
   ],
   imports:[
     BrowserModule,
@@ -96,12 +91,11 @@ import { HighlightDirective } from './highlight.directive';
   ],
   bootstrap: [AppComponent],
 
-  entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent],
+  entryComponents: [ AddGModalComponent, UpdateGModalComponent, SettingslistComponent],//need to add AddGModalComponent later
 
  
 
 })
 export class AppModule { }
-
 
 
