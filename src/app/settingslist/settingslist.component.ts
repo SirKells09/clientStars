@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import {FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms'
 import {User} from '../_models/user';
 import { UserService } from '../_services/user.service';
-import { first } from 'rxjs/operators';
+import { first, timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-settingslist',
@@ -37,8 +37,8 @@ ngOnInit(){
 
   this.userUpdate = this.fb.group({
     email:new FormControl('', [Validators.required, Validators.email]),
-password: new FormControl ('', [Validators.required, Validators.minLength(6)]),
-pin: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)])
+    password: new FormControl ('', [Validators.required, Validators.minLength(6)]),
+    pin: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)])
 
   })
 }
@@ -49,7 +49,6 @@ updateUser() {
   .subscribe( data => {
     this.dialogRef.close(data);
     // window.location.reload();
-    
   });
 }
 
@@ -76,4 +75,5 @@ this.us.getAll().pipe(first()).subscribe(users =>{
   close() {
     this.dialogRef.close()
   }
+
 }

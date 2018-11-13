@@ -1,28 +1,44 @@
 @import url(../../variables.css);
 
+.settingsWrapper {
+    height: 900px;
+    background-color: var(--p3);
+    position: relative;
+}
+
+.cardWrapper {
+    position: absolute;
+    padding-top: 8%;
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+    background-color: white;
+    border: 2px solid var(--p4);
+    box-shadow: 5px 5px 30px var(--p5);
+}
+
 .listWrapper {
     position: relative;
-    width: 400px;
+    width: 50%;
     margin: auto;
-    border: solid black;
-    height: 120px;
-    background-color: grey;
+    border: .5px solid black;
+    height: 46%;
+    background-color: white;
 }
 
 .settingsLabels {
     position: absolute;
-    /* border: solid white; */
-    width: 100px;
-    height: 120px;
+    width: 40%;
+    height: 100%;
     left: 0;
-    border-right: solid black;
+    border-right: .5px solid black;
 }
 
 .settingsList {
     position: absolute;
-    /* border: solid white; */
-    width: 300px;
-    height: 120px;
+    width: 60%;
+    height: 100%;
     right: 0;
 }
 

@@ -49,9 +49,14 @@ dialogResult:[]
         dialogRef.afterClosed().subscribe(result => {
           console.log(`Dialog closed: ${result}`);
           this.dialogResult = result;
-        });
+        })
+        this.us.getAll()
+          .subscribe(data => {
+          this.users = data;
+          console.log(this.users)
+        })
       }
      
-      }
+}
 
 
