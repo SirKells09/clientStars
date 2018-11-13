@@ -5,8 +5,7 @@ import { User } from '../_models/user';
 import { map } from 'rxjs/operators';
 
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'
-                                })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
 @Injectable({
   providedIn: 'root'
@@ -14,9 +13,9 @@ const httpOptions = {
 
 
 export class UserService {
-    constructor(private http: HttpClient) { }
-        
-        get() {
+    constructor(private http: HttpClient) {}
+      
+          get() {
             return this.http.get<User>(`${environment.apiUrl}/user`, httpOptions);
         }
 
@@ -61,12 +60,15 @@ export class UserService {
             }));
         }
     
-        update(id: number, stars: number) {
+        updateStars(id: number, stars: number) {
             return this.http.put<any>(`${environment.apiUrl}/user/` + id, { stars: stars }, httpOptions);
+        }
+
+        updateUser(id: number, email: string, pin: number, password: string) {
+            return this.http.put<any>(`${environment.apiUrl}/user/` + id, { email: email, pin: pin, password: password }, httpOptions);
         }
     
         delete(id: number) {
             return this.http.delete(`${environment.apiUrl}/user/` + id, httpOptions);
         }
-
 }

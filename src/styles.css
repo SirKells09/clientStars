@@ -7,9 +7,7 @@
 @import "./app/register/register.component.css";
 @import "./app/settings/settings.component.css";
 @import "./app/viewgoals/viewgoals.component.css";
-/* @import ".app/resources/resources.component.css"; */
-
-
+@import "./app/resources/resources.component.css";
 
 
 body, html {
@@ -18,4 +16,4 @@ body, html {
 
 body {
     margin: 0;
-}
+} 
