@@ -6,7 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './_guards/auth.guard';
-import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { AlertService } from './_services/alert.service';
 import { AuthenticationService } from './_services/authentication.service';
 import { UserService } from './_services/user.service';
@@ -35,7 +34,7 @@ import { SettingslistComponent } from './settingslist/settingslist.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
-import { StarDirective } from './viewgoals/star.directive';
+import { HighlightDirective } from './highlight.directive';
 
 
 
@@ -59,7 +58,7 @@ import { StarDirective } from './viewgoals/star.directive';
     ResourcesComponent,
     MainNavComponent,
     UpdateGModalComponent,
-    StarDirective 
+    HighlightDirective 
   ],
   imports:[
     BrowserModule,
@@ -93,8 +92,7 @@ import { StarDirective } from './viewgoals/star.directive';
     AlertService,
     AuthenticationService,
     GoalListService,
-    UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    UserService
   ],
   bootstrap: [AppComponent],
 

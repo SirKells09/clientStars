@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 
 export class MainNavComponent implements OnInit{
-  display: boolean;
   parent: string;
+  disabled: boolean;
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset)
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
@@ -19,13 +19,13 @@ export class MainNavComponent implements OnInit{
   }
   
   ngOnInit() {
-    if(this.parent === 'true'){
-      this.display = true
-      // console.log(this.parent)
-    } else {
-      this.display = false
-      // console.log(this.parent)
-    }
+    // if(this.parent === 'true'){
+    //   // this.display = true;
+    //   this.disabled = false
+    // } else {
+    //   // this.display = false;
+    //   this.disabled = true
+    // }
   }
 
   logout() {

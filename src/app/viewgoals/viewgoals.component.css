@@ -1,5 +1,6 @@
 @import url(../../variables.css);
 
+
  .viewgoals {
     position: relative;
     background-color: white;
@@ -8,6 +9,7 @@
 }
 
 .main {
+    position: relative;
     padding-top: 50px;
     background-color: grey;
     height: 100%;
@@ -20,6 +22,7 @@
     background-color: white;
     color: black;
 }
+
 
 .enterPin {
     width: 60%;
@@ -58,6 +61,7 @@
     border: 2px solid black;
     border-radius: 1em;
     
+    padding: 5%;
 }
 
 
@@ -115,4 +119,5 @@
     background-color: white;
     margin: auto;
 } 
+
 

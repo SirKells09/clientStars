@@ -1,14 +1,48 @@
-<div>
-        <mat-card>
-          <mat-card-title>Update/Delete</mat-card-title>
+<div *ngIf="this.disabled === false" class="settingsWrapper">
+        <mat-card class="cardWrapper">
+          <h1>Current User Settings</h1>
+          <mat-card-content class="listWrapper" *ngFor="let user of users">
+              <mat-card-content class="settingsLabels">
+                <mat-list>
+                  <mat-list-item>First Name:</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item>Last Name:</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item>Email:</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item>Pin:</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item>Stars:</mat-list-item>
+                </mat-list>
+                </mat-card-content>
+                <mat-card-content class="settingsList">
+                  <mat-list>
+                  <mat-list-item *ngIf="user.id === currentId">{{user.firstName}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item *ngIf="user.id === currentId">{{user.lastName}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item *ngIf="user.id === currentId">{{user.email}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item *ngIf="user.id === currentId">{{user.pin}}</mat-list-item>
+                  <mat-divider></mat-divider>
+                  <mat-list-item *ngIf="user.id === currentId">{{user.stars}}</mat-list-item>
+                </mat-list>
+                </mat-card-content>
+          </mat-card-content>
           <mat-card-actions>
-                <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="deleteUser()">Delete User</button>
-              </mat-card-actions>
-          <mat-card-actions>
-            <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Update User</button>
+            <button mat-raised-button  class="updateUserBtn" (click)="openDialog()">Update User</button>
+            <button mat-raised-button  class="deleteUserBtn" (click)="deleteUser()">Delete User</button>
           </mat-card-actions>
-        </mat-card>
- </div>
-   
+    </mat-card>
+</div>
 
-
+<div *ngIf="this.disabled === true" class="disabledSettings">
+    <div class="disabledOverlay">
+        <div class="disabledTitle">
+        <h1>Enter your pin on the goals page to access user settings.</h1>
+        </div>
+        <div class="disabledGoal">
+        <a routerLink="/viewgoals"><button class="disabledenterbutton" mat-button>Goals Page</button></a>
+        </div>
+    </div>
+</div>
