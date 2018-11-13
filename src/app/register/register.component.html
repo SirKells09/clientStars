@@ -9,7 +9,7 @@
 <div>
   <div class="example-container">
 
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit(firstName.value, lastName.value, email.value, password.value, pin.value)">
       <label for="firstName">First Name</label>
       <div>  
       <mat-form-field class="inputfield">
