@@ -23,4 +23,11 @@
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.938);
 }
 
- 
+.title {
+    padding-top: 12%;
+    position: relative;
+    z-index: 1;
+    color: white;
+    margin: auto;
+    text-align: center;
+}
