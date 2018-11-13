@@ -3,6 +3,8 @@ Shooting Stars is a productivity tool aimed to provide a structured environment 
 
 The child is awarded a star each time a goal is completed and the stars are tracked using a points system to allow the parent/guardian to reward the child once a certain amount of stars have been earned.
 
+You can view this application by following this link: https://kew-clientstars.herokuapp.com/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
 
 # Getting Started
@@ -46,7 +48,7 @@ Install Nodemon `npm install nodemon`
 Run `nodemon` in terminal to startup server
 
 ## This Application Was Built With 
-Angular - The web framework used
+Angular Version 7.0.2 - The web framework used
 <br />
 Node.js - Database management 
 <br />
