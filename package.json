@@ -1,6 +1,9 @@
 {
   "name": "kew-clientstars",
   "version": "0.0.0",
+  "engines": {
+    "node": "8.11.4"
+  },
   "scripts": {
     "ng": "ng",
     "build": "ng build",
