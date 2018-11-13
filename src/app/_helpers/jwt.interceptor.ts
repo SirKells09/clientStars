@@ -10,7 +10,7 @@
 //         if(currentUser && currentUser.token) {
 //             request = request.clone({
 //                 setHeaders: {
-//                     Authorization: `${currentUser.token}`
+//                     Authorization: `Bearer ${currentUser.token}`
 //                 }
 //             });
 //         }

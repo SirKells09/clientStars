@@ -11,28 +11,18 @@ export class HighlightDirective {
 
   @HostListener('click', ['$event']) 
     onClick() {
-      this.highlight('blue');
-      // this.multiple('multiple');
-      // this.checked('checked');
-
+      this.highlight('black')
   }
  
   private highlight(color: string) {
-    this.el.nativeElement.style.background = color;
+    this.el.nativeElement.style.backgroundColor = color;
   }
 
-  // private multiple(multiple: string) {
-  //   this.el.nativeElement.style = multiple;
-  // }
-
-  // private checked(checked: string) {
-  //   this.el.nativeElement = checked;
-  // }
 
   @Input('appHighlight') highlightColor: string;
   
-  // @Input('multiple') multiple: boolean;
+  @Input('appMultiple') multiple: boolean;
 
-  // @Input('checked') checked: boolean;
+  @Input('appChecked') checked: boolean;
 
 }

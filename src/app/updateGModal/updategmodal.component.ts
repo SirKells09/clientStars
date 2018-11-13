@@ -12,57 +12,38 @@ styleUrls: ['./updategmodal.component.css']
 })
 
 export class UpdateGModalComponent implements OnInit {
-  goal: Goal;
-   updateForm: FormGroup;
-   id: number;
-   goalId:any;
-   userId: number;
+  @Input()
+  goal: Goal
+  private updateForm: FormGroup
   
   constructor( private gl: GoalListService,
     private dialogRef:MatDialogRef<UpdateGModalComponent>, 
    public fb:FormBuilder, @Inject(MAT_DIALOG_DATA)public data:any) 
    {this.goal=data}
   
-   close() {
-    this.dialogRef.close()
-  } 
-  
-  ngOnInit(){
+   ngOnInit(){
+     
           this.updateForm = this.fb.group({
             goal: new FormControl,
+            dueDate: new FormControl,
             message: new FormControl,
-            dueDate: new FormControl
        
           })
-          this.userId = JSON.parse(localStorage.getItem('id'));
+     
+
   }
   
-
-   
-  updateGoal(){
-    this.goalId = JSON.parse(sessionStorage.getItem('goalId'));
-    // this.userId = localStorage.getItem('id');
-    console.log('goalId =',this.goalId)
-    this.gl.update(this.goalId, this.updateForm.value)
-    .subscribe(data => {
-      console.log('goal has been updated', data)
-    })
-    this.dialogRef.close()
-    // window.location.reload();
-  }
-
-
-      
-  deleteGoal(){
-    this.goalId = sessionStorage.getItem('goalId')
-    console.log(this.goalId)
-    console.log('deleting shall commence')
-  this.gl.goalDelete(this.goalId)
-  .subscribe(data=>
-    console.log(data, "is gone out the window")
-    )
-    this.dialogRef.close()
-    window.location.reload();
+  // updateGoal(){
+  //   let goalId = sessionStorage.getItem('goal.id')
+  //   this.gl.update( goalId, this.updateForm.value)
+//     .subscribe(data => {
+//       console.log(data);
+//       console.log(goalId)
+//     this.dialogRef.close(data);
+//   })
+// }
+  
+  close() {
+   this.dialogRef.close()
   } 
-
 }

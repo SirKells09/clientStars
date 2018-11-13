@@ -1,12 +1,34 @@
-<div>
-        <mat-card>
-          <mat-card-title>Update/Delete</mat-card-title>
-          <mat-card-actions>
-                <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="deleteUser()">Delete User</button>
-              </mat-card-actions>
-          <mat-card-actions>
-            <button mat-raised-button  class="btn btn-lg btn-outline-primary" (click)="openDialog()">Update User</button>
-          </mat-card-actions>
-        </mat-card>
-       
- </div>
+
+<div class="settings">
+        <h2 mat-dialog-title> Update Account Information </h2> 
+         <mat-dialog-content>
+                 <mat-form-field><input #email matInput placeholder="email" type="text"></mat-form-field>
+                
+                <mat-form-field><input #password matInput placeholder="password"  type="text"></mat-form-field>
+                
+                <mat-form-field><input #pin matInput placeholder="pin" type="number"></mat-form-field>
+                </mat-dialog-content>  
+                        
+         <mat-dialog-actions>
+             <button class="mat-raised-button mat-primary" (click)="updateUser(email.value, password.value, pin.value)"> CONFIRM </button>
+             <button (click)="close()"> CANCEL </button> 
+            </mat-dialog-actions>
+    </div>
+
+
+    <div>
+        <h2 mat-dialog-title> User Updates </h2> 
+         <mat-dialog-content>
+                 <mat-form-field><input #email matInput placeholder="email" type="text"></mat-form-field>
+                
+                <mat-form-field><input #password matInput placeholder="password"  type="text"></mat-form-field>
+                
+                <mat-form-field><input #pin matInput placeholder="pin" type="number"></mat-form-field>
+                </mat-dialog-content>  
+                        
+         <mat-dialog-actions>
+             <button class="mat-raised-button mat-primary" (click)="updateUser(email.value, password.value, pin.value)"> CONFIRM </button>
+             <button (click)="close()"> CANCEL </button> 
+            </mat-dialog-actions>
+        </div>
+
