@@ -5,7 +5,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { APIURL } from './environments/environment.prod';
 
-if (APIURL.production) {
+if (APIURL) {
   enableProdMode();
 }
 
