@@ -48,7 +48,7 @@ export class UpdateGModalComponent implements OnInit {
       console.log('goal has been updated', data)
     })
     this.dialogRef.close()
-    // window.location.reload();
+    window.location.reload();
   }
 
 
