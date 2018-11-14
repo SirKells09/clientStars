@@ -28,7 +28,7 @@
 }
 
 .addgoalbutton:hover {
-    background-color: gb(1, 1, 2);
+    background-color: rgb(1, 1, 2);
     opacity: 0.75;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .enterPin .submitPinButton:hover {
-    background-color: gb(1, 1, 2);
+    background-color: rgb(1, 1, 2);
     opacity: 0.75;
 }
 
