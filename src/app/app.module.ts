@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './_guards/auth.guard';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
-// import { AlertService } from './_services/alert.service';
 import { AuthenticationService } from './_services/authentication.service';
 import { UserService } from './_services/user.service';
 import { HomeComponent } from './home/home.component';
@@ -85,7 +84,6 @@ import { HighlightDirective } from './highlight.directive';
 
   providers: [
     AuthGuard,
-    // AlertService,
     AuthenticationService,
     GoalListService,
     UserService,
