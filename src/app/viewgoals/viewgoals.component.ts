@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { Router } from'@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -7,13 +7,12 @@ import { AddGModalComponent } from '../addGModal/addgmodal.component';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { UserService } from '../_services/user.service';
 import { GoalListService } from '../_services/goal-list.service';
-import { merge, Observable, of as observableOf } from 'rxjs';
+import { Observable } from 'rxjs';
 import { first, map, catchError, switchMap } from 'rxjs/operators';
 import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
 import { Goal } from '../_models/goal';
 import {DataSource} from '@angular/cdk/collections';
-import { FormGroup } from '@angular/forms';
-
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -44,7 +43,6 @@ export class ViewgoalsComponent implements OnInit{
   rowId: number;
   goalId: number;
   starred: boolean;
-  // goal: boolean;
   updateResult: any[];
   id:any;
   disabled: boolean;
@@ -58,7 +56,7 @@ export class ViewgoalsComponent implements OnInit{
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private userService: UserService,
-    private gl:GoalListService,
+    private gl:GoalListService, public snackBar:MatSnackBar,
     
     ) {
     this.pin = JSON.parse(localStorage.getItem('pin'));
@@ -89,10 +87,8 @@ export class ViewgoalsComponent implements OnInit{
   }
   ngOnInit() {
     if(this.parent === 'true'){
-      // this.display = true;
       this.disabled = false
     } else {
-      // this.display = false;
       this.disabled = true
     };
     
@@ -111,7 +107,6 @@ export class ViewgoalsComponent implements OnInit{
     console.log(input)
     if(this.pin == this._input){
         console.log('you rock!')
-        // this.display = true
         localStorage.setItem('parent', 'true');
         window.location.reload();
     } else {
@@ -126,10 +121,15 @@ export class ViewgoalsComponent implements OnInit{
 
   }
 
+  openSnackBar(){
+    this.snackBar.openFromComponent(MessSnackComponent, 
+     {duration: 2000})
+ }
+
+
   onStarClicked(goal) {
     this.starred = true;
     goal.starred = this.starred;
-    // this.goal = goal.starred;
     this.goalId = goal.id;
     this.currentStars = this.currentStars + 1;    
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
@@ -143,6 +143,7 @@ export class ViewgoalsComponent implements OnInit{
     this.gl.updateStarred(this.goalId, this.starred)
     .subscribe(data => {
       console.log(data)
+      this.openSnackBar()
     });
   }
   
@@ -169,14 +170,12 @@ export class ViewgoalsComponent implements OnInit{
     let dialogRef = this.dialog.open(AddGModalComponent,{
       hasBackdrop: true, autoFocus:true});
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog closed: ${result}`);
       this.dialogResult = result;
     });
   }
     
     openDialog2(id:any):void {
       sessionStorage.setItem('goalId',id);
-      console.log('Grabbed a number from the back', id)
       let dialogRef = this.dialog.open(UpdateGModalComponent);
       dialogRef.afterClosed().subscribe(result => {
         this.updateResult = result;
@@ -213,3 +212,19 @@ export interface Goal {
   goal: string;
   dueDate: string;
 }
+
+
+@Component({
+  selector: 'MessSnackComponent',
+  template: `<span class="snack">
+  Good Job! Ask mom for a cookie!
+</span>
+`,
+  styles: [`
+    .snack{
+      color: white;
+    }
+  `],
+  
+})
+export class MessSnackComponent 

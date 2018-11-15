@@ -13,18 +13,18 @@ import { AuthenticationService } from './_services/authentication.service';
 import { UserService } from './_services/user.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent, LoginSnackComponent } from './login/login.component';
-import { RegisterComponent,RegSnackComponent } from './register/register.component';
+import { RegisterComponent, RegSnackComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { ResourcesComponent } from './resources/resources.component';
-import { MatButtonModule,MatButtonToggleModule,MatCheckboxModule,MatSidenavModule, MatListModule, MatIconModule, MatInputModule,MatSnackBarModule   } from '@angular/material';
+import { MatButtonModule,MatButtonToggleModule,MatCheckboxModule,MatSidenavModule, MatListModule, MatIconModule, MatInputModule,MatSnackBarModule } from '@angular/material';
 import { MatDialogModule, MatCardModule, MatFormFieldModule,} from '@angular/material';
 import { FooterComponent } from './footer/footer.component';
 import { AddGModalComponent, AddSnackComponent } from './addGModal/addgmodal.component';
 import { SettingsComponent } from './settings/settings.component';
 import { GoalListService } from './_services/goal-list.service';
-import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
+import { ViewgoalsComponent, MessSnackComponent } from './viewgoals/viewgoals.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MainNavComponent, OutSnackComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -57,7 +57,8 @@ import { HighlightDirective } from './highlight.directive';
     AddSnackComponent,
     LoginSnackComponent,
     OutSnackComponent,
-    RegSnackComponent
+    RegSnackComponent,
+    MessSnackComponent
 
   ],
   imports:[
@@ -98,10 +99,7 @@ import { HighlightDirective } from './highlight.directive';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-
-  entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent, DeleteSnackComponent, UpdateSnackComponent, AddSnackComponent, LoginSnackComponent, RegSnackComponent, OutSnackComponent  ],
-
- 
+  entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent, DeleteSnackComponent, UpdateSnackComponent, AddSnackComponent, LoginSnackComponent, RegSnackComponent, OutSnackComponent, MessSnackComponent],
 
 })
 export class AppModule { }
