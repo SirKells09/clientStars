@@ -20,13 +20,7 @@ export class MainNavComponent implements OnInit{
   }
   
   ngOnInit() {
-    // if(this.parent === 'true'){
-    //   // this.display = true;
-    //   this.disabled = false
-    // } else {
-    //   // this.display = false;
-    //   this.disabled = true
-    // }
+    
   }
 
   openSnackBar(){

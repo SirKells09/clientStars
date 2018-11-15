@@ -31,7 +31,6 @@ export class UpdateGModalComponent implements OnInit {
        dueDate: new FormControl
        
       })
-      this.userId = JSON.parse(localStorage.getItem('id'));
     }
     
     
@@ -46,7 +45,6 @@ export class UpdateGModalComponent implements OnInit {
    
   close() {
     this.dialogRef.close()
-    window.location.reload();
   }
 
   updateGoal(){
@@ -75,9 +73,6 @@ export class UpdateGModalComponent implements OnInit {
     window.location.reload();
   } 
   
-  close() {
-   this.dialogRef.close()
-  } 
 }
 
 @Component({

@@ -28,19 +28,10 @@ export class AddGModalComponent implements OnInit {
        dueDate: new FormControl,
        message: new FormControl
       })
-   
-   ngOnInit(){
-     this.userId = JSON.parse(localStorage.getItem('id'))
-     this.goalForm = this.fb.group({
-       goal: new FormControl,
-       dueDate: new FormControl,
-       message: new FormControl
-      })
       
     }
         close() {
           this.dialogRef.close()
-          window.location.reload();
         }
         openSnackBar(){
          this.snackBar.openFromComponent(AddSnackComponent, 
