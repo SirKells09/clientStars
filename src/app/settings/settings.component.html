@@ -1,7 +1,7 @@
 <div *ngIf="this.disabled === false" class="settingsWrapper">
         <mat-card class="cardWrapper">
           <h1>Current User Settings</h1>
-          <mat-card-content class="listWrapper" *ngFor="let user of users">
+          <mat-card-content class="listWrapper">
               <mat-card-content class="settingsLabels">
                 <mat-list>
                   <mat-list-item>First Name:</mat-list-item>
@@ -15,23 +15,23 @@
                   <mat-list-item>Stars:</mat-list-item>
                 </mat-list>
                 </mat-card-content>
-                <mat-card-content class="settingsList">
-                  <mat-list>
-                  <mat-list-item *ngIf="user.id === currentId">{{user.firstName}}</mat-list-item>
+                <mat-card-content class="settingsList" *ngFor="let user of users">
+                  <mat-list *ngIf="user.id === currentId">
+                  <mat-list-item>{{user.firstName}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item *ngIf="user.id === currentId">{{user.lastName}}</mat-list-item>
+                  <mat-list-item>{{user.lastName}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item *ngIf="user.id === currentId">{{user.email}}</mat-list-item>
+                  <mat-list-item>{{user.email}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item *ngIf="user.id === currentId">{{user.pin}}</mat-list-item>
+                  <mat-list-item>{{user.pin}}</mat-list-item>
                   <mat-divider></mat-divider>
-                  <mat-list-item *ngIf="user.id === currentId">{{user.stars}}</mat-list-item>
+                  <mat-list-item>{{user.stars}}</mat-list-item>
                 </mat-list>
                 </mat-card-content>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-raised-button  class="updateUserBtn" (click)="openDialog()">Update User</button>
-            <button mat-raised-button  class="deleteUserBtn" (click)="deleteUser()">Delete User</button>
+            <button mat-raised-button  class="updateuser" (click)="openDialog()">Update User</button>
+            <button mat-raised-button  class="deleteuser" (click)="deleteUser()">Delete User</button>
           </mat-card-actions>
     </mat-card>
 </div>

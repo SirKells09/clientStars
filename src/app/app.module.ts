@@ -37,13 +37,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import { HighlightDirective } from './highlight.directive';
-import { JwtInterceptor } from  './_helpers/jwt.interceptor';
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -108,6 +101,3 @@ import { JwtInterceptor } from  './_helpers/jwt.interceptor';
 
 })
 export class AppModule { }
-
-
-
