@@ -1,8 +1,12 @@
 @import url(../../variables.css);
 
+.navcolor {
+  background-color: rgb(75, 70, 107);
+}
+
 .sidenav-container {
   height: 100%;
-  background-color: rgb(83, 75, 128);
+  background-color: rgb(60, 56, 85);
 }
 
 .sidenav {

@@ -3,7 +3,7 @@
 
  .viewgoals {
     position: relative;
-    background-color: white;
+    background-color: rgb(250, 250, 250);
     padding-bottom: 170px;
     height: 100%;
 }
@@ -11,16 +11,25 @@
 .main {
     position: relative;
     padding-top: 50px;
-    background-color: grey;
+    background-color: rgb(250, 250, 250);
     height: 100%;
     padding-bottom: 125px;
-    border: solid black;
 }
 
 .main mat-card {
     margin-bottom: 50px;
-    background-color: white;
+    background-color: rgb(230, 228, 245);
     color: black;
+}
+
+.addgoalbutton {
+    background-color:rgb(85, 78, 126);
+    color: white;
+}
+
+.addgoalbutton:hover {
+    background-color: rgb(1, 1, 2);
+    opacity: 0.75;
 }
 
 
@@ -28,14 +37,15 @@
     width: 60%;
     height: 100%;
     margin: auto;
-    background-color: white;
-    border: 2px solid black;
+    background-color: rgb(250, 250, 250);
+    border: 1px solid rgb(83, 75, 128);
     border-radius: 1em;
     
 }
 
 .enterPin mat-form-field {
-    border: 2px solid rgba(168, 31, 231, 0.616);
+    border: 1px solid rgb(83, 75, 128);
+    border-radius: .5em;
     height: 40px;
     width: 400px;
     margin-top: 40px;
@@ -43,12 +53,14 @@
 }
 
 .enterPin .submitPinButton {
-    background-color: rgb(198, 236, 248);
+    background-color:rgb(85, 78, 126);
     margin-left: 20px;
+    color: white;
 }
 
 .enterPin .submitPinButton:hover {
-    background-color: rgba(168, 31, 231, 0.616);
+    background-color: rgb(1, 1, 2);
+    opacity: 0.75;
 }
 
 
@@ -58,7 +70,7 @@
     margin-left: 10%;
     margin-top: 50px;
     background-color: white;
-    border: 2px solid black;
+    border: 2px solid rgb(75, 70, 107);
     border-radius: 1em;
     
     padding: 5%;
@@ -68,7 +80,7 @@
 .actualTable {
     height: 100%;
     width: 100%;
-    background-color: rgb(198, 236, 248);
+    background-color: rgb(233, 245, 248);
 }
 
 .table th {

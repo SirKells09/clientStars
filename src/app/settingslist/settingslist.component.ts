@@ -48,7 +48,7 @@ updateUser() {
   .pipe(first())
   .subscribe( data => {
     this.dialogRef.close(data);
-    // window.location.reload();
+    window.location.reload();
   });
 }
 
@@ -56,6 +56,7 @@ updateUser() {
 deleteUser(id: number) {
   this.us.delete(this.currentId).subscribe(() => { 
       this.loadAllUsers()
+      window.location.reload();
   });
 }
 

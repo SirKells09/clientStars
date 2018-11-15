@@ -31,6 +31,7 @@ export class AddGModalComponent implements OnInit {
      .subscribe(this.data)
      console.log(this.data)
      this.dialogRef.close()
+     window.location.reload();
    }
 
    ngOnInit(){
