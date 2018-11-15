@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material';
 import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class RegisterComponent {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        public snackBar:MatSnackBar
     ) {}
 
     onSubmit(
@@ -51,4 +53,23 @@ export class RegisterComponent {
                 this.router.navigate(['/viewgoals']);
         })
     }
+
+    openSnackBar(){
+        this.snackBar.openFromComponent(RegSnackComponent, 
+         {duration: 2000})
+     }
+     
 }
+
+@Component({
+    selector: 'RegSnackComponent',
+    template: `<span class="snack">
+    Registered!
+  </span>`,
+    styles: [`
+      .snack{
+        color: white;
+      }
+    `],
+  })
+  export class RegSnackComponent {}

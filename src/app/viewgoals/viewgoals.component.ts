@@ -8,11 +8,12 @@ import { UserService } from '../_services/user.service';
 import { GoalListService } from '../_services/goal-list.service';
 import { Observable, of as observableOf } from 'rxjs';
 import { first, timeout } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { first, map, catchError, switchMap } from 'rxjs/operators';
 import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
 import { Goal } from '../_models/goal';
 import {DataSource} from '@angular/cdk/collections';
-import { FormGroup } from '@angular/forms';
-
+import {MatSnackBar} from '@angular/material';
 
 
 @Component({
@@ -52,7 +53,7 @@ export class ViewgoalsComponent implements OnInit{
     private iconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private userService: UserService,
-    private gl:GoalListService,
+    private gl:GoalListService, public snackBar:MatSnackBar,
     
     ) {
     this.parent = localStorage.getItem('parent');
@@ -119,6 +120,12 @@ export class ViewgoalsComponent implements OnInit{
 
   }
 
+  openSnackBar(){
+    this.snackBar.openFromComponent(MessSnackComponent, 
+     {duration: 2000})
+ }
+
+
   onStarClicked(goal) {
     this.starred = true;
     goal.starred = this.starred;
@@ -130,6 +137,7 @@ export class ViewgoalsComponent implements OnInit{
     this.gl.updateStarred(this.goalId, this.starred)
     .subscribe(data => {
       console.log(data)
+      this.openSnackBar()
     });
   }
   
@@ -190,3 +198,18 @@ export interface Goal {
   goal: string;
   dueDate: string;
 }
+
+
+@Component({
+  selector: 'MessSnackComponent',
+  template: `<span class="snack">
+Great job!! You get one star.</span>
+`,
+  styles: [`
+    .snack{
+      color: white;
+    }
+  `],
+  
+})
+export class MessSnackComponent {}
