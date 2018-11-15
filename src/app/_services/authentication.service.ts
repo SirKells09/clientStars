@@ -31,7 +31,6 @@ export class AuthenticationService {
     }
 
     register(firstName: string, lastName: string, email: string, password: string, pin: number) {
-        alert("register attempted")
         return this.http.post<any>(`https://kew-serverstars.herokuapp.com/user/register`, { firstName: firstName, lastName: lastName, email: email, password: password, pin: pin } , httpOptions)
         .pipe(map(user => {
             if (user) {
