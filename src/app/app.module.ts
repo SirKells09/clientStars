@@ -37,12 +37,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import { HighlightDirective } from './highlight.directive';
 
-
-
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

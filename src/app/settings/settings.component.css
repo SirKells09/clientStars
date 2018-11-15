@@ -2,7 +2,7 @@
 
 .settingsWrapper {
     height: 900px;
-    background-color: var(--p3);
+    background-color:rgb(250, 250, 250);
     position: relative;
 }
 
@@ -22,7 +22,7 @@
     position: relative;
     width: 50%;
     margin: auto;
-    border: .5px solid black;
+    border: .5px solid rgb(83, 75, 128);
     height: 46%;
     background-color: white;
 }
@@ -32,7 +32,7 @@
     width: 40%;
     height: 100%;
     left: 0;
-    border-right: .5px solid black;
+    border-right: .5px solid rgb(83, 75, 128);
 }
 
 .settingsList {
@@ -86,7 +86,7 @@
     padding-top: 3%;
     position: relative;
     z-index: 1;
-    color: white;
+    color:rgb(85, 78, 126);
     margin: auto;
     text-align: center;
     padding-bottom: 3%;
@@ -103,9 +103,29 @@
     font-size: 1vw;
 }
 
+
 .disabledenterbutton:hover {
     background-color: rgb(174, 160, 238);
     box-shadow: 6px 6px 25px var(--y1);
+    opacity: 0.75;
+}
+
+
+.updateuser {
+    background-color: rgb(85, 78, 126);
+}
+
+.updateuser:hover {
+    background-color: gb(1, 1, 2);
+    opacity: 0.75;
+}
+
+.deleteuser {
+    background-color: rgb(85, 78, 126);
+}
+
+.deleteuser:hover {
+    background-color: rgb(240, 6, 6);
     opacity: 0.75;
 }
 
