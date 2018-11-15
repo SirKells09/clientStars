@@ -30,32 +30,6 @@ export class RegisterComponent {
         private authenticationService: AuthenticationService
     ) {}
 
-    firstNameErrorMessage() {
-        return this.firstName.hasError('required') ? 'You must enter a value' : '';
-    }
-
-    lastNameErrorMessage() {
-        return this.lastName.hasError('required') ? 'You must enter a value' : '';
-    }
-
-    emailErrorMessage() {
-        return this.email.hasError('required') ? 'You must enter a value' :
-            this.email.hasError('email') ? 'Not a valid email' :
-        '';
-    }
-
-    passwordErrorMessage() {
-        return this.password.hasError('required') ? 'You must enter a value' :
-            this.password.hasError('minLength(6)') ? 'Password must be at least 6 characters' :
-        '';
-    }
-
-    pinErrorMessage() {
-        return this.pin.hasError('required') ? 'You must enter a value' :
-            this.pin.hasError('minLength(4), maxLength(4') ? 'Pin must be exactly 4 digits long' :
-        '';
-    }
-
     onSubmit(
         firstName: string,
         lastName: string,
