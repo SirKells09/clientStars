@@ -13,7 +13,7 @@ import { AuthenticationService } from './_services/authentication.service';
 import { UserService } from './_services/user.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent, LoginSnackComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent,RegSnackComponent } from './register/register.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
@@ -26,7 +26,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { GoalListService } from './_services/goal-list.service';
 import { ViewgoalsComponent } from './viewgoals/viewgoals.component';
 import { MatMenuModule } from '@angular/material/menu';
-import { MainNavComponent } from './main-nav/main-nav.component';
+import { MainNavComponent, OutSnackComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { UpdateGModalComponent, DeleteSnackComponent,UpdateSnackComponent } from './updateGModal/updategmodal.component';
 import { SettingslistComponent } from './settingslist/settingslist.component';
@@ -55,7 +55,9 @@ import { HighlightDirective } from './highlight.directive';
     DeleteSnackComponent,
     UpdateSnackComponent,
     AddSnackComponent,
-    LoginSnackComponent
+    LoginSnackComponent,
+    OutSnackComponent,
+    RegSnackComponent
 
   ],
   imports:[
@@ -97,7 +99,7 @@ import { HighlightDirective } from './highlight.directive';
   ],
   bootstrap: [AppComponent],
 
-  entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent, DeleteSnackComponent, UpdateSnackComponent, AddSnackComponent, LoginSnackComponent  ],
+  entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent, DeleteSnackComponent, UpdateSnackComponent, AddSnackComponent, LoginSnackComponent, RegSnackComponent, OutSnackComponent  ],
 
  
 

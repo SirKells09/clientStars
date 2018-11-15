@@ -50,7 +50,7 @@ export class LoginComponent {
     }
 }
 @Component({
-    selector: 'loginSnackComponent',
+    selector: 'LoginSnackComponent',
     template: `<span class="snack">
     Logged In.
   </span>

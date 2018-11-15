@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
+import {MatSnackBar} from '@angular/material';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +15,7 @@ export class MainNavComponent implements OnInit{
   disabled: boolean;
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset)
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router, public snackBar:MatSnackBar) {
     this.parent = localStorage.getItem('parent');
   }
   
@@ -28,6 +29,11 @@ export class MainNavComponent implements OnInit{
     // }
   }
 
+  openSnackBar(){
+    this.snackBar.openFromComponent(OutSnackComponent, 
+     {duration: 2000})
+ }
+
   logout() {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('parent');
@@ -36,6 +42,21 @@ export class MainNavComponent implements OnInit{
     localStorage.removeItem('stars');
     localStorage.removeItem('sessionToken');
     this.router.navigate(['']);
+    this.openSnackBar();
     window.location.reload();
   }
 }
+
+@Component({
+  selector: 'OutSnackComponent',
+  template: `<span class="snack">
+  LoggedOut.
+</span>
+`,
+  styles: [`
+    .snack{
+      color: white;
+    }
+  `],
+})
+export class OutSnackComponent {}
