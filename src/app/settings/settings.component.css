@@ -22,7 +22,7 @@
     position: relative;
     width: 50%;
     margin: auto;
-    border: .5px solid black;
+    border: .5px solid rgb(83, 75, 128);
     height: 46%;
     background-color: white;
 }
@@ -32,7 +32,7 @@
     width: 40%;
     height: 100%;
     left: 0;
-    border-right: .5px solid black;
+    border-right: .5px solid rgb(83, 75, 128);
 }
 
 .settingsList {
@@ -79,7 +79,7 @@
     padding-top: 3%;
     position: relative;
     z-index: 1;
-    color: white;
+    color:rgb(85, 78, 126);
     margin: auto;
     text-align: center;
 }
@@ -94,4 +94,22 @@
     width: 200px;
     border: .5px solid var(--p3);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.342);
+}
+
+.updateuser {
+    background-color: rgb(85, 78, 126);
+}
+
+.updateuser:hover {
+    background-color: gb(1, 1, 2);
+    opacity: 0.75;
+}
+
+.deleteuser {
+    background-color: rgb(85, 78, 126);
+}
+
+.deleteuser:hover {
+    background-color: rgb(240, 6, 6);
+    opacity: 0.75;
 }
