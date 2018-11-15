@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "viewgoals", component: ViewgoalsComponent, canActivate: [AuthGuard] },
-  { path: "resources", component: ResourcesComponent, canActivate: [AuthGuard] },
+  { path: "resources", component: ResourcesComponent },
   { path: "settings", component: SettingsComponent, canActivate: [AuthGuard] },
   { path: "**", redirectTo: "viewgoals" },
 ];

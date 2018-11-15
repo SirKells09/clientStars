@@ -15,7 +15,7 @@ const httpOptions = {
 export class UserService {
     constructor(private http: HttpClient) {}
       
-          get() {
+        get() {
             return this.http.get<User>(`https://kew-serverstars.herokuapp.com/user`, httpOptions);
         }
 
@@ -26,10 +26,6 @@ export class UserService {
         getById(id: number) {
             return this.http.get<any>(`https://kew-serverstars.herokuapp.com/user/` + id, httpOptions)
             .pipe(map(user => {
-                console.log(user);
-                console.log(user.email);
-                console.log(user.pin);
-                console.log(user.password);
                 return user
             }))
         }

@@ -18,7 +18,6 @@ export class SettingsComponent implements OnInit {
 
 SettingslistRef: MatDialogRef<SettingslistComponent>
 dialogResult:[]
-// currentUser:[]
 
   constructor(public dialog: MatDialog, private us: UserService, private router: Router){
     this.currentId = JSON.parse(localStorage.getItem('id'));
@@ -33,20 +32,26 @@ dialogResult:[]
     };
     this.us.getAll()
     .subscribe(data => {
-      // console.log(data);
       this.users = data;
-      console.log(this.users)
     })
     
   }
+
+  afterClosed() {
+    this.us.getAll()
+          .subscribe(data => {
+          this.users = data;
+        })
+  }
+
   deleteUser(id: number) {
     this.us.delete(this.currentId).subscribe(data => { 
-    localStorage.removeItem('currentUser');
     localStorage.removeItem('parent');
-    localStorage.removeItem('pin');
     localStorage.removeItem('id');
+    localStorage.removeItem('stars');
+    localStorage.removeItem('sessionToken');
     this.router.navigate(['']);
-    window.location.reload();
+    // window.location.reload();
 
     });
 }
@@ -55,13 +60,9 @@ dialogResult:[]
           hasBackdrop: true, autoFocus:true});
         dialogRef.afterClosed().subscribe(result => {
           console.log(`Dialog closed: ${result}`);
-          this.dialogResult = result;
+          // this.dialogResult = result;
         })
-        this.us.getAll()
-          .subscribe(data => {
-          this.users = data;
-          console.log(this.users)
-        })
+        
       }
      
 }

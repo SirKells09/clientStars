@@ -19,13 +19,22 @@ export class AddGModalComponent implements OnInit {
     public dialogRef:MatDialogRef<AddGModalComponent>, 
    public fb:FormBuilder, @Inject(MAT_DIALOG_DATA)public data:any) 
    {this.goal=data}
-    
-   close() {
-     this.dialogRef.close()
-     window.location.reload();
-   }
 
- 
+   ngOnInit(){
+    this.userId = JSON.parse(localStorage.getItem('id'))
+     this.goalForm = this.fb.group({
+       goal: new FormControl,
+       dueDate: new FormControl,
+       message: new FormControl
+      })
+    
+  } 
+
+  close() {
+    this.dialogRef.close()
+    window.location.reload();
+  }
+  
    addGoal(){
      this.gl.postGoal(this.userId, this.goalForm.value)
      .subscribe(this.data)
@@ -34,14 +43,6 @@ export class AddGModalComponent implements OnInit {
      window.location.reload();
    }
 
-   ngOnInit(){
-      this.userId = JSON.parse(localStorage.getItem('id'))
-     this.goalForm = this.fb.group({
-       goal: new FormControl,
-       dueDate: new FormControl,
-       message: new FormControl
-      })
-    
-  }
+   
 
 }

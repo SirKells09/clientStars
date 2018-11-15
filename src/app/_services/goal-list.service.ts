@@ -33,8 +33,7 @@ export class GoalListService {
 
 getAItem(id){
   console.log('single goal id =', id)
-  return this.http.get(`https://kew-serverstars.herokuapp.com/goal/onegoal/` + id )
-
+  return this.http.get(`https://kew-serverstars.herokuapp.com/goal/onegoal/` + id)
 }
 
 update(goalId, goal){  
@@ -49,7 +48,7 @@ updateStarred(goalId: number, starred: boolean){
 
 goalDelete(id){
   console.log('that goal is out the window')
-  return this.http.delete(`https://kew-serverstars.herokuapp.com/user/delete/${id}` , httpOptions)
+  return this.http.delete(`https://kew-serverstars.herokuapp.com/user/delete/` + id, httpOptions)
 }
 
 }
