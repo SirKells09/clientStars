@@ -20,13 +20,11 @@ export class AuthenticationService {
         return this.http.post<any>(`https://kew-serverstars.herokuapp.com/user/login`, { email: email, password: password }, httpOptions)
               .pipe(map(user => {
                 if (user) {
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    localStorage.setItem('pin', user.user.pin);
                     localStorage.setItem('stars', user.user.stars);
                     localStorage.setItem('id', user.user.id);
                     localStorage.setItem('sessionToken', user.sessionToken);
                 }
-                return user;
+                return user
                              
             }));
     }
@@ -35,12 +33,9 @@ export class AuthenticationService {
         return this.http.post<any>(`https://kew-serverstars.herokuapp.com/user/register`, { firstName: firstName, lastName: lastName, email: email, password: password, pin: pin } , httpOptions)
         .pipe(map(user => {
             if (user) {
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                localStorage.setItem('pin', user.user.pin);
                 localStorage.setItem('stars', user.user.stars);
                 localStorage.setItem('id', user.user.id);
                 localStorage.setItem('sessionToken', user.sessionToken);
-                console.log(user.sessionToken)
             }
             return user
                          
@@ -48,13 +43,11 @@ export class AuthenticationService {
     }
 
     logout() {
-        localStorage.removeItem('currentUser');
         localStorage.removeItem('parent');
-        localStorage.removeItem('pin');
         localStorage.removeItem('id');
         localStorage.removeItem('stars');
         localStorage.removeItem('sessionToken');
         this.router.navigate(['']);
         window.location.reload();
       }
-}  
+}   

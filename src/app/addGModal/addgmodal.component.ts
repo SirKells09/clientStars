@@ -20,7 +20,14 @@ export class AddGModalComponent implements OnInit {
     public dialogRef:MatDialogRef<AddGModalComponent>, 
    public fb:FormBuilder, @Inject(MAT_DIALOG_DATA)public data:any, public snackBar:MatSnackBar) 
    {this.goal=data}
-    
+
+   ngOnInit(){
+    this.userId = JSON.parse(localStorage.getItem('id'))
+     this.goalForm = this.fb.group({
+       goal: new FormControl,
+       dueDate: new FormControl,
+       message: new FormControl
+      })
    
    ngOnInit(){
      this.userId = JSON.parse(localStorage.getItem('id'))

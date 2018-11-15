@@ -4,9 +4,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { MatDialog,  MatDialogRef } from '@angular/material';
 import { AddGModalComponent } from '../addGModal/addgmodal.component';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { UserService } from '../_services/user.service';
 import { GoalListService } from '../_services/goal-list.service';
+import { Observable, of as observableOf } from 'rxjs';
+import { first, timeout } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { first, map, catchError, switchMap } from 'rxjs/operators';
 import { UpdateGModalComponent} from '../updateGModal/updategmodal.component';
@@ -35,7 +36,6 @@ export class ViewgoalsComponent implements OnInit{
   addGModalRef: MatDialogRef<AddGModalComponent>;
   dialogResult: any[];
   displayedColumns: string[] = ['id', 'goal', 'dueDate', 'stars', 'editDelete'];
-  currentUser: {};
   currentGoals: any;
   goals: Goal[] = [];
   dataSource = new GoalDataSource(this.gl);
@@ -46,9 +46,6 @@ export class ViewgoalsComponent implements OnInit{
   updateResult: any[];
   id:any;
   disabled: boolean;
- 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public dialog: MatDialog,
@@ -59,11 +56,14 @@ export class ViewgoalsComponent implements OnInit{
     private gl:GoalListService, public snackBar:MatSnackBar,
     
     ) {
-    this.pin = JSON.parse(localStorage.getItem('pin'));
     this.parent = localStorage.getItem('parent');
     this.currentStars = JSON.parse(localStorage.getItem('stars'));
     this.userId = JSON.parse(localStorage.getItem('id'));
-    this.goalId=JSON.parse(sessionStorage.getItem('goalid'));
+    this.goalId=JSON.parse(sessionStorage.getItem('goalId'));
+    this.userService.getById(this.userId)
+    .pipe(first()).subscribe(user => {
+      this.pin = user.pin
+    });
     
   
     iconRegistry.addSvgIcon(
@@ -96,7 +96,6 @@ export class ViewgoalsComponent implements OnInit{
       .subscribe(data => {
       console.log(data)
       this.currentGoals = data
-      console.log(this.currentGoals)
       })
     }
     
@@ -133,11 +132,6 @@ export class ViewgoalsComponent implements OnInit{
     this.goalId = goal.id;
     this.currentStars = this.currentStars + 1;    
     JSON.stringify(localStorage.setItem('stars', this.currentStars.toString()));
-    this.currentUser = this.userService.getById(this.userId)
-    .pipe(first())
-    .subscribe(data => {
-      console.log(data)
-    });
     this.userService.updateStars(this.userId, this.currentStars)
     .subscribe();
     this.gl.updateStarred(this.goalId, this.starred)
@@ -165,7 +159,7 @@ export class ViewgoalsComponent implements OnInit{
     this.gl.updateStarred(this.goalId, this.starred)
     .subscribe();
   }
-
+  //add a goal
   openDialog(): void {
     let dialogRef = this.dialog.open(AddGModalComponent,{
       hasBackdrop: true, autoFocus:true});
@@ -174,7 +168,7 @@ export class ViewgoalsComponent implements OnInit{
       this.dialogResult = result;
     });
   }
-    
+    //update and delete
     openDialog2(id:any):void {
       sessionStorage.setItem('goalId',id);
       console.log('Grabbed a number from the back', id)
@@ -184,16 +178,6 @@ export class ViewgoalsComponent implements OnInit{
       });
     }
 
-
-
-
-  applyFilter(filterValue: string) {
-    this.currentGoals.filter = filterValue.trim().toLowerCase();
-
-    if (this.currentGoals.paginator) {
-      this.currentGoals.paginator.firstPage();
-    }
-  }
 }
 
 export class GoalDataSource extends DataSource<any> {

@@ -35,9 +35,7 @@ export class MainNavComponent implements OnInit{
  }
 
   logout() {
-    localStorage.removeItem('currentUser');
     localStorage.removeItem('parent');
-    localStorage.removeItem('pin');
     localStorage.removeItem('id');
     localStorage.removeItem('stars');
     localStorage.removeItem('sessionToken');

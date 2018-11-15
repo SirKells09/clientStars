@@ -6,9 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './_guards/auth.guard';
-import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
-import { AlertService } from './_services/alert.service';
 import { AuthenticationService } from './_services/authentication.service';
 import { UserService } from './_services/user.service';
 import { HomeComponent } from './home/home.component';
@@ -91,12 +89,10 @@ import { HighlightDirective } from './highlight.directive';
 
   providers: [
     AuthGuard,
-    AlertService,
     AuthenticationService,
     GoalListService,
     UserService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
   entryComponents: [AddGModalComponent, UpdateGModalComponent,SettingslistComponent, DeleteSnackComponent, UpdateSnackComponent, AddSnackComponent, LoginSnackComponent, RegSnackComponent, OutSnackComponent, MessSnackComponent],

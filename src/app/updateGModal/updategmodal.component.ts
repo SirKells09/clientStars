@@ -15,10 +15,8 @@ styleUrls: ['./updategmodal.component.css']
 
 export class UpdateGModalComponent implements OnInit {
   goal: Goal;
-   updateForm: FormGroup;
-   id: number;
-   goalId:any;
-   userId: number;
+  updateForm: FormGroup;
+  goalId: any;
   
   constructor( private gl: GoalListService,
     private dialogRef:MatDialogRef<UpdateGModalComponent>, 
@@ -46,30 +44,31 @@ export class UpdateGModalComponent implements OnInit {
        {duration: 5000})
    }
    
+  close() {
+    this.dialogRef.close()
+    window.location.reload();
+  }
 
-   
   updateGoal(){
     this.goalId = JSON.parse(sessionStorage.getItem('goalId'));
-    // this.userId = localStorage.getItem('id');
     console.log('goalId =',this.goalId)
     this.gl.update(this.goalId, this.updateForm.value)
+    
     .subscribe(data => {
-      console.log('goal has been updated', data)
+      console.log(data)
     })
     this.openSnackBar()
     this.dialogRef.close()
     window.location.reload();
   }
 
-
-      
   deleteGoal(){
-    this.goalId = JSON.parse(sessionStorage.getItem('goalId'))
+    this.goalId = sessionStorage.getItem('goalId');
     console.log(this.goalId)
     console.log('deleting shall commence')
   this.gl.goalDelete(this.goalId)
   .subscribe(data=>
-    console.log(data, "is gone out the window")
+    console.log(data)
     )
     this.openSnackBar2()
     this.dialogRef.close()
@@ -101,4 +100,5 @@ export class UpdateSnackComponent {}
     }
   `],
 })
+
 export class DeleteSnackComponent {}
