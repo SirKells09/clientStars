@@ -3,5 +3,5 @@ export class Goal {
     message: string;
     dueDate: string;
     starred: boolean;
-    userId: number;
+    userId: number
 }

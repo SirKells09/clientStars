@@ -95,8 +95,6 @@ export class ViewgoalsComponent implements OnInit{
       // this.display = false;
       this.disabled = true
     };
-
-        
     
     this.gl.getAll(this.userId)
       .subscribe(data => {
