@@ -34,6 +34,7 @@ export class MainNavComponent implements OnInit{
     localStorage.removeItem('pin');
     localStorage.removeItem('id');
     localStorage.removeItem('stars');
+    localStorage.removeItem('sessionToken');
     this.router.navigate(['']);
     window.location.reload();
   }

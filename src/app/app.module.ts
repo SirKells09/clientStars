@@ -101,6 +101,3 @@ import { HighlightDirective } from './highlight.directive';
 
 })
 export class AppModule { }
-
-
-
