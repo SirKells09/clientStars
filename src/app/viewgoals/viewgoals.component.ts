@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from'@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -170,12 +170,14 @@ export class ViewgoalsComponent implements OnInit{
     let dialogRef = this.dialog.open(AddGModalComponent,{
       hasBackdrop: true, autoFocus:true});
     dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed: ${result}`);
       this.dialogResult = result;
     });
   }
     
     openDialog2(id:any):void {
       sessionStorage.setItem('goalId',id);
+      console.log('Grabbed a number from the back', id)
       let dialogRef = this.dialog.open(UpdateGModalComponent);
       dialogRef.afterClosed().subscribe(result => {
         this.updateResult = result;
@@ -217,8 +219,7 @@ export interface Goal {
 @Component({
   selector: 'MessSnackComponent',
   template: `<span class="snack">
-  Good Job! Ask mom for a cookie!
-</span>
+Great job!! You get one star.</span>
 `,
   styles: [`
     .snack{
@@ -227,4 +228,4 @@ export interface Goal {
   `],
   
 })
-export class MessSnackComponent 
+export class MessSnackComponent {}
