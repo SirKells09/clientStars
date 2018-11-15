@@ -2,6 +2,8 @@ import { Component, Inject, OnInit, Input} from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { GoalListService } from '../_services/goal-list.service'
 import { FormBuilder,FormGroup,FormControl} from '@angular/forms'
+import {MatSnackBar} from '@angular/material';
+
 import { Goal } from '../_models/goal'
 
 
@@ -20,23 +22,30 @@ export class UpdateGModalComponent implements OnInit {
   
   constructor( private gl: GoalListService,
     private dialogRef:MatDialogRef<UpdateGModalComponent>, 
-   public fb:FormBuilder, @Inject(MAT_DIALOG_DATA)public data:any) 
+   public fb:FormBuilder, @Inject(MAT_DIALOG_DATA)public data:any,
+   public snackBar:MatSnackBar) 
    {this.goal=data}
   
-   close() {
-    this.dialogRef.close()
-  } 
-  
-  ngOnInit(){
-          this.updateForm = this.fb.group({
-            goal: new FormControl,
-            message: new FormControl,
-            dueDate: new FormControl
+   ngOnInit(){
+     this.updateForm = this.fb.group({
+       goal: new FormControl,
+       message: new FormControl,
+       dueDate: new FormControl
        
-          })
-          this.userId = JSON.parse(localStorage.getItem('id'));
-  }
-  
+      })
+      this.userId = JSON.parse(localStorage.getItem('id'));
+    }
+    
+    
+    openSnackBar(){
+      this.snackBar.openFromComponent(UpdateSnackComponent, 
+       {duration: 5000})
+   }
+   openSnackBar2(){
+     this.snackBar.openFromComponent(DeleteSnackComponent, 
+       {duration: 5000})
+   }
+   
 
    
   updateGoal(){
@@ -47,6 +56,7 @@ export class UpdateGModalComponent implements OnInit {
     .subscribe(data => {
       console.log('goal has been updated', data)
     })
+    this.openSnackBar()
     this.dialogRef.close()
     window.location.reload();
   }
@@ -54,15 +64,41 @@ export class UpdateGModalComponent implements OnInit {
 
       
   deleteGoal(){
-    this.goalId = sessionStorage.getItem('goalId')
+    this.goalId = JSON.parse(sessionStorage.getItem('goalId'))
     console.log(this.goalId)
     console.log('deleting shall commence')
   this.gl.goalDelete(this.goalId)
   .subscribe(data=>
     console.log(data, "is gone out the window")
     )
+    this.openSnackBar2()
     this.dialogRef.close()
     window.location.reload();
   } 
-
+  
+  close() {
+   this.dialogRef.close()
+  } 
 }
+
+@Component({
+  selector: 'UpdateSnackComponent',
+  templateUrl: 'updateSnack.html',
+  styles: [`
+    .snack{
+      color: white;
+    }
+  `],
+})
+export class UpdateSnackComponent {}
+
+@Component({
+  selector: 'DeleteSnackComponent',
+  templateUrl: 'deleteSnack.html',
+  styles: [`
+    .snack{
+      color: white;
+    }
+  `],
+})
+export class DeleteSnackComponent {}

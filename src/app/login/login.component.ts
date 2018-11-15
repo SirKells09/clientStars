@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material';
 import { AuthenticationService } from '../_services/authentication.service';
+
 
 @Component({
   selector: 'app-login',
@@ -18,15 +20,18 @@ export class LoginComponent {
     _email: string;
     _password: string;
 
-    constructor(
-        
-        private authenticationService: AuthenticationService,
-        private router: Router) {}
+    constructor(private authenticationService: AuthenticationService,
+        private router: Router, public snackBar:MatSnackBar) {}
 
     getErrorMessage() {
         return this.email.hasError('required') ? 'You must enter a value' :
             this.email.hasError('email') ? 'Not a valid email' :
                 '';
+      }
+
+       openSnackBar(){
+         this.snackBar.openFromComponent(LoginSnackComponent, 
+          {duration: 2000})
       }
 
       onSubmit(email: string, password: string) {
@@ -39,7 +44,21 @@ export class LoginComponent {
             .subscribe(
                 data => {
                     this.router.navigate(['/viewgoals']);
+                    this.openSnackBar()
                 }
             );
     }
 }
+@Component({
+    selector: 'loginSnackComponent',
+    template: `<span class="snack">
+    Logged In.
+  </span>
+  `,
+    styles: [`
+      .snack{
+        color: white;
+      }
+    `],
+  })
+  export class LoginSnackComponent {}
