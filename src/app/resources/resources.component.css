@@ -3,29 +3,64 @@
 .resources {
     background-color: rgb(250, 250, 250);
     height: 1000px;
-    text-align: center;
+    text-align: left;
 }
 
 #resourcestext {
     text-align: left;
-    /* margin: 30px; */
+    padding-left: 20px;
+    padding-top: 5px;
 }
 
 .blogscolumn {
-    width: 38%;
+    width: 30%;
+    margin-top: 20px;
+    margin-left: 3.5%;
+    margin-right: 10px;
+    border-radius: 1em;
 }
 
 .parkscolumn {
     width: 30%;
+    margin-top: 20px;
+    margin-right: 10px;
+    border-radius: 1em;
+}
+
+.parkscolumn h4 {
+    padding-left: 20px;
+}
+
+.parkscolumn h6 {
+    padding-left: 30px;
+}
+
+.parkscolumn p {
+    padding-left: 30px;
 }
 
 .hospitalscolumn {
     width: 30%;
+    margin-top: 20px;
+    border-radius: 1em;
+}
+
+.hospitalscolumn h4 {
+    padding-left: 20px;
+}
+
+.hospitalscolumn p {
+    padding-left: 20px;
 }
 
 h2 {
     color: rgb(50, 4, 70);
-    text-align: center;
+    text-align: left;
+    border-bottom: .5px solid rgb(137, 125, 182);
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
 }
 
 a {
@@ -35,4 +70,225 @@ a {
 a:hover {
     color: rgb(81, 52, 94);
 }
+
+/* Standard CSS Here. */
+/* In order for a Media Query to work, 
+ALL css that you want queried must go above iPad Pro Portrait.
+Portrait = Phone is vertical
+Landscape = Phone is horizontal */
+
+/* iPad Pro PORTRAIT */
+@media screen and (max-width: 1024px) {
+
+}
+
+/* iPad Pro LANDSCAPE*/
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px) and (orientation : landscape) {
+
+}
+
+/* iPad PORTRAIT*/
+@media screen and (max-width: 769px) {
+
+}
+
+/* iPad LANDSCAPE*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+
+}
+
+/* iPhone 6/7/8 Plus PORTRAIT */
+@media screen and (max-width: 414px) {
+    .resources {
+        background-color: rgb(250, 250, 250);
+        height: 100%;
+        text-align: left;
+    }
+
+    #resourcestext {
+        padding-left: 20px;
+        padding-top: 5px;
+    }
+
+    .blogscolumn {
+        width: 90%;
+        margin-bottom: 20px;
+        margin-left: 0;
+    }
+
+    .blogscolumn h2 {
+        text-align: left;
+        border-bottom: .5px solid rgb(137, 125, 182);
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    .parkscolumn {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    .parkscolumn h2 {
+        text-align: left;
+        border-bottom: .5px solid rgb(137, 125, 182);
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .parkscolumn h4 {
+        padding-left: 20px;
+    }
+
+    .parkscolumn h6 {
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+
+    .parkscolumn p {
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+  
+    .hospitalscolumn {
+        width: 90%;
+    }
+
+    .hospitalscolumn h2 {
+        text-align: left;
+        border-bottom: .5px solid rgb(137, 125, 182);
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .hospitalscolumn h4 {
+        padding-left: 20px;
+    }
+
+}
+
+/* iPhone 6/7/8 Plus LANDSCAPE */
+@media only screen and (min-device-width : 411px) and (max-device-width : 736px) and (orientation : landscape) {
+    .resources {
+        background-color: rgb(250, 250, 250);
+        height: 100%;
+        text-align: left;
+    }
+
+    #resourcestext {
+        padding-left: 20px;
+        padding-top: 5px;
+    }
+
+    .blogscolumn {
+        width: 90%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+
+    .blogscolumn h2 {
+        text-align: left;
+        border-bottom: .5px solid rgb(137, 125, 182);
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    
+    .parkscolumn {
+        width: 90%;
+        margin-bottom: 20px;
+        margin-left: 2%;
+    }
+
+    .parkscolumn h2 {
+        text-align: left;
+        border-bottom: .5px solid rgb(137, 125, 182);
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .parkscolumn h4 {
+        padding-left: 20px;
+    }
+
+    .parkscolumn h6 {
+        padding-left: 30px;
+    }
+
+    .parkscolumn p {
+        padding-left: 30px;
+    }
+  
+    .hospitalscolumn {
+        width: 90%;
+        margin-left: 2%;
+    }
+
+    .hospitalscolumn h2 {
+        text-align: left;
+        border-bottom: .5px solid rgb(137, 125, 182);
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .hospitalscolumn h4 {
+        padding-left: 20px;
+    }
+
+}
+
+/* Pixel 2 & Pixel 2 XL PORTRAIT */
+@media screen and (max-width: 412px) {
+
+}
+
+/* Pixel 2 LANDSCAPE */
+@media only screen and (min-device-width : 411px) and (max-device-width : 731px) and (orientation : landscape) {
+
+}
+
+/* Pixel 2 XL LANDSCAPE */
+@media only screen and (min-device-width : 411px) and (max-device-width : 823px) and (orientation : landscape) {
+
+}
+
+/* iPhone 6/7/8 & iPhone X PORTRAIT */
+@media screen and (max-width: 400px) {
+    
+}
+
+/* iPhone 6/7/8 LANDSCAPE */
+@media only screen and (min-device-width : 411px) and (max-device-width : 667px) and (orientation : landscape) {
+    
+}
+
+/* Iphone X LANDSCAPE */
+@media only screen and (min-device-width : 411px) and (max-device-width : 822px) and (orientation : landscape) {
+
+}
+
+/* Galaxy S5 PORTRAIT */
+@media screen and (max-width: 375px) {
+
+}
+
+/* Galaxy S5 LANDSCAPE */
+@media only screen and (min-device-width : 411px) and (max-device-width : 640px) and (orientation : landscape) {
+
+}
+
+/* iPhone 5/SE PORTRAIT */
+@media screen and (max-width: 330px) {
+
+}
+
+/* iPhone 5/SE LANDSCAPE */
+@media only screen and (min-device-width : 411px) and (max-device-width : 568px) and (orientation : landscape) {
+
+}
+
 
